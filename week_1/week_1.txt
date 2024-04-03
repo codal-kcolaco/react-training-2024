@@ -1,0 +1,7 @@
+2 APRIL
+    HTML Tags
+    HTML Structure 
+    Chrome Dev Tools 
+    CSS Basics
+    Images and Text Boxes
+    Creating a youtube home page clone
