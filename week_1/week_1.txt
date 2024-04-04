@@ -1,7 +1,24 @@
 2 APRIL
-    HTML Tags
+    HTML Tags - img, body, head, html, div, button, p
     HTML Structure 
     Chrome Dev Tools 
     CSS Basics
+        - flex
+        - display
+        - padding
+        - margin
     Images and Text Boxes
     Creating a youtube home page clone
+
+3 APRIL 
+    CSS Basics
+        - display flex
+        - display grid
+        - display block
+        - display inline block
+        - position relative
+        - position absolute 
+        - position fixed
+    
+    Created the header for youtube clone
+    Creating the sidebar for youtube clone
