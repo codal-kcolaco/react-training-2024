@@ -1,12 +1,10 @@
 p {
-    font-family: Arial;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0;
 }
 
 body {
     margin: 0;
-    padding-top: 100px;
-    padding-left: 250px;
+    padding: 100px 40px 0px 250px;
     height: 3000px;
+    font-family: Arial;
 }

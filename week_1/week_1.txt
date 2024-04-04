@@ -22,3 +22,7 @@
     
     Created the header for youtube clone
     Creating the sidebar for youtube clone
+
+4 APRIL
+    Customizing the sidebar based on youtube
+    Added a hover text element for header icons
