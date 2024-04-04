@@ -26,3 +26,12 @@
 4 APRIL
     Customizing the sidebar based on youtube
     Added a hover text element for header icons
+    Lazy loading of images
+    HTML Basics
+        - Learned about HTML forms 
+        - Learned about different input attributes like email, password, radio
+        - Unordered list 
+        - Textarea    
+        - Select tag
+    HTML Semantic Tags
+    More into Dev Tools

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+
+<body>
+    <h1>HTML Forms</h1>
+    <form action="">
+        <label for="username">Enter username: </label>
+        <input type="text" id="username" required>
+        <br><br>
+        <label for="email">Enter email: </label>
+        <input type="email" id="email">
+        <br><br>
+        <label for="password">Enter password: </label>
+        <input type="password" id="password">
+        <br><br>
+        <input type="radio" name="gender" value="male" id="option-1"> Male <br>
+        <input type="radio" name="gender" value="female" id="option-2"> Female <br>
+        <input type="radio" name="gender" value="other" id="option-3"> Other <br>
+        <br><br>
+        <label for="city">City</label>
+        <select name="city" id="city">
+            <option value="c1">Gandhidham</option>
+            <option value="c2">Ahemedabad</option>
+        </select>
+        <br><br>
+        <textarea name="bio" id="bio" cols="30" rows="10" placeholder="Your Address"></textarea>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
