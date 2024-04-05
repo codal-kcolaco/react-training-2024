@@ -1,0 +1,76 @@
+body {
+    height: 3000px;
+}
+
+.fixed {
+    position: fixed;
+    background-color: red;
+    width: 100%;
+    text-align: center;
+}
+
+.fixed .h1-fixed {
+    border: 8px solid wheat;
+    display: inline-block;
+    padding: 8px 12px;
+}
+
+.static {
+    position: static;
+}
+
+.relative {
+    position: relative;
+    top: 100px
+}
+
+.absolute {
+    position: absolute;
+    top: 50px;
+}
+
+.sticky {
+    position: sticky;
+    top: 1px;
+}
+
+section {
+    margin-top: 200px;
+}
+
+article {
+    margin-top: 100px;
+    width: 30%;
+}
+
+/* pseudo classes */
+
+.absolute:hover {
+    text-decoration: underline;
+}
+
+section img:hover {
+    position: relative;
+    bottom: 10px;
+}
+
+section input:focus {
+    border: 2px dashed red;
+    outline: none;
+}
+
+section input:valid {
+    border: 2px solid green;
+    outline: none;
+}
+
+/* pseudo elements */
+
+article p::first-line {
+    font-size: large;
+    font-weight: bold;
+}
+
+article p::selection {
+    background-color: red;
+}
