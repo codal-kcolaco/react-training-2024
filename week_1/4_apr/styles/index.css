@@ -1,0 +1,31 @@
+ul {
+    border-bottom: 4px solid red;
+    border-left: 8px dashed blue;
+}
+
+li {
+    list-style-type: square;
+    text-shadow: 2px 2px lightgray;
+}
+
+#error {
+    color: red;
+}
+
+a[href*="youtube"] {
+    background-color: red;
+    color: white;
+}
+
+a[href$=".com"] {
+    background-color: black;
+    color: red;
+}
+
+div {
+    border: 2px solid;
+}
+
+p {
+    border: inherit;
+}
