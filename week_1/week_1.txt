@@ -35,3 +35,12 @@
         - Select tag
     HTML Semantic Tags
     More into Dev Tools
+
+5 APRIL
+    CSS Basics
+        - position sticky
+        - pseudo classes
+        - animation
+        - keyframes
+    Read documentation for HTML and CSS
+    Watched some videos to get more in-depth knowledge for HTML and CSS
