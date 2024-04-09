@@ -1,0 +1,11 @@
+8 APRIL
+    Bootstrap Basics
+        - How to integrate bootstrap CDN
+        - Why we use bootstrap
+        - Tables
+        - Forms
+        - Buttons        
+        - Navbar
+        - Display properties
+
+    Creating Job Portal project
