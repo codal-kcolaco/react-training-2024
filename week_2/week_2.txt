@@ -9,3 +9,9 @@
         - Display properties
 
     Creating Job Portal project
+
+9 APRIL
+    Reading documentation about Bootstrap
+    Checking the example codes and trying to change values to see the outcome
+    Badges
+    Breadcumbs
