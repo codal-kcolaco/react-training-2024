@@ -15,3 +15,9 @@
     Checking the example codes and trying to change values to see the outcome
     Badges
     Breadcumbs
+
+10 APRIL 
+    JOB PORTAL
+        Change the design for header 
+        Change the design for footer 
+        Create two new sections 

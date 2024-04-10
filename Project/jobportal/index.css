@@ -2,7 +2,6 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    height: 2000px;
 }
 
 header.nav-header {
@@ -10,56 +9,66 @@ header.nav-header {
     top: 0;
     right: 0;
     left: 0;
-    background-color: #000;
+    background-color: #463939;
     color: #fff;
     padding: 20px;
-    text-align: center;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(49, 45, 45, 0.1);
+    z-index: 1000;
+
 }
 
 nav ul {
     list-style-type: none;
+    margin: 0;
     padding: 0;
+    display: flex;
+
 }
 
 nav ul li {
-    display: inline;
     margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
+    padding: 10px 15px;
+
+    border-radius: 5px;
+    transition: background-color 0.3s;
+
 }
 
+nav ul li a:hover {
+    background-color: #87b3b0;
+
+}
+
+
 .banner {
-    margin: 100px 0px;
     background-image: url('images/job-banner.jpeg');
     background-size: cover;
     background-position: center;
     color: #fff;
     text-align: center;
-    padding: 100px 0;
+    padding: 200px 0;
 }
 
 .banner h2 {
     margin-top: 0;
 }
 
-/* .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+p.subtitle {
+    margin-bottom: 100px;
 }
-
-.btn:hover {
-    background-color: #0056b3;
-} */
 
 .btn {
     color: white;
@@ -74,12 +83,54 @@ nav ul li a {
 }
 
 .btn:hover {
-    background-color: rgb(6, 95, 212);
-    color: white;
+    background-color: white;
+    color: black
 }
 
-.join-button:active {
-    opacity: 0.3;
+.create-job-description,
+.apply-job-description {
+    background: #01817b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.apply-job-description {
+    background: #87b3b0;
+}
+
+.create-job-container,
+.apply-job-container {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    margin-right: 20px;
+}
+
+.create-job-container img,
+.apply-job-container img {
+    padding: 100px 0px;
+    width: 50%;
+    height: auto;
+    max-width: 100%;
+
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.description h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.description p {
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 
@@ -90,10 +141,30 @@ nav ul li a {
 }
 
 footer {
-    background-color: #333;
+    background-color: #222;
     color: #fff;
     text-align: center;
-    position: fixed;
-    bottom: 0;
+    padding: 30px 0;
     width: 100%;
+    bottom: 0;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
+}
+
+.footer-links {
+    margin-top: 20px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #87b3b0;
 }
