@@ -21,3 +21,10 @@
         Change the design for header 
         Change the design for footer 
         Create two new sections 
+
+11 APRIL 
+    Changed the design of two new sections 
+    Created a search box for job searching 
+    Added technology chip design
+    Create sign in page
+    Create log in page
