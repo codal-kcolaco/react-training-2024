@@ -1,0 +1,17 @@
+15 APRIL
+    Data types
+    If condition 
+    Loop condition 
+    Functions 
+    Type conversion 
+    Objects 
+    Arrays 
+    Strings 
+    Template strings 
+    DOM 
+        - onkeydown
+        - innerHTML
+        - innerText
+        - querySelector
+        - querySelectorAll
+        - classList
