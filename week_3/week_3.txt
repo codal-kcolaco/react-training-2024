@@ -22,4 +22,8 @@
     addEventListeners
     setInterval
     setTimeout
-    
+    Starting an amazon project for practice
+    Modules 
+    Data Attributes
+    local storage
+    External library
