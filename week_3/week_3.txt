@@ -15,3 +15,11 @@
         - querySelector
         - querySelectorAll
         - classList
+
+16 APRIL
+    Create a Todo for practice
+    Create rock paper scissors for practice
+    addEventListeners
+    setInterval
+    setTimeout
+    

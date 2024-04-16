@@ -22,3 +22,11 @@ const people = ['Kevin', 'Rahul', 'Sambhav']
 people.forEach(person => {
     paraWithError.innerHTML += `<p>${person}</p>`
 })
+
+const buttonElement = document.querySelector('.button')
+
+const evenListener = () => {
+    console.log('click');
+}
+
+buttonElement.addEventListener('click',evenListener)
