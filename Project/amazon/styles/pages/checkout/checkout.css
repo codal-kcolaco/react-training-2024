@@ -2,8 +2,6 @@
   max-width: 1100px;
   padding: 0px 30px;
 
-  margin-top: 140px;
-  margin-bottom: 100px;
   margin: 140px auto 100px auto;
 }
 
@@ -64,9 +62,7 @@
 .delivery-date {
   color: rgb(0, 118, 0);
   font-weight: 700;
-  font-size: 19px;
-  margin-top: 5px;
-  margin-bottom: 22px;
+  font-size: 19px;  
   margin: 5px 0px 22px 0px;
 }
 
