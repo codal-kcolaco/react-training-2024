@@ -27,3 +27,14 @@
     Data Attributes
     local storage
     External library
+
+17 APRIL
+    Spread operator
+    Shallow copy and deep copy
+    Callback 
+    Callback Hell
+    Promises
+    Async Await
+    Create filters for Job section
+    Add additional jobs for the job section
+    Create job view page 

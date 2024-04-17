@@ -1,114 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CJP - Home</title>
-    <link rel="stylesheet" href="styles/index.css">
-    <link rel="stylesheet" href="styles/jobs.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-</head>
+    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/jobs.css" />
+  </head>
 
-<body>
+  <body>
     <header class="nav-header">
-        <div class="nav-wrapper">
-            <a href="index.html"><img loading="lazy" src="images/cjp-logo.png" alt=""></a>
-            <nav>
-                <ul>
-                    <li><a href="#">Jobs</a></li>
-                    <li><a href="#">Post a Job</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="nav-button-wrapper">
-            <a href="signup.html" class="sign-up-button">Sign-up</a>
-            <a href="login.html" class="login-button">Login</a>
-        </div>
+      <div class="nav-wrapper">
+        <a href="index.html"
+          ><img loading="lazy" src="images/cjp-logo.png" alt=""
+        /></a>
+        <nav>
+          <ul>
+            <li><a href="#">Jobs</a></li>
+            <li><a href="#">Post a Job</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="nav-button-wrapper">
+        <a href="signup.html" class="sign-up-button">Sign-up</a>
+        <a href="login.html" class="login-button">Login</a>
+      </div>
     </header>
 
     <div class="job-list-container">
-        <section class="job-filter-section">
-            <h1>Filter</h1>
-            <hr>
-            <h4>Technology</h4>
-            <div class="filter-container">
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="python" name="python" />
-                    <label for="python">Python</label>
-                </div>
+      <section class="job-filter-section">
+        <h1>Filter</h1>
+        <hr />
+        <h4>Technology</h4>
+        <div class="filter-container">
+          <div class="filter-checkbox">
+            <input
+              type="checkbox"
+              id="python"
+              value="python"
+              name="technology"
+            />
+            <label for="python">Python</label>
+          </div>
 
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="java" name="java" />
-                    <label for="java">Java</label>
-                </div>
-            </div>
-            <h4>Location</h4>
-            <div class="filter-container">
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="python" name="python" />
-                    <label for="python">Ahemdabad</label>
-                </div>
+          <div class="filter-checkbox">
+            <input type="checkbox" id="java" value="java" name="technology" />
+            <label for="java">Java</label>
+          </div>
 
-                <div class="filter-checkbox">
-                    <input type="checkbox" id="java" name="java" />
-                    <label for="java">Surat</label>
-                </div>
-            </div>
-        </section>
-        <section class="job-list-section">
-            <div class="job-search-container">
-                <input class="job-search-input" type="text" placeholder="Search for your jobs">
-                <h1>Jobs</h1>
-            </div>
-            <div class="job-list-section-grid">
-                <div class="chip">
+          <div class="filter-checkbox">
+            <input
+              type="checkbox"
+              id="cplusplus"
+              value="cplusplus"
+              name="technology"
+            />
+            <label for="cplusplus">C++</label>
+          </div>
 
-                    <div class="chip-img">
-                        <img src="images/codal.png" alt="test">
-                    </div>
-                    <div class="chip-description">
-                        <h3>Codal Systems</h3>
-                        <p><i class="fa-solid fa-star"></i> 4.8 (1.9k reviews)</p>
-                    </div>
-                </div>
+          <div class="filter-checkbox">
+            <input
+              type="checkbox"
+              id="javascript"
+              value="javascript"
+              name="technology"
+            />
+            <label for="javascript">JavaScript</label>
+          </div>
+          <div class="filter-checkbox">
+            <input type="checkbox" id="c#" value="c#" name="technology" />
+            <label for="c#">C#</label>
+          </div>
+          <div class="filter-checkbox">
+            <input type="checkbox" id="ruby" value="ruby" name="technology" />
+            <label for="ruby">Ruby</label>
+          </div>
+        </div>
+        <h4>Location</h4>
+        <div class="filter-container">
+          <div class="filter-checkbox">
+            <input
+              type="checkbox"
+              id="ahmedabad"
+              value="ahmedabad"
+              name="location"
+            />
+            <label for="ahmedabad">Ahmedabad</label>
+          </div>
 
-                <div class="chip">
-                    <div class="chip-img">
-                        <img src="images/tcs.png" alt="test">
-                    </div>
-                    <div class="chip-description">
-                        <h3>TCS</h3>
-                        <p><i class="fa-solid fa-star"></i> 3.9 (25K reviews)</p>
-                    </div>
-                </div>
+          <div class="filter-checkbox">
+            <input type="checkbox" id="surat" value="surat" name="location" />
+            <label for="surat">Surat</label>
+          </div>
 
-                <div class="chip">
-                    <div class="chip-img">
-                        <img src="images/IBM.png" alt="test">
-                    </div>
-                    <div class="chip-description">
-                        <h3>IBM</h3>
-                        <p><i class="fa-solid fa-star"></i> 4.4 (10K reviews)</p>
-                    </div>
-                </div>
-            </div>
-    </div>
-    </section>
+          <div class="filter-checkbox">
+            <input type="checkbox" id="goa" value="goa" name="location" />
+            <label for="goa">Goa</label>
+          </div>
+
+          <div class="filter-checkbox">
+            <input
+              type="checkbox"
+              id="coimbatore"
+              value="coimbatore"
+              name="location"
+            />
+            <label for="coimbatore">Coimbatore</label>
+          </div>
+
+          <div class="filter-checkbox">
+            <input
+              type="checkbox"
+              id="visakhapatnam"
+              value="visakhapatnam"
+              name="location"
+            />
+            <label for="visakhapatnam">Visakhapatnam</label>
+          </div>
+
+          <div class="filter-checkbox">
+            <input type="checkbox" id="jaipur" value="jaipur" name="location" />
+            <label for="jaipur">Jaipur</label>
+          </div>
+        </div>
+      </section>
+      <section class="job-list-section">
+        <div class="job-search-container">
+          <input
+            class="job-search-input"
+            type="text"
+            placeholder="Search for your jobs"
+          />
+          <h1>Jobs</h1>
+        </div>
+        <div class="job-list-section-grid"></div>
+      </section>
     </div>
 
     <footer>
-        <div class="footer-content">
-            <p>&copy; 2024 Job Portal. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Contact Us</a>
-            </div>
+      <div class="footer-content">
+        <p>&copy; 2024 Job Portal. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Contact Us</a>
         </div>
+      </div>
     </footer>
-
-</body>
-
+    <script type="module" src="scripts/jobs.js"></script>
+  </body>
 </html>
