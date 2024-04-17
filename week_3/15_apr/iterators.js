@@ -1,12 +1,5 @@
-console.log([1,-3,4].filter((value, index) => {
-    if (value >= 0) {
-        return true
-    }
+console.log([1, -3, 4].filter((value) => value >= 0));
 
-    else {
-        return false
-    }
-}));
 
 console.log([1,-3,4].map((value, index) => {
     return value + 10
