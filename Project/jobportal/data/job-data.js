@@ -125,7 +125,7 @@ const jobData = [
     description:
       "L&T Infotech is a global IT services and solutions provider that delivers digital transformation and technology solutions to the world's leading companies.",
     location: "Lucknow",
-    image: "images/lt-infotech.png",
+    image: "images/lt-infotech.jpg",
     ratings: 4.3,
     reviews: 12000,
     technology: "Python",
@@ -135,7 +135,7 @@ const jobData = [
     description:
       "Mphasis applies next-generation technology to help enterprises transform businesses globally.",
     location: "Jaipur",
-    image: "images/mphasis.png",
+    image: "images/mphasis.jpg",
     ratings: 4.0,
     reviews: 9000,
     technology: "Java",
@@ -165,7 +165,7 @@ const jobData = [
     description:
       "NIIT Technologies is a leading global IT solutions organization, enabling its clients to transform at the intersect of unparalleled domain expertise and emerging technologies.",
     location: "Noida",
-    image: "images/niit-tech.png",
+    image: "images/niit.jpg",
     ratings: 4.2,
     reviews: 10000,
     technology: "Java",
@@ -185,7 +185,7 @@ const jobData = [
     description:
       "QuEST Global is a global product engineering and lifecycle services company.",
     location: "Coimbatore",
-    image: "images/quest-global.png",
+    image: "images/quest.jpeg",
     ratings: 4.3,
     reviews: 9500,
     technology: "Python",
@@ -195,7 +195,7 @@ const jobData = [
     description:
       "KPIT Technologies is a global technology company specializing in providing IT consulting and product engineering solutions and services.",
     location: "Goa",
-    image: "images/kpit-tech.png",
+    image: "images/kpit.jpg",
     ratings: 4.1,
     reviews: 8000,
     technology: "Java",

@@ -3,13 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Job Details</title>
+    <title>My Jobs</title>
+    <link rel="stylesheet" href="styles/my-jobs.css" />
     <link rel="stylesheet" href="styles/index.css" />
-    <link rel="stylesheet" href="styles/job-view.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
   </head>
   <body>
     <header class="nav-header">
@@ -19,8 +15,8 @@
         /></a>
         <nav>
           <ul>
-            <li><a href="index.html">Jobs</a></li>
-            <li><a href="#">Post a Job</a></li>
+            <li><a href="jobs.html">Jobs</a></li>
+            <li><a href="post-job.html">Post a Job</a></li>
             <li><a href="#">Contact</a></li>
           </ul>
         </nav>
@@ -30,11 +26,12 @@
         <a href="login.html" class="login-button">Login</a>
       </div>
     </header>
-
-    <div class="job-view-container">
-      <div class="job-view-card" id="job-view-card"></div>
+    <div class="my-jobs-container">
+      <h1>Job Listings</h1>
+      <div class="my-jobs-list-container">
+        <ul id="job-list"></ul>
+      </div>
     </div>
-
     <footer>
       <div class="footer-content">
         <p>&copy; 2024 Job Portal. All rights reserved.</p>
@@ -45,6 +42,7 @@
         </div>
       </div>
     </footer>
-    <script type="module" src="scripts/job-view.js"></script>
+
+    <script src="scripts/my-jobs.js"></script>
   </body>
 </html>
