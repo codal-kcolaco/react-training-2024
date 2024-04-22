@@ -1,6 +1,6 @@
 document
   .getElementById("registrationForm")
-  .addEventListener("submit", function (event) {
+  .addEventListener("submit", (event) => {
     event.preventDefault();
     var fullname = document.getElementById("fullname").value;
     var email = document.getElementById("email").value;
@@ -40,11 +40,9 @@ document
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         alert("Registration successful");
       })
       .catch((error) => {
-        console.log(error);
         alert(`${error}. Please try again.`);
       });
   });

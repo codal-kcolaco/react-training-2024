@@ -44,7 +44,7 @@ function createJobListing(job) {
 }
 
 function displayJobListings() {
-  jobData.forEach(function (job) {
+  jobData.forEach((job) => {
     const chip = createJobListing(job);
     jobListSection.appendChild(chip);
   });
@@ -60,7 +60,6 @@ function filterJobs() {
     .map((checkbox) => checkbox.value);
 
   const filteredJobs = jobData.filter((job) => {
-    console.log(selectedTechnologies.length);
     return (
       (selectedTechnologies.length === 0 ||
         selectedTechnologies.includes(job.technology.toLowerCase())) &&
@@ -70,17 +69,17 @@ function filterJobs() {
   });
 
   jobListSection.innerHTML = "";
-  filteredJobs.forEach(function (job) {
+  filteredJobs.forEach((job) => {
     const chip = createJobListing(job);
     jobListSection.appendChild(chip);
   });
 }
 
-technologyCheckboxes.forEach(function (checkbox) {
+technologyCheckboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", filterJobs);
 });
 
-locationCheckboxes.forEach(function (checkbox) {
+locationCheckboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", filterJobs);
 });
 
