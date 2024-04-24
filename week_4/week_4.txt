@@ -1,0 +1,10 @@
+23 APRIL 
+    Setup React
+    React component
+    props
+    propTypes
+    defaultProps
+    Conditional Rendering
+    click event
+    useState
+    updater functions
