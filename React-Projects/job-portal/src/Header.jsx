@@ -27,10 +27,10 @@ function Header() {
         <nav>
           <ul>
             <li>
-              <a href="jobs.html">Jobs</a>
+              <a href="jobs">Jobs</a>
             </li>
             <li>
-              <a href="post-job.html">Post a Job</a>
+              <a href="post-job">Post a Job</a>
             </li>
             <li>
               <a href="#">Contact</a>

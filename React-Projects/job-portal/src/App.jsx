@@ -6,6 +6,9 @@ import { Route, Routes } from "react-router-dom";
 import Jobs from "./Jobs.jsx";
 import Signup from "./Signup.jsx";
 import Login from "./Login.jsx";
+import PostJob from "./PostJob.jsx";
+import { MyJobs } from "./MyJobs.jsx";
+import { JobView } from "./JobView.jsx";
 
 function App() {
   return (
@@ -13,9 +16,12 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/jobs" element={<Jobs />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/jobs" element={<Jobs />} />
+        <Route path="/post-job" element={<PostJob />} />
+        <Route path="/my-jobs" element={<MyJobs />} />
+        <Route path="/job-view" element={<JobView />} />
       </Routes>
       <Footer></Footer>
     </>
