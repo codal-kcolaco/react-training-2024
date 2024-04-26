@@ -49,10 +49,10 @@ function Home() {
         </div>
       </section>
 
-      <section class="job-list-home-section">
+      <section className="job-list-home-section">
         <h1>Filter based on technologies</h1>
-        <div class="job-list-home-section-grid">
-          <div class="home-chip">
+        <div className="job-list-home-section-grid">
+          <div className="home-chip">
             <img
               src="https://learn.microsoft.com/en-us/media/logos/logo_python.svg"
               alt="python"
@@ -61,7 +61,7 @@ function Home() {
             />
             Python
           </div>
-          <div class="home-chip">
+          <div className="home-chip">
             <img
               src="https://learn.microsoft.com/en-us/media/logos/logo_Go-lightblue.svg"
               alt="go"
@@ -70,7 +70,7 @@ function Home() {
             />
             Golang
           </div>
-          <div class="home-chip">
+          <div className="home-chip">
             <img
               src="https://learn.microsoft.com/en-us/media/logos/logo_js.svg"
               alt="JavaScript"
@@ -79,7 +79,7 @@ function Home() {
             />
             JavaScript
           </div>
-          <div class="home-chip">
+          <div className="home-chip">
             <img
               src="https://learn.microsoft.com/en-us/media/logos/logo_java.svg"
               alt="java"
@@ -88,7 +88,7 @@ function Home() {
             />
             Java
           </div>
-          <div class="home-chip">
+          <div className="home-chip">
             <img
               src="https://learn.microsoft.com/en-us/azure/media/index/net-logo.svg"
               alt=".net"

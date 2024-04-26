@@ -39,6 +39,7 @@
 
 .filter-checkbox label {
   font-size: 15px;
+  margin-left: 5px;
 }
 
 .job-list-section {
@@ -79,6 +80,7 @@
   border: 1px solid lightgray;
   padding: 30px;
   cursor: pointer;
+  font-weight: bold;
   height: 100px;
   width: 340px;
   border-radius: 10px;
