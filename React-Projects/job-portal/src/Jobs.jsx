@@ -36,14 +36,10 @@ const JobCardPython = ({ job }) => {
 
   return (
     <div className="job-card">
-      <a
-        href={`job-description?id=${encodeURIComponent(
-          job_name.toLowerCase().replace(/\s/g, "-")
-        )}`}
-      >
+      <a href={`job-description?id=${pk}`}>
         <div className="chip">
           <div className="chip-img">
-            <img src="" alt={user.name} />
+            <img src="src/assets/codal.png" alt={user.name} />
           </div>
           <div className="chip-description">
             <h3>{job_name}</h3>

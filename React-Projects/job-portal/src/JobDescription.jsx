@@ -1,69 +1,51 @@
-import React from "react";
-import "./styles/JobView.css";
+import React, { useState, useEffect } from "react";
+import "./styles/JobDescription.scss";
+import { fetchSingleJob } from "./api";
 
 const JobDescriptionCard = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const jobId = urlParams.get("id");
+  const jwtCookie = document.cookie
+    .split(";")
+    .find((cookie) => cookie.trim().startsWith("jwt_token="));
 
-  const job = jobData.find(
-    (job) => job.job_name.toLowerCase().replace(/\s/g, "-") === jobId
-  );
+  const [jobData, setJobData] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchSingleJob(jobId, jwtCookie);
+        setJobData(data);
+      } catch (error) {
+        alert(`${error}. Please try again.`);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="job-description-card" id="job-description-card">
       <div className="job-description-title-container">
-        <img src="" alt={job.job_name} />
+        <img src="src/assets/codal.png" alt={jobData.job_name} />
         <div className="job-description-details">
-          <h1>{job.job_name}</h1>
+          <h1>{jobData.job_name}</h1>
           {/* <p>
-            <i className="fa-solid fa-star"></i> {job.ratings}
+            <i className="fa-solid fa-star"></i> {jobData.ratings}
           </p>
-          <p>({job.reviews} reviews)</p> */}
+          <p>({jobData.reviews} reviews)</p> */}
         </div>
       </div>
       <div className="job-description-overview">
-        <strong>About {job.job_name}</strong>
-        <p>{job.job_description}</p>
+        <strong>About {jobData.job_name}</strong>
+        <p>{jobData.job_description}</p>
         {/* <p>
-          <strong>Location:</strong> {job.location}
+          <strong>Location:</strong> {jobData.location}
         </p> */}
         <p>
           <strong>Company:</strong>
-          {job.user.name}
+          {/* {jobData.user.name} */}
         </p>
-      </div>
-      <div className="job-openings-card">
-        <div className="job-openings">
-          <h2>Job Openings</h2>
-          <ul>
-            <li>
-              <strong>Frontend Developer</strong>
-              <div className="job-openings-details">
-                <p>San Francisco</p>
-                <p>2+ years</p>
-              </div>
-              <button className="apply-now-button">Apply Now</button>
-            </li>
-
-            <li>
-              <strong>Backend Engineer</strong>
-              <div className="job-openings-details">
-                <p>New York</p>
-                <p>3+ years</p>
-              </div>
-              <button className="apply-now-button">Apply Now</button>
-            </li>
-
-            <li>
-              <strong>UI/UX Designer</strong>
-              <div className="job-openings-details">
-                <p>London</p>
-                <p>5+ years</p>
-              </div>
-              <button className="apply-now-button">Apply Now</button>
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
   );

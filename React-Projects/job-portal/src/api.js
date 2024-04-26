@@ -1,4 +1,10 @@
-import { SIGNUP_URL, LOGIN_URL, POST_JOB_URL, GET_JOB_URL } from "./Constants";
+import {
+  SIGNUP_URL,
+  LOGIN_URL,
+  POST_JOB_URL,
+  GET_JOB_URL,
+  GET_SINGLE_JOB_URL,
+} from "./Constants";
 
 export const registerUser = async (fullname, email, password) => {
   const requestBody = {
@@ -92,6 +98,22 @@ export const fetchJobs = async () => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Network response is not ok");
+  }
+
+  return response.json();
+};
+
+export const fetchSingleJob = async (jobId, jwtToken) => {
+  const response = await fetch(GET_SINGLE_JOB_URL + jobId + "/", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: jwtToken,
     },
   });
 
