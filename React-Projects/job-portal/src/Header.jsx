@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./styles/Header.css";
+import "./styles/Header.scss";
 import CJPLogo from "./assets/cjp-logo.png";
 
 function Header() {
@@ -49,7 +49,7 @@ function Header() {
         </div>
       )}
       {isLoggedIn && (
-        <div id="user-avatar-container">
+        <div className="user-avatar-container">
           <img className="user-avatar" src="images/wallpaper.png" alt="" />
           <a
             className="logout-button"

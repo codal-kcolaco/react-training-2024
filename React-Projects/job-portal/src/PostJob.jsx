@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles/PostJob.css";
-import axios from "axios";
+import { postJob } from "./api";
 
 const PostJob = () => {
   let isLoggedIn = false;
@@ -16,59 +16,18 @@ const PostJob = () => {
   }
 
   const [jobTitle, setJobTitle] = useState("");
-  const [jobType, setJobType] = useState("");
+  const [jobType, setJobType] = useState("SOFTWARE ENGINEERING");
   const [jobSalary, setJobSalary] = useState(0);
   const [jobDescription, setJobDescription] = useState("");
 
   const postAJob = async (event) => {
     event.preventDefault();
-    var requestBody = {
-      job_name: jobTitle,
-      job_type: jobType,
-      job_description: jobDescription,
-      job_salary: jobSalary,
-    };
-
-    const customConfig = {
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: jwtCookie,
-      },
-    };
-
-    axios.defaults.headers.common.Authorization = `${jwtCookie}`;
-
-    const Client = axios.create({
-      withCredentials: true,
-    });
-
-    const result = await Client.post(
-      "http://127.0.0.1:8000/api/employer/jobs/",
-      requestBody,
-      customConfig
-    );
-
-    console.log(result);
-
-    // fetch("http://127.0.0.1:8000/api/employer/jobs/", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(requestBody),
-    // })
-    //   .then(async (response) => {
-    //     if (!response.ok) {
-    //       throw new Error("Network response is not ok");
-    //     }
-    //     return response.json();
-    //   })
-    //   .then((data) => {
-    //     alert("Posted a job");
-    //   })
-    //   .catch((error) => {
-    //     alert(`${error}. Please try again.`);
-    //   });
+    try {
+      await postJob(jwtCookie, jobTitle, jobType, jobSalary, jobDescription);
+      alert("Posted a job");
+    } catch (error) {
+      alert(`${error}. Please try again.`);
+    }
   };
 
   return isLoggedIn ? (
@@ -94,8 +53,8 @@ const PostJob = () => {
         </div>
         <div className="post-job-form-group">
           <label for="job-type">Job Type:</label>
-          <input
-            className="post-job-input"
+          <select
+            className="post-job-select"
             type="text"
             id="job-type"
             value={jobType}
@@ -104,7 +63,11 @@ const PostJob = () => {
             }}
             name="job-type"
             required
-          />
+          >
+            <option value="SOFTWARE ENGINEERING">Software Engineering</option>
+            <option value="ARCHITECTURE">Architecture</option>
+            <option value="ACCOUNTING">Accounting</option>
+          </select>
         </div>
         <div className="post-job-form-group">
           <label for="job-salary">Job Salary:</label>

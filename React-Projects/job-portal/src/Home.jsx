@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import JobBackground from "./assets/create-job-removebg-preview.png";
 import SearchIcon from "./assets/icons/search.svg";
-import "./styles/Home.css";
+import "./styles/Home.scss";
 
 function Home() {
   return (
