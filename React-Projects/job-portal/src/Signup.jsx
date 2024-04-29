@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./styles/Signup.scss";
 import { registerUser } from "./api";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm_password, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
   const registrationForm = async (event) => {
     event.preventDefault();
@@ -18,9 +21,10 @@ function Signup() {
 
     try {
       await registerUser(fullname, email, password);
-      alert("Registration successful");
+      toast.success("Registration successful");
+      navigate("/login");
     } catch (error) {
-      alert(`${error}. Please try again.`);
+      toast.error(`${error}. Please try again.`);
     }
   };
 

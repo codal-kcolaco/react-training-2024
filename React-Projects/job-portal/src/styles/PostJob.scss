@@ -1,0 +1,65 @@
+$post-job-margin-top: 150px;
+$post-job-color: #333;
+$post-job-border-color: #ccc;
+$post-job-primary-color: #007bff;
+
+.post-job-container {
+  margin-top: $post-job-margin-top;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 0;
+  box-shadow: none;
+  text-align: left;
+
+  .post-job-h1 {
+    color: $post-job-color;
+    margin-bottom: 50px;
+  }
+
+  .post-job-title-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .post-job-form-group {
+    margin-bottom: 25px;
+
+    .post-job-label {
+      display: block;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .post-job-select,
+    input[type="text"].post-job-input,
+    textarea.post-job-textarea {
+      width: calc(100% - 24px);
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid $post-job-border-color;
+      border-radius: 5px;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: $post-job-primary-color;
+      }
+    }
+  }
+
+  button[type="submit"].post-job-submit {
+    display: block;
+    padding: 12px;
+    font-size: 18px;
+    color: #fff;
+    background-color: $post-job-primary-color;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken($post-job-primary-color, 10%);
+    }
+  }
+}

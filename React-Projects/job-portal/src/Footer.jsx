@@ -3,7 +3,7 @@ import "./styles/Footer.scss";
 
 function Footer() {
   return (
-    <footer>
+    <footer className="footer-container">
       <div className="footer-content">
         <p>&copy; 2024 Job Portal. All rights reserved.</p>
         <div className="footer-links">

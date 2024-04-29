@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./styles/PostJob.scss";
-import { postJob } from "./api";
-import { toast } from "react-toastify";
+import "./styles/EditJob.scss";
+import { editJob } from "./api";
 import { JWT_COOKIE } from "./Constants";
 
-const PostJob = () => {
+const EditJob = () => {
   let isLoggedIn = false;
   const navigate = useNavigate();
+  const urlParams = new URLSearchParams(window.location.search);
+
+  const jobId = urlParams.get("id");
 
   if (JWT_COOKIE) {
     isLoggedIn = true;
@@ -18,27 +20,26 @@ const PostJob = () => {
   const [jobSalary, setJobSalary] = useState(0);
   const [jobDescription, setJobDescription] = useState("");
 
-  const postAJob = async (event) => {
+  const editAJob = async (event) => {
     event.preventDefault();
     try {
-      await postJob(jobTitle, jobType, jobSalary, jobDescription);
-      toast.success("Posted a job");
+      await editJob(jobId, jobTitle, jobType, jobSalary, jobDescription);
+      alert("Edited the job");
     } catch (error) {
-      toast.error(`${error}`);
+      alert(`${error}. Please try again.`);
     }
   };
 
   return isLoggedIn ? (
-    <div className="post-job-container">
-      <div className="post-job-title-container">
-        <h1 className="post-job-h1">Post a Job</h1>
-        <a href="my-jobs">Already posted a job?</a>
+    <div className="edit-job-container">
+      <div className="edit-job-title-container">
+        <h1 className="edit-job-h1">Edit a Job</h1>
       </div>
       <form>
-        <div className="post-job-form-group">
+        <div className="edit-job-form-group">
           <label for="job-title">Job Title:</label>
           <input
-            className="post-job-input"
+            className="edit-job-input"
             type="text"
             id="job-title"
             value={jobTitle}
@@ -49,10 +50,10 @@ const PostJob = () => {
             required
           />
         </div>
-        <div className="post-job-form-group">
+        <div className="edit-job-form-group">
           <label for="job-type">Job Type:</label>
           <select
-            className="post-job-select"
+            className="edit-job-select"
             type="text"
             id="job-type"
             value={jobType}
@@ -67,10 +68,10 @@ const PostJob = () => {
             <option value="ACCOUNTING">Accounting</option>
           </select>
         </div>
-        <div className="post-job-form-group">
+        <div className="edit-job-form-group">
           <label for="job-salary">Job Salary:</label>
           <input
-            className="post-job-input"
+            className="edit-job-input"
             type="text"
             id="job-salary"
             value={jobSalary}
@@ -80,8 +81,8 @@ const PostJob = () => {
             name="job-salary"
           />
         </div>
-        <div className="post-job-form-group">
-          <label className="post-job-label" for="description">
+        <div className="edit-job-form-group">
+          <label className="edit-job-label" for="description">
             Job Description:
           </label>
           <textarea
@@ -92,12 +93,12 @@ const PostJob = () => {
               setJobDescription(e.target.value);
             }}
             rows="5"
-            className="post-job-textarea"
+            className="edit-job-textarea"
             required
           ></textarea>
         </div>
-        <button type="submit" className="post-job-submit" onClick={postAJob}>
-          Post Job
+        <button type="submit" className="edit-job-submit" onClick={editAJob}>
+          Edit Job
         </button>
       </form>
     </div>
@@ -107,4 +108,4 @@ const PostJob = () => {
     }, [])
   );
 };
-export default PostJob;
+export default EditJob;

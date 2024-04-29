@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./styles/Header.scss";
 import CJPLogo from "./assets/cjp-logo.png";
+import { JWT_COOKIE } from "./Constants";
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const jwtCookie = document.cookie
-      .split(";")
-      .find((cookie) => cookie.trim().startsWith("jwt_token="));
-    setIsLoggedIn(!!jwtCookie);
+    setIsLoggedIn(!!JWT_COOKIE);
   }, []);
 
   const handleLogout = () => {
@@ -24,13 +22,16 @@ function Header() {
         <a href="/">
           <img loading="lazy" src={CJPLogo} alt="" />
         </a>
-        <nav>
-          <ul>
+        <nav className="nav-list">
+          <ul className="nav-unordered-list">
             <li>
-              <a href="jobs">Jobs</a>
+              <a href="/jobs">Jobs</a>
             </li>
             <li>
-              <a href="post-job">Post a Job</a>
+              <a href="/post-job">Post a Job</a>
+            </li>
+            <li>
+              <a href="/my-jobs/">My Jobs</a>
             </li>
             <li>
               <a href="#">Contact</a>

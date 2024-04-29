@@ -1,6 +1,10 @@
-import React from "react";
-import "./styles/MyJobs.css";
-import myJobData from "./data/my-jobs.js";
+import React, { useState, useEffect } from "react";
+import "./styles/MyJobs.scss";
+import { deleteJob, fetchJobsEmployer } from "./api.js";
+import { useNavigate } from "react-router-dom";
+import lodash from "lodash";
+import { JWT_COOKIE } from "./Constants.jsx";
+import { toast } from "react-toastify";
 
 const MyJobCard = ({ myJob }) => {
   return (
@@ -16,12 +20,20 @@ const MyJobCard = ({ myJob }) => {
               <strong>Description:</strong> {myJob.job_description}
             </p>
             <p>
-              <strong>Salary:</strong> {`$${myJob.job_salary}`}
+              <strong>Salary:</strong> {`${myJob.job_salary} INR`}
             </p>
           </div>
           <div className="buttons">
-            <button className="edit-button">Edit</button>
-            <button className="delete-button">Delete</button>
+            <a
+              href={`/my-jobs/edit?id=${encodeURIComponent(myJob.pk)}`}
+              className="edit-button"
+            >
+              Edit
+            </a>
+            <a onClick={() => deleteJob(myJob.pk)} className="delete-button">
+              Delete
+            </a>
+            <a className="view-application-button">Applications</a>
           </div>
         </div>
       </div>
@@ -30,6 +42,33 @@ const MyJobCard = ({ myJob }) => {
 };
 
 export const MyJobs = () => {
+  const [myJobData, setmyJobData] = useState({});
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (!JWT_COOKIE) {
+          navigate("/login");
+        }
+        const data = await fetchJobsEmployer();
+        setmyJobData(data);
+      } catch (error) {
+        toast.error(`${error}`);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (lodash.isEmpty(myJobData)) {
+    return (
+      <div className="loading-spinner-container">
+        <div className="loading-spinner"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="my-jobs-container">
       <h1 className="my-job-heading">Job Listings</h1>
