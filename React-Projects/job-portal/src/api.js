@@ -8,6 +8,7 @@ import {
   GET_SINGLE_JOB_URL,
   GET_SINGLE_JOB_EMPLOYER_URL,
   JWT_COOKIE,
+  GET_SINGLE_JOB_APPLICATION_URL,
 } from "./Constants";
 
 export const registerUser = async (fullname, email, password) => {
@@ -20,6 +21,7 @@ export const registerUser = async (fullname, email, password) => {
 
     return response.data;
   } catch (error) {
+    console.log(error);
     if (error.response && error.response.data && error.response.data.email) {
       throw new Error(error.response.data.email[0]);
     } else if (
@@ -49,7 +51,20 @@ export const loginUser = async (email, password) => {
 
     return jwtToken;
   } catch (error) {
-    throw new Error("Network response is not ok");
+    console.log(error);
+    if (error.response && error.response.data) {
+      if (error.response.data.email) {
+        throw new Error(error.response.data.email[0]);
+      } else if (error.response.data.password) {
+        throw new Error(error.response.data.password[0]);
+      } else if (error.response.data.detail) {
+        throw new Error(error.response.data.detail);
+      } else {
+        throw new Error("Network response is not ok");
+      }
+    } else {
+      throw new Error("Network response is not ok");
+    }
   }
 };
 
@@ -73,7 +88,7 @@ export const postJob = async (jobTitle, jobType, jobSalary, jobDescription) => {
 
     return response.data;
   } catch (error) {
-    throw new Error("Network response is not ok");
+    throw new Error(`${error}`);
   }
 };
 
@@ -103,7 +118,21 @@ export const editJob = async (
 
     return response.data;
   } catch (error) {
-    throw new Error("Network response is not ok");
+    if (error.response && error.response.data) {
+      if (error.response.data.job_name) {
+        throw new Error(error.response.data.job_name[0]);
+      } else if (error.response.data.job_type) {
+        throw new Error(error.response.data.job_type[0]);
+      } else if (error.response.data.job_description) {
+        throw new Error(error.response.data.job_description[0]);
+      } else if (error.response.data.job_salary) {
+        throw new Error(error.response.data.job_salary[0]);
+      } else {
+        throw new Error("Network response is not ok");
+      }
+    } else {
+      throw new Error("Network response is not ok");
+    }
   }
 };
 
@@ -183,5 +212,51 @@ export const fetchSingleJobForEmployer = async (jobId) => {
     return response.data;
   } catch (error) {
     throw new Error("Network response is not ok");
+  }
+};
+
+export const fetchJobApplicationsEmployer = async (jobId) => {
+  try {
+    const response = await axios.get(
+      GET_SINGLE_JOB_EMPLOYER_URL + jobId + "/applications/",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: JWT_COOKIE,
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    throw new Error("Network response is not ok");
+  }
+};
+
+export const applyStatusForJob = async (jobId, coverLetter) => {
+  try {
+    const response = await axios.post(
+      GET_SINGLE_JOB_APPLICATION_URL,
+      {
+        job: jobId,
+        cover_letter: coverLetter,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: JWT_COOKIE,
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data) {
+      if (error.response.data.job) {
+        throw new Error(error.response.data.job[0]);
+      }
+    } else {
+      throw new Error("Network response is not ok");
+    }
   }
 };

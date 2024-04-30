@@ -1,22 +1,31 @@
-$my-jobs-margin-top: 180px;
+$job-application-employer-margin-top: 180px;
 
-.my-jobs-container {
-  margin: $my-jobs-margin-top 20px;
+.job-application-employer-container {
+  margin: $job-application-employer-margin-top 20px;
 
-  .my-jobs-list-container {
+  .job-application-employer-list-container {
     padding: 20px;
-    text-align: left;
 
-    #job-list {
+    .job-application-employer-list-img {
+      margin-top: 20px;
+      height: 100px;
+      width: 100px;
+    }
+
+    .job-application-employer-list-message {
+      margin-top: 20px;
+    }
+
+    #job-application-employer-list {
       list-style-type: none;
     }
 
-    .my-jobs-heading {
+    .job-application-employer-heading {
       text-align: center;
       color: #333;
     }
 
-    .job {
+    .application {
       border-bottom: 1px solid #ccc;
       padding: 15px 0;
       transition: background-color 0.3s;
@@ -35,46 +44,40 @@ $my-jobs-margin-top: 180px;
         color: #666;
       }
 
-      .job-container {
+      .application-container {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
 
-        .edit-button,
-        .delete-button,
-        .view-application-button {
+        .application-info {
+          text-align: left;
+        }
+
+        .accept-button,
+        .reject-button {
           margin-left: 10px;
           padding: 8px 12px;
           border: none;
           border-radius: 4px;
           cursor: pointer;
-          text-decoration: none;
         }
 
-        .edit-button {
+        .accept-button {
           background-color: #007bff;
           color: #fff;
+          text-decoration: none;
 
           &:hover {
             background-color: #0056b3;
           }
         }
 
-        .delete-button {
+        .reject-button {
           background-color: #dc3545;
           color: #fff;
 
           &:hover {
             background-color: #bd2130;
-          }
-        }
-
-        .view-application-button {
-          background-color: #29cc1b;
-          color: #fff;
-
-          &:hover {
-            background-color: #5ea013;
           }
         }
       }

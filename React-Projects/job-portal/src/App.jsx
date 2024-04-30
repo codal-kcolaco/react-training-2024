@@ -11,6 +11,7 @@ import { MyJobs } from "./MyJobs.jsx";
 import { JobView } from "./JobView.jsx";
 import { JobDescription } from "./JobDescription.jsx";
 import EditJob from "./EditJob.jsx";
+import { ViewApplicationsEmployers } from "./ViewApplicationsEmployers.jsx";
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
         <Route path="/post-job" element={<PostJob />} />
         <Route path="/my-jobs" element={<MyJobs />} />
         <Route path="/my-jobs/edit" element={<EditJob />} />
+        <Route
+          path="/my-jobs/applications"
+          element={<ViewApplicationsEmployers />}
+        />
         <Route path="/job-view" element={<JobView />} />
         <Route path="/job-description" element={<JobDescription />} />
       </Routes>

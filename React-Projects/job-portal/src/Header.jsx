@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./styles/Header.scss";
 import CJPLogo from "./assets/cjp-logo.png";
+import AvatarLogo from "./assets/avatar.png";
 import { JWT_COOKIE } from "./Constants";
 
 function Header() {
@@ -34,6 +35,9 @@ function Header() {
               <a href="/my-jobs/">My Jobs</a>
             </li>
             <li>
+              <a href="/my-applications/">My Applications</a>
+            </li>
+            <li>
               <a href="#">Contact</a>
             </li>
           </ul>
@@ -51,7 +55,7 @@ function Header() {
       )}
       {isLoggedIn && (
         <div className="user-avatar-container">
-          <img className="user-avatar" src="images/wallpaper.png" alt="" />
+          <img className="user-avatar" src={AvatarLogo} alt="" />
           <a
             className="logout-button"
             id="logout-button"
