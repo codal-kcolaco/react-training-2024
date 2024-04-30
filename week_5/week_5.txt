@@ -1,0 +1,7 @@
+29 APRIL
+    Use Toasts instead of alerts 
+    Designing the Job Description
+    Converting remaining CSS to SCSS
+    Creating the MyJob page
+    Added the Edit and Delete function for MyJob page
+    Converted all fetch APIs to Axios

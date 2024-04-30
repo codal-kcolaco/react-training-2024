@@ -1,5 +1,5 @@
 .job-description-container {
-  margin-top: 200px;
+  margin-top: 100px;
   padding: 0 10px;
 }
 
@@ -36,29 +36,15 @@
     strong {
       font-weight: bold;
     }
+  }
 
-    .job-description-details {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      justify-content: center;
+  .job-description-details {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
 
-      p {
-        color: gray;
-      }
-
-      .fa-solid.fa-star {
-        font-size: smaller;
-      }
-
-      a {
-        color: #007bff;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
+    h3 {
+      color: gray;
     }
   }
 }
@@ -77,52 +63,45 @@
   }
 }
 
-.job-openings-card {
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-top: 20px;
+.loading-spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 
-  .job-openings {
-    text-align: left;
+  .loading-spinner {
+    border: 6px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #333;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+}
 
-    h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
-      color: black;
-    }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-    ul {
-      list-style: none;
-      padding: 0;
-
-      li {
-        margin-bottom: 25px;
-      }
-    }
-
-    .apply-now-button {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-
-      &:hover {
-        background-color: #0056b3;
-      }
-    }
-
-    .job-openings-details {
-      display: flex;
-      align-items: center;
-
-      p {
-        margin-right: 10px;
-      }
-    }
+.job-description-apply-button {
+  background-color: red;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  outline: 0;
+  border: 0;
+  text-transform: uppercase;
+  margin: 10px 0px;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px lightgray;
+  transition: ease background-color 250ms;
+  &:hover {
+    background-color: rgb(234, 127, 138);
+  }
+  &:disabled {
+    cursor: default;
+    opacity: 0.7;
   }
 }

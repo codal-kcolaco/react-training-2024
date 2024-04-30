@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./styles/Login.scss";
 import { loginUser } from "./api";
+import { toast } from "react-toastify";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -11,10 +12,12 @@ function Login() {
 
     try {
       const jwtToken = await loginUser(email, password);
-      alert("Login successful");
-      window.location.href = "/"; // Redirect to homepage after successful login
+      toast.success("Login successful", {
+        onClose: () => (window.location.href = "/"),
+        autoClose: 1000,
+      });
     } catch (error) {
-      alert(`${error}. Please try again.`);
+      toast.error(`${error}`);
     }
   };
 

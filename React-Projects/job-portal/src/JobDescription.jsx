@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./styles/JobDescription.scss";
 import { fetchSingleJob } from "./api";
+import lodash from "lodash";
 
 const JobDescriptionCard = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const jobId = urlParams.get("id");
-  const jwtCookie = document.cookie
-    .split(";")
-    .find((cookie) => cookie.trim().startsWith("jwt_token="));
 
   const [jobData, setJobData] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchSingleJob(jobId, jwtCookie);
+        const data = await fetchSingleJob(jobId);
         setJobData(data);
       } catch (error) {
         alert(`${error}. Please try again.`);
@@ -24,16 +22,20 @@ const JobDescriptionCard = () => {
     fetchData();
   }, []);
 
+  if (lodash.isEmpty(jobData)) {
+    return (
+      <div className="loading-spinner-container">
+        <div className="loading-spinner"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="job-description-card" id="job-description-card">
       <div className="job-description-title-container">
-        <img src="src/assets/codal.png" alt={jobData.job_name} />
         <div className="job-description-details">
           <h1>{jobData.job_name}</h1>
-          {/* <p>
-            <i className="fa-solid fa-star"></i> {jobData.ratings}
-          </p>
-          <p>({jobData.reviews} reviews)</p> */}
+          <h3>({jobData.job_type})</h3>
         </div>
       </div>
       <div className="job-description-overview">
@@ -43,9 +45,10 @@ const JobDescriptionCard = () => {
           <strong>Location:</strong> {jobData.location}
         </p> */}
         <p>
-          <strong>Company:</strong>
-          {/* {jobData.user.name} */}
+          <strong>Employer:</strong>
+          {jobData.user.name}
         </p>
+        <button className="job-description-apply-button">Apply Now</button>
       </div>
     </div>
   );
