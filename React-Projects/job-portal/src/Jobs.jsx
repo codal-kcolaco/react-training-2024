@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import jobData from "./data/job-data.js";
-import "./styles/Jobs.css";
+import "./styles/Jobs.scss";
+import { fetchJobs } from "./api";
 
 const JobCard = ({ job }) => {
   const { name, description, location, image, ratings, reviews, technology } =
@@ -35,18 +36,14 @@ const JobCardPython = ({ job }) => {
 
   return (
     <div className="job-card">
-      <a
-        href={`job-view?id=${encodeURIComponent(
-          user.name.toLowerCase().replace(/\s/g, "-")
-        )}`}
-      >
+      <a href={`job-description?id=${pk}`}>
         <div className="chip">
           <div className="chip-img">
-            <img src="" alt={user.name} />
+            <img src="src/assets/codal.png" alt={user.name} />
           </div>
           <div className="chip-description">
-            <h3>{user.name}</h3>
-            <p>{job_name}</p>
+            <h3>{job_name}</h3>
+            <p>{user.name}</p>
           </div>
         </div>
       </a>
@@ -58,24 +55,16 @@ function Jobs() {
   const [jobData, setJobData] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/applicants/jobs/", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(async (response) => {
-        if (!response.ok) {
-          throw new Error("Network response is not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchJobs();
         setJobData(data);
-      })
-      .catch((error) => {
+      } catch (error) {
         alert(`${error}. Please try again.`);
-      });
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (

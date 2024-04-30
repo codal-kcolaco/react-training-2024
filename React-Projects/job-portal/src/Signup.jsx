@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./styles/Signup.css";
+import "./styles/Signup.scss";
+import { registerUser } from "./api";
 
 function Signup() {
   const [fullname, setFullname] = useState("");
@@ -7,7 +8,7 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [confirm_password, setConfirmPassword] = useState("");
 
-  const registrationForm = (event) => {
+  const registrationForm = async (event) => {
     event.preventDefault();
 
     if (password !== confirm_password) {
@@ -15,39 +16,12 @@ function Signup() {
       return;
     }
 
-    var requestBody = {
-      name: fullname,
-      email: email,
-      password: password,
-    };
-
-    fetch("http://127.0.0.1:8000/api/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestBody),
-    })
-      .then(async (response) => {
-        if (!response.ok) {
-          const data = await response.json();
-
-          if (data.email) {
-            throw new Error(data.email[0]);
-          } else if (data.password) {
-            throw new Error(data.password[0]);
-          } else {
-            throw new Error("Network response is not ok");
-          }
-        }
-        return response.json();
-      })
-      .then((data) => {
-        alert("Registration successful");
-      })
-      .catch((error) => {
-        alert(`${error}. Please try again.`);
-      });
+    try {
+      await registerUser(fullname, email, password);
+      alert("Registration successful");
+    } catch (error) {
+      alert(`${error}. Please try again.`);
+    }
   };
 
   return (

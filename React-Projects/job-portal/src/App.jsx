@@ -9,6 +9,7 @@ import Login from "./Login.jsx";
 import PostJob from "./PostJob.jsx";
 import { MyJobs } from "./MyJobs.jsx";
 import { JobView } from "./JobView.jsx";
+import { JobDescription } from "./JobDescription.jsx";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/post-job" element={<PostJob />} />
         <Route path="/my-jobs" element={<MyJobs />} />
         <Route path="/job-view" element={<JobView />} />
+        <Route path="/job-description" element={<JobDescription />} />
       </Routes>
       <Footer></Footer>
     </>

@@ -8,3 +8,17 @@
     click event
     useState
     updater functions
+
+24 APRIL
+    Start Job Portal in React
+
+25 APRIL 
+    Completed login section and connected it with backend
+    Completed logout section and connected it with backend 
+    Completed Job List section and connected it with backend 
+
+26 APRIL
+    Create a constants file for all backend URLS
+    Create a api.js file containing all the fetch APIs
+    Convert all CSS files into SCSS
+    Solving access issue in backend
