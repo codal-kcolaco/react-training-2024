@@ -16,13 +16,14 @@ const JobDescriptionCard = () => {
   const [buttonText, setButtonText] = useState("Apply Now");
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchSingleJob(jobId);
-        setJobData(data);
-      } catch (error) {
-        alert(`${error}. Please try again.`);
-      }
+    const fetchData = () => {
+      fetchSingleJob(jobId)
+        .then((data) => {
+          setJobData(data);
+        })
+        .catch((error) => {
+          alert(`${error}. Please try again.`);
+        });
     };
 
     fetchData();
@@ -40,21 +41,20 @@ const JobDescriptionCard = () => {
     <>
       <div className="job-description-card" id="job-description-card">
         <div className="job-description-title-container">
-          <div className="job-description-details">
-            <h1>{jobData.job_name}</h1>
-            <h3>({jobData.job_type})</h3>
-          </div>
+          <h1>{jobData.job_name}</h1>
+          <h1>({jobData.job_type})</h1>
         </div>
-        <div className="job-description-overview">
-          <strong>About {jobData.job_name}</strong>
-          <p>{jobData.job_description}</p>
-          {/* <p>
-          <strong>Location:</strong> {jobData.location}
-        </p> */}
+        <div className="job-employer-detail">
+          <h3>{jobData.user.name}</h3>
           <p>
-            <strong>Employer:</strong>
-            {jobData.user.name}
+            {jobData.job_salary} INR | {jobData.job_location}
           </p>
+          <p>{jobData.job_experience} years of experience required</p>
+        </div>
+
+        <div className="job-description-info-container">
+          <h3 className="job-description-info-title">Job Description</h3>
+          <p className="job-description-info-para">{jobData.job_description}</p>
         </div>
       </div>
       <div className="job-description-apply">
@@ -69,15 +69,15 @@ const JobDescriptionCard = () => {
           }}
         />
         <button
-          onClick={async () => {
-            setButtonStatus("job-description-applied-button");
-            setButtonText("Applied");
-            try {
-              await applyStatusForJob(jobId, coverLetter);
-              toast.success("Applied successfully!");
-            } catch (error) {
-              toast.error(`${error}`);
-            }
+          onClick={() => {
+            applyStatusForJob(jobId, coverLetter)
+              .then(() => {
+                setButtonStatus("job-description-applied-button");
+                setButtonText("Applied");
+              })
+              .catch((error) => {
+                toast.error(`${error}`);
+              });
           }}
           className={buttonStatus}
         >

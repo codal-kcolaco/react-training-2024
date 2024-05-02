@@ -17,18 +17,19 @@ function Login() {
     });
   };
 
-  const loginForm = async (event) => {
+  const loginForm = (event) => {
     event.preventDefault();
 
-    try {
-      const jwtToken = await loginUser(userDetails.email, userDetails.password);
-      toast.success("Login successful", {
-        onClose: () => (window.location.href = "/"),
-        autoClose: 1000,
+    loginUser(userDetails.email, userDetails.password)
+      .then((jwtToken) => {
+        toast.success("Login successful", {
+          onClose: () => (window.location.href = "/"),
+          autoClose: 1000,
+        });
+      })
+      .catch((error) => {
+        toast.error(`${error}`);
       });
-    } catch (error) {
-      toast.error(`${error}`);
-    }
   };
 
   return (

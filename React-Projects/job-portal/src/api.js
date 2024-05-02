@@ -68,7 +68,15 @@ export const loginUser = async (email, password) => {
   }
 };
 
-export const postJob = async (jobTitle, jobType, jobSalary, jobDescription) => {
+export const postJob = async (
+  jobTitle,
+  jobType,
+  jobSalary,
+  jobDescription,
+  jobExperience,
+  jobLocation,
+  jobTechnology
+) => {
   try {
     const response = await axios.post(
       POST_JOB_URL,
@@ -77,6 +85,9 @@ export const postJob = async (jobTitle, jobType, jobSalary, jobDescription) => {
         job_type: jobType,
         job_description: jobDescription,
         job_salary: jobSalary,
+        job_experience: jobExperience,
+        job_location: jobLocation,
+        job_technology: jobTechnology,
       },
       {
         headers: {
@@ -97,7 +108,10 @@ export const editJob = async (
   jobTitle,
   jobType,
   jobSalary,
-  jobDescription
+  jobDescription,
+  jobExperience,
+  jobLocation,
+  jobTechnology
 ) => {
   try {
     const response = await axios.put(
@@ -107,6 +121,9 @@ export const editJob = async (
         job_type: jobType,
         job_description: jobDescription,
         job_salary: jobSalary,
+        job_experience: jobExperience,
+        job_location: jobLocation,
+        job_technology: jobTechnology,
       },
       {
         headers: {
@@ -208,6 +225,46 @@ export const fetchSingleJobForEmployer = async (jobId) => {
         },
       }
     );
+
+    return response.data;
+  } catch (error) {
+    throw new Error("Network response is not ok");
+  }
+};
+
+export const selectApplicantAPI = async (
+  jobId,
+  applicationId,
+  selectionStatus
+) => {
+  try {
+    const response = await axios.patch(
+      POST_JOB_URL + jobId + "/" + "application-status/" + applicationId + "/",
+      {
+        is_selected: selectionStatus,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: JWT_COOKIE,
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    throw new Error(`${error}`);
+  }
+};
+
+export const fetchMyApplications = async () => {
+  try {
+    const response = await axios.get(GET_SINGLE_JOB_APPLICATION_URL, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: JWT_COOKIE,
+      },
+    });
 
     return response.data;
   } catch (error) {

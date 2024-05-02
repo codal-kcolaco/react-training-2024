@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import lodash from "lodash";
 import { JWT_COOKIE } from "./Constants.jsx";
 import { toast } from "react-toastify";
+import noJobLogo from "./assets/people.png";
 
 const MyJobCard = ({ myJob }) => {
   return (
@@ -15,9 +16,6 @@ const MyJobCard = ({ myJob }) => {
             <h2>{myJob.job_name}</h2>
             <p>
               <strong>Type:</strong> {myJob.job_type}
-            </p>
-            <p>
-              <strong>Description:</strong> {myJob.job_description}
             </p>
             <p>
               <strong>Salary:</strong> {`${myJob.job_salary} INR`}
@@ -51,38 +49,40 @@ export const MyJobs = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (!JWT_COOKIE) {
-          navigate("/login");
-        }
-        const data = await fetchJobsEmployer();
-        setmyJobData(data);
-      } catch (error) {
-        toast.error(`${error}`);
+    const fetchData = () => {
+      if (!JWT_COOKIE) {
+        navigate("/login");
+        return;
       }
+
+      fetchJobsEmployer()
+        .then((data) => {
+          setmyJobData(data);
+        })
+        .catch((error) => {
+          toast.error(`${error}`);
+        });
     };
 
     fetchData();
   }, []);
 
-  if (lodash.isEmpty(myJobData)) {
-    return (
-      <div className="loading-spinner-container">
-        <div className="loading-spinner"></div>
-      </div>
-    );
-  }
-
   return (
     <div className="my-jobs-container">
       <h1 className="my-job-heading">Job Listings</h1>
       <div className="my-jobs-list-container">
-        <ul id="job-list">
-          {myJobData.map((myJob, index) => (
-            <MyJobCard key={index} myJob={myJob} />
-          ))}
-        </ul>
+        {!lodash.isEmpty(myJobData) ? (
+          <ul id="job-list">
+            {myJobData.map((myJob, index) => (
+              <MyJobCard key={index} myJob={myJob} />
+            ))}
+          </ul>
+        ) : (
+          <div className="empty-list-container">
+            <img className="empty-list-img" src={noJobLogo} alt="people" />
+            <p className="empty-list-message">No jobs created</p>
+          </div>
+        )}
       </div>
     </div>
   );
