@@ -33,7 +33,12 @@ const MyJobCard = ({ myJob }) => {
             <a onClick={() => deleteJob(myJob.pk)} className="delete-button">
               Delete
             </a>
-            <a className="view-application-button">Applications</a>
+            <a
+              href={`/my-jobs/applications?id=${encodeURIComponent(myJob.pk)}`}
+              className="view-application-button"
+            >
+              Applications
+            </a>
           </div>
         </div>
       </div>

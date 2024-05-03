@@ -4,14 +4,24 @@ import { loginUser } from "./api";
 import { toast } from "react-toastify";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [userDetails, setUserDetails] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setUserDetails({
+      ...userDetails,
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
+  };
 
   const loginForm = async (event) => {
     event.preventDefault();
 
     try {
-      const jwtToken = await loginUser(email, password);
+      const jwtToken = await loginUser(userDetails.email, userDetails.password);
       toast.success("Login successful", {
         onClose: () => (window.location.href = "/"),
         autoClose: 1000,
@@ -29,10 +39,8 @@ function Login() {
           <input
             type="email"
             id="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            value={userDetails.email}
+            onChange={(e) => handleChange(e)}
             className="login-email"
             name="email"
             placeholder="Email Address"
@@ -40,10 +48,8 @@ function Login() {
           />
           <input
             id="password"
-            value={password}
-            onChange={(p) => {
-              setPassword(p.target.value);
-            }}
+            value={userDetails.password}
+            onChange={(e) => handleChange(e)}
             type="password"
             name="password"
             className="login-password"

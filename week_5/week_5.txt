@@ -5,3 +5,8 @@
     Creating the MyJob page
     Added the Edit and Delete function for MyJob page
     Converted all fetch APIs to Axios
+
+30 APRIL
+    Create a view application page for employers
+    Create the styling for application page
+    Changed the input section and made it more efficient

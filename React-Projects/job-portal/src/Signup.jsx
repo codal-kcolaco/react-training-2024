@@ -5,22 +5,35 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
-  const [fullname, setFullname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirm_password, setConfirmPassword] = useState("");
+  const [userDetails, setUserDetails] = useState({
+    fullname: "",
+    email: "",
+    password: "",
+  });
   const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setUserDetails({
+      ...userDetails,
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
+  };
 
   const registrationForm = async (event) => {
     event.preventDefault();
 
-    if (password !== confirm_password) {
+    if (userDetails.password !== userDetails.confirm_password) {
       alert("Passwords do not match");
       return;
     }
 
     try {
-      await registerUser(fullname, email, password);
+      await registerUser(
+        userDetails.fullname,
+        userDetails.email,
+        userDetails.password
+      );
       toast.success("Registration successful");
       navigate("/login");
     } catch (error) {
@@ -37,10 +50,8 @@ function Signup() {
             type="text"
             name="fullname"
             id="fullname"
-            value={fullname}
-            onChange={(e) => {
-              setFullname(e.target.value);
-            }}
+            value={userDetails.fullname}
+            onChange={(e) => handleChange(e)}
             className="signup-fullname"
             placeholder="Your Name / Company Name"
             required
@@ -48,10 +59,8 @@ function Signup() {
           <input
             type="email"
             id="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            value={userDetails.email}
+            onChange={(e) => handleChange(e)}
             name="email"
             className="signup-email"
             placeholder="Email Address"
@@ -61,10 +70,8 @@ function Signup() {
             type="password"
             name="password"
             id="password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
+            value={userDetails.password}
+            onChange={(e) => handleChange(e)}
             className="signup-password"
             placeholder="Password"
             required
@@ -73,10 +80,8 @@ function Signup() {
             type="password"
             name="confirm_password"
             id="confirm_password"
-            value={confirm_password}
-            onChange={(e) => {
-              setConfirmPassword(e.target.value);
-            }}
+            value={userDetails.confirm_password}
+            onChange={(e) => handleChange(e)}
             className="signup-confirm-password"
             placeholder="Confirm Password"
             required

@@ -5,6 +5,7 @@ export const GET_JOB_URL = `${BE_ENDPOINT}/applicants/jobs/`;
 export const GET_JOB_EMPLOYER_URL = `${BE_ENDPOINT}/employer/jobs/`;
 export const GET_SINGLE_JOB_EMPLOYER_URL = `${BE_ENDPOINT}/employer/jobs/`;
 export const GET_SINGLE_JOB_URL = `${BE_ENDPOINT}/applicants/jobs/`;
+export const GET_SINGLE_JOB_APPLICATION_URL = `${BE_ENDPOINT}/applicants/job/application/`;
 export const LOGIN_URL = `${BE_ENDPOINT}/login`;
 export const SIGNUP_URL = `${BE_ENDPOINT}/register`;
 export const JWT_COOKIE = document.cookie

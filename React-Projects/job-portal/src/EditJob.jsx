@@ -3,34 +3,46 @@ import { useNavigate } from "react-router-dom";
 import "./styles/EditJob.scss";
 import { editJob } from "./api";
 import { JWT_COOKIE } from "./Constants";
+import { toast } from "react-toastify";
 
 const EditJob = () => {
-  let isLoggedIn = false;
+  const [jobDetails, setJobDetails] = useState({
+    jobTitle: "",
+    jobType: "SOFTWARE ENGINEERING",
+    jobSalary: 0,
+    jobDescription: "",
+  });
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setJobDetails({
+      ...jobDetails,
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
+  };
+
   const navigate = useNavigate();
   const urlParams = new URLSearchParams(window.location.search);
 
   const jobId = urlParams.get("id");
 
-  if (JWT_COOKIE) {
-    isLoggedIn = true;
-  }
-
-  const [jobTitle, setJobTitle] = useState("");
-  const [jobType, setJobType] = useState("SOFTWARE ENGINEERING");
-  const [jobSalary, setJobSalary] = useState(0);
-  const [jobDescription, setJobDescription] = useState("");
-
   const editAJob = async (event) => {
     event.preventDefault();
     try {
-      await editJob(jobId, jobTitle, jobType, jobSalary, jobDescription);
-      alert("Edited the job");
+      await editJob(
+        jobId,
+        jobDetails.jobTitle,
+        jobDetails.jobType,
+        jobDetails.jobSalary,
+        jobDetails.jobDescription
+      );
+      toast.success("Edited a job");
     } catch (error) {
-      alert(`${error}. Please try again.`);
+      toast.error(`${error}`);
     }
   };
 
-  return isLoggedIn ? (
+  return JWT_COOKIE ? (
     <div className="edit-job-container">
       <div className="edit-job-title-container">
         <h1 className="edit-job-h1">Edit a Job</h1>
@@ -42,11 +54,9 @@ const EditJob = () => {
             className="edit-job-input"
             type="text"
             id="job-title"
-            value={jobTitle}
-            onChange={(e) => {
-              setJobTitle(e.target.value);
-            }}
-            name="job-title"
+            value={jobDetails.jobTitle}
+            onChange={(e) => handleChange(e)}
+            name="jobTitle"
             required
           />
         </div>
@@ -56,11 +66,9 @@ const EditJob = () => {
             className="edit-job-select"
             type="text"
             id="job-type"
-            value={jobType}
-            onChange={(e) => {
-              setJobType(e.target.value);
-            }}
-            name="job-type"
+            value={jobDetails.jobType}
+            onChange={(e) => handleChange(e)}
+            name="jobType"
             required
           >
             <option value="SOFTWARE ENGINEERING">Software Engineering</option>
@@ -74,11 +82,9 @@ const EditJob = () => {
             className="edit-job-input"
             type="text"
             id="job-salary"
-            value={jobSalary}
-            onChange={(e) => {
-              setJobSalary(e.target.value);
-            }}
-            name="job-salary"
+            value={jobDetails.jobSalary}
+            onChange={(e) => handleChange(e)}
+            name="jobSalary"
           />
         </div>
         <div className="edit-job-form-group">
@@ -87,11 +93,9 @@ const EditJob = () => {
           </label>
           <textarea
             id="description"
-            name="description"
-            value={jobDescription}
-            onChange={(e) => {
-              setJobDescription(e.target.value);
-            }}
+            name="jobDescription"
+            value={jobDetails.jobDescription}
+            onChange={(e) => handleChange(e)}
             rows="5"
             className="edit-job-textarea"
             required
