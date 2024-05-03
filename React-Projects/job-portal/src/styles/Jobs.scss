@@ -16,7 +16,7 @@
 
 .job-filter-section {
   border: 1px solid lightgray;
-  padding: 30px;
+  padding: 40px;
   border-radius: 10px;
   background-color: #fff;
   margin: 200px 150px;
@@ -37,7 +37,7 @@
 
     .filter-checkbox label {
       font-size: 15px;
-      margin-left: 5px;
+      margin-left: 10px;
     }
   }
 }
@@ -56,7 +56,7 @@
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media only screen and (max-width: 1280px) {
+    @media only screen and (max-width: 1400px) {
       grid-template-columns: 1fr;
     }
   }

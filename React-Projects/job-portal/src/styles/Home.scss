@@ -44,6 +44,37 @@
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
 
+  @media only screen and (max-width: 880px) {
+    .card-internal {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      .container-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px;
+
+        .btn {
+          color: white;
+          background-color: darkblue;
+          border-radius: 10px;
+          padding: 20px 45px;
+          cursor: pointer;
+          text-decoration: none;
+          transition: background-color 0.15s, color 0.15s;
+
+          &:hover {
+            background-color: rgb(136, 115, 115);
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
   .card-internal {
     display: flex;
     justify-content: space-between;
@@ -137,6 +168,32 @@
   }
 }
 
+@media only screen and (max-width: 1300px) {
+  .job-list-home-section {
+    margin: 200px 150px;
+
+    &-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin: 50px 0px;
+      gap: 10px;
+    }
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  .job-list-home-section {
+    margin: 200px 150px;
+
+    &-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      margin: 50px 0px;
+      gap: 10px;
+    }
+  }
+}
+
 .home-chip {
   border: 1px solid lightgray;
   display: flex;
@@ -157,7 +214,7 @@
 
   img {
     float: left;
-    height: 30px;
+    height: auto;
     width: 30px;
   }
 }

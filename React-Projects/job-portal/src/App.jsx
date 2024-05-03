@@ -13,6 +13,12 @@ import { JobDescription } from "./JobDescription.jsx";
 import EditJob from "./EditJob.jsx";
 import { ViewApplicationsEmployers } from "./ViewApplicationsEmployers.jsx";
 import { MyApplications } from "./MyApplications.jsx";
+import PrivacyPolicyPage from "./PrivacyPolicy.jsx";
+import PrivacyPolicy from "./PrivacyPolicy.jsx";
+import TermsAndConditions from "./TermsAndConditions.jsx";
+import Contact from "./Contact.jsx";
+import { About } from "./About.jsx";
+import { UserPortal } from "./UserPortal.jsx";
 
 function App() {
   return (
@@ -33,6 +39,11 @@ function App() {
         <Route path="/job-view" element={<JobView />} />
         <Route path="/job-description" element={<JobDescription />} />
         <Route path="/my-applications" element={<MyApplications />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about-us" element={<About />} />
+        <Route path="/user-portal" element={<UserPortal />} />
       </Routes>
       <Footer></Footer>
     </>

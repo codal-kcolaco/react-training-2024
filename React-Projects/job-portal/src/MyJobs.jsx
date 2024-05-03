@@ -69,7 +69,7 @@ export const MyJobs = () => {
 
   return (
     <div className="my-jobs-container">
-      <h1 className="my-job-heading">Job Listings</h1>
+      <h1 className="my-job-heading">My Jobs</h1>
       <div className="my-jobs-list-container">
         {!lodash.isEmpty(myJobData) ? (
           <ul id="job-list">

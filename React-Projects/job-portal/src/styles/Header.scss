@@ -31,7 +31,7 @@ header.nav-header {
     align-items: center;
 
     img {
-      height: 50px;
+      height: auto;
       width: 130px;
     }
   }
@@ -90,6 +90,7 @@ header.nav-header {
     height: 40px;
     border-radius: 50%;
     background-color: #ccc;
+    cursor: pointer;
   }
 }
 

@@ -1,0 +1,22 @@
+.privacy-policy-container {
+  margin: 100px;
+  padding: 20px;
+  text-align: left;
+
+  .privacy-policy-heading {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .privacy-policy-content {
+    font-size: 16px;
+
+    h2 {
+      margin-top: 20px;
+    }
+
+    .privacy-policy-date {
+      font-style: italic;
+    }
+  }
+}
