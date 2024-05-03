@@ -20,7 +20,7 @@ function Signup() {
     });
   };
 
-  const registrationForm = async (event) => {
+  const registrationForm = (event) => {
     event.preventDefault();
 
     if (userDetails.password !== userDetails.confirm_password) {
@@ -28,17 +28,14 @@ function Signup() {
       return;
     }
 
-    try {
-      await registerUser(
-        userDetails.fullname,
-        userDetails.email,
-        userDetails.password
-      );
-      toast.success("Registration successful");
-      navigate("/login");
-    } catch (error) {
-      toast.error(`${error}. Please try again.`);
-    }
+    registerUser(userDetails.fullname, userDetails.email, userDetails.password)
+      .then(() => {
+        toast.success("Registration successful");
+        navigate("/login");
+      })
+      .catch((error) => {
+        toast.error(`${error}. Please try again.`);
+      });
   };
 
   return (

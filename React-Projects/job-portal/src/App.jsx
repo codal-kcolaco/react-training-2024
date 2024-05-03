@@ -12,6 +12,7 @@ import { JobView } from "./JobView.jsx";
 import { JobDescription } from "./JobDescription.jsx";
 import EditJob from "./EditJob.jsx";
 import { ViewApplicationsEmployers } from "./ViewApplicationsEmployers.jsx";
+import { MyApplications } from "./MyApplications.jsx";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         />
         <Route path="/job-view" element={<JobView />} />
         <Route path="/job-description" element={<JobDescription />} />
+        <Route path="/my-applications" element={<MyApplications />} />
       </Routes>
       <Footer></Footer>
     </>

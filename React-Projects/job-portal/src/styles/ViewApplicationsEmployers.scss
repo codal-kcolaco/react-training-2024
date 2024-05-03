@@ -6,16 +6,6 @@ $job-application-employer-margin-top: 180px;
   .job-application-employer-list-container {
     padding: 20px;
 
-    .job-application-employer-list-img {
-      margin-top: 20px;
-      height: 100px;
-      width: 100px;
-    }
-
-    .job-application-employer-list-message {
-      margin-top: 20px;
-    }
-
     #job-application-employer-list {
       list-style-type: none;
     }
@@ -80,6 +70,13 @@ $job-application-employer-margin-top: 180px;
             background-color: #bd2130;
           }
         }
+      }
+      .job-application-button-confirm-container {
+        padding: 10px;
+        align-items: center;
+        border-radius: 10px;
+        margin: 25px;
+        color: white;
       }
     }
   }

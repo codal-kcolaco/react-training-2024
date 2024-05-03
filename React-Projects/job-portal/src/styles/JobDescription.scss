@@ -4,10 +4,11 @@
 }
 
 .job-description-card {
-  background-color: #f9f9f9;
+  background-color: white;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 60px;
+  margin: 20px;
 
   .job-description-title-container {
     display: flex;
@@ -23,8 +24,24 @@
     }
 
     h1 {
-      font-size: 24px;
-      margin-bottom: 10px;
+      font-size: 20px;
+    }
+  }
+
+  .job-employer-detail {
+    h3,
+    p {
+      text-align: left;
+      font-size: 17px;
+      color: gray;
+    }
+
+    h3 {
+      margin: 5px 0px 10px 0px;
+    }
+
+    p {
+      margin: 0;
     }
   }
 
@@ -38,13 +55,17 @@
     }
   }
 
-  .job-description-details {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
+  .job-description-info-container {
+    text-align: left;
+    margin-top: 50px;
+    .job-description-info-title {
+      font-size: 18px;
+    }
 
-    h3 {
+    .job-description-info-para {
+      margin-top: 10px;
       color: gray;
+      white-space: pre-wrap;
     }
   }
 }

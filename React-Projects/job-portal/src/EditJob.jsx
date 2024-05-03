@@ -1,17 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles/EditJob.scss";
-import { editJob } from "./api";
+import { editJob, fetchSingleJob } from "./api";
 import { JWT_COOKIE } from "./Constants";
 import { toast } from "react-toastify";
 
 const EditJob = () => {
   const [jobDetails, setJobDetails] = useState({
     jobTitle: "",
-    jobType: "SOFTWARE ENGINEERING",
+    jobType: "",
     jobSalary: 0,
     jobDescription: "",
+    jobTechnology: "PYTHON",
+    jobLocation: "",
+    jobExperience: 0,
   });
+
+  const navigate = useNavigate();
+  const urlParams = new URLSearchParams(window.location.search);
+
+  const jobId = urlParams.get("id");
+
+  useEffect(() => {
+    const fetchData = () => {
+      fetchSingleJob(jobId)
+        .then((data) => {
+          setJobDetails(data);
+        })
+        .catch((error) => {
+          alert(`${error}. Please try again.`);
+        });
+    };
+
+    fetchData();
+  }, []);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -21,25 +43,24 @@ const EditJob = () => {
     });
   };
 
-  const navigate = useNavigate();
-  const urlParams = new URLSearchParams(window.location.search);
-
-  const jobId = urlParams.get("id");
-
-  const editAJob = async (event) => {
+  const editAJob = (event) => {
     event.preventDefault();
-    try {
-      await editJob(
-        jobId,
-        jobDetails.jobTitle,
-        jobDetails.jobType,
-        jobDetails.jobSalary,
-        jobDetails.jobDescription
-      );
-      toast.success("Edited a job");
-    } catch (error) {
-      toast.error(`${error}`);
-    }
+    editJob(
+      jobId,
+      jobDetails.jobTitle,
+      jobDetails.jobType,
+      jobDetails.jobSalary,
+      jobDetails.jobDescription,
+      jobDetails.jobExperience,
+      jobDetails.jobLocation,
+      jobDetails.jobTechnology
+    )
+      .then(() => {
+        toast.success("Edited a job");
+      })
+      .catch((error) => {
+        toast.error(`${error}`);
+      });
   };
 
   return JWT_COOKIE ? (
@@ -49,7 +70,7 @@ const EditJob = () => {
       </div>
       <form>
         <div className="edit-job-form-group">
-          <label for="job-title">Job Title:</label>
+          <label htmlFor="job-title">Title of the Job</label>
           <input
             className="edit-job-input"
             type="text"
@@ -61,23 +82,48 @@ const EditJob = () => {
           />
         </div>
         <div className="edit-job-form-group">
-          <label for="job-type">Job Type:</label>
-          <select
-            className="edit-job-select"
+          <label htmlFor="job-type">
+            Type of the Job (Eg: Software Engineer, Human Resources)
+          </label>
+          <input
+            className="edit-job-input"
             type="text"
             id="job-type"
             value={jobDetails.jobType}
             onChange={(e) => handleChange(e)}
             name="jobType"
             required
+          />
+        </div>
+        <div className="edit-job-form-group">
+          <label htmlFor="job-technology">
+            Technology Required for the Job
+          </label>
+          <select
+            className="edit-job-select"
+            type="text"
+            id="job-technology"
+            value={jobDetails.jobTechnology}
+            onChange={(e) => handleChange(e)}
+            name="jobTechnology"
+            required
           >
-            <option value="SOFTWARE ENGINEERING">Software Engineering</option>
-            <option value="ARCHITECTURE">Architecture</option>
-            <option value="ACCOUNTING">Accounting</option>
+            <option value="PYTHON">Python</option>
+            <option value="GO">Go</option>
+            <option value="JAVASCRIPT">JavaScript</option>
+            <option value="JAVA">Java</option>
+            <option value="PHP">PHP</option>
+            <option value="C">C</option>
+            <option value="SWIFT">Swift</option>
+            <option value="SQL">SQL</option>
+            <option value="RUBY">Ruby</option>
+            <option value="RUST">Rust</option>
           </select>
         </div>
         <div className="edit-job-form-group">
-          <label for="job-salary">Job Salary:</label>
+          <label htmlFor="job-salary">
+            Salary provided by you on per month basis
+          </label>
           <input
             className="edit-job-input"
             type="text"
@@ -88,9 +134,30 @@ const EditJob = () => {
           />
         </div>
         <div className="edit-job-form-group">
-          <label className="edit-job-label" for="description">
-            Job Description:
-          </label>
+          <label htmlFor="job-experience">Years of experience required</label>
+          <input
+            className="edit-job-input"
+            type="text"
+            id="job-experience"
+            value={jobDetails.jobExperience}
+            onChange={(e) => handleChange(e)}
+            name="jobExperience"
+          />
+        </div>
+        <div className="edit-job-form-group">
+          <label htmlFor="job-location">Location of the Job</label>
+          <input
+            className="edit-job-input"
+            type="text"
+            id="job-location"
+            value={jobDetails.jobLocation}
+            onChange={(e) => handleChange(e)}
+            name="jobLocation"
+            required
+          />
+        </div>
+        <div className="edit-job-form-group">
+          <label htmlFor="description">Description of the Job</label>
           <textarea
             id="description"
             name="jobDescription"

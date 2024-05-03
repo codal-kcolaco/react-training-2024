@@ -1,0 +1,12 @@
+.empty-list-container {
+  text-align: center;
+  .empty-list-img {
+    margin-top: 20px;
+    height: 100px;
+    width: 100px;
+  }
+
+  .empty-list-message {
+    margin-top: 20px;
+  }
+}

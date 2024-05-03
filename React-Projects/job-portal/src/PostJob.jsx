@@ -10,9 +10,12 @@ const PostJob = () => {
 
   const [jobDetails, setJobDetails] = useState({
     jobTitle: "",
-    jobType: "SOFTWARE ENGINEERING",
+    jobType: "",
     jobSalary: 0,
     jobDescription: "",
+    jobTechnology: "PYTHON",
+    jobLocation: "",
+    jobExperience: 0,
   });
 
   const handleChange = (e) => {
@@ -25,17 +28,21 @@ const PostJob = () => {
 
   const postAJob = async (event) => {
     event.preventDefault();
-    try {
-      await postJob(
-        jobDetails.jobTitle,
-        jobDetails.jobType,
-        jobDetails.jobSalary,
-        jobDetails.jobDescription
-      );
-      toast.success("Posted a job");
-    } catch (error) {
-      toast.error(`${error}`);
-    }
+    postJob(
+      jobDetails.jobTitle,
+      jobDetails.jobType,
+      jobDetails.jobSalary,
+      jobDetails.jobDescription,
+      jobDetails.jobExperience,
+      jobDetails.jobLocation,
+      jobDetails.jobTechnology
+    )
+      .then(() => {
+        toast.success("Posted a job");
+      })
+      .catch((error) => {
+        toast.error(`${error}`);
+      });
   };
 
   return JWT_COOKIE ? (
@@ -46,7 +53,7 @@ const PostJob = () => {
       </div>
       <form>
         <div className="post-job-form-group">
-          <label htmlFor="job-title">Job Title:</label>
+          <label htmlFor="job-title">Title of the Job</label>
           <input
             className="post-job-input"
             type="text"
@@ -58,23 +65,48 @@ const PostJob = () => {
           />
         </div>
         <div className="post-job-form-group">
-          <label htmlFor="job-type">Job Type:</label>
-          <select
-            className="post-job-select"
+          <label htmlFor="job-type">
+            Type of the Job (Eg: Software Engineer, Human Resources)
+          </label>
+          <input
+            className="post-job-input"
             type="text"
             id="job-type"
             value={jobDetails.jobType}
             onChange={(e) => handleChange(e)}
             name="jobType"
             required
+          />
+        </div>
+        <div className="post-job-form-group">
+          <label htmlFor="job-technology">
+            Technology Required for the Job
+          </label>
+          <select
+            className="post-job-select"
+            type="text"
+            id="job-technology"
+            value={jobDetails.jobTechnology}
+            onChange={(e) => handleChange(e)}
+            name="jobTechnology"
+            required
           >
-            <option value="SOFTWARE ENGINEERING">Software Engineering</option>
-            <option value="ARCHITECTURE">Architecture</option>
-            <option value="ACCOUNTING">Accounting</option>
+            <option value="PYTHON">Python</option>
+            <option value="GO">Go</option>
+            <option value="JAVASCRIPT">JavaScript</option>
+            <option value="JAVA">Java</option>
+            <option value="PHP">PHP</option>
+            <option value="C">C</option>
+            <option value="SWIFT">Swift</option>
+            <option value="SQL">SQL</option>
+            <option value="RUBY">Ruby</option>
+            <option value="RUST">Rust</option>
           </select>
         </div>
         <div className="post-job-form-group">
-          <label htmlFor="job-salary">Job Salary:</label>
+          <label htmlFor="job-salary">
+            Salary provided by you on per month basis
+          </label>
           <input
             className="post-job-input"
             type="text"
@@ -85,9 +117,30 @@ const PostJob = () => {
           />
         </div>
         <div className="post-job-form-group">
-          <label className="post-job-label" htmlFor="description">
-            Job Description:
-          </label>
+          <label htmlFor="job-experience">Years of experience required</label>
+          <input
+            className="post-job-input"
+            type="text"
+            id="job-experience"
+            value={jobDetails.jobExperience}
+            onChange={(e) => handleChange(e)}
+            name="jobExperience"
+          />
+        </div>
+        <div className="post-job-form-group">
+          <label htmlFor="job-location">Location of the Job</label>
+          <input
+            className="post-job-input"
+            type="text"
+            id="job-location"
+            value={jobDetails.jobLocation}
+            onChange={(e) => handleChange(e)}
+            name="jobLocation"
+            required
+          />
+        </div>
+        <div className="post-job-form-group">
+          <label htmlFor="description">Description of the Job</label>
           <textarea
             id="description"
             name="jobDescription"
@@ -99,7 +152,7 @@ const PostJob = () => {
           ></textarea>
         </div>
         <button type="submit" className="post-job-submit" onClick={postAJob}>
-          Post Job
+          Post the Job
         </button>
       </form>
     </div>

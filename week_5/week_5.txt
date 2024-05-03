@@ -10,3 +10,10 @@
     Create a view application page for employers
     Create the styling for application page
     Changed the input section and made it more efficient
+
+2 MAY 
+    Completed the My Application UI
+    Convert some of the 'async await try catch' block to 'then and catch' block
+    Connected it with the backend, now the employers can accept and reject applications 
+    Create the filter and search functionality in the frontend
+    Learn about Reactlifecycle
