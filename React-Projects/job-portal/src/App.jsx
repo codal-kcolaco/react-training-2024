@@ -1,24 +1,23 @@
 import "./App.css";
-import Header from "./Header.jsx";
-import Footer from "./Footer.jsx";
-import Home from "./Home.jsx";
+import Header from "./components/Header/Header.jsx";
+import Footer from "./components/Footer/Footer.jsx";
+import Home from "./components/Home/Home.jsx";
 import { Route, Routes } from "react-router-dom";
-import Jobs from "./Jobs.jsx";
-import Signup from "./Signup.jsx";
-import Login from "./Login.jsx";
-import PostJob from "./PostJob.jsx";
-import { MyJobs } from "./MyJobs.jsx";
-import { JobView } from "./JobView.jsx";
-import { JobDescription } from "./JobDescription.jsx";
-import EditJob from "./EditJob.jsx";
-import { ViewApplicationsEmployers } from "./ViewApplicationsEmployers.jsx";
-import { MyApplications } from "./MyApplications.jsx";
-import PrivacyPolicyPage from "./PrivacyPolicy.jsx";
-import PrivacyPolicy from "./PrivacyPolicy.jsx";
-import TermsAndConditions from "./TermsAndConditions.jsx";
-import Contact from "./Contact.jsx";
-import { About } from "./About.jsx";
-import { UserPortal } from "./UserPortal.jsx";
+import Jobs from "./components/Jobs/Jobs.jsx";
+import Signup from "./components/Signup/Signup.jsx";
+import Login from "./components/Login/Login.jsx";
+import PostJob from "./components/PostJob/PostJob.jsx";
+import { MyJobs } from "./components/MyJobs/MyJobs.jsx";
+
+import { JobDescription } from "./components/JobDescription/JobDescription.jsx";
+import EditJob from "./components/EditJob/EditJob.jsx";
+import { ViewApplicationsEmployers } from "./components/ViewApplicationsEmployers/ViewApplicationsEmployers.jsx";
+import { MyApplications } from "./components/MyApplications/MyApplications.jsx";
+import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy.jsx";
+import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditions.jsx";
+import Contact from "./components/Contact/Contact.jsx";
+import { About } from "./components/About/About.jsx";
+import { UserPortal } from "./components/UserPortal/UserPortal.jsx";
 
 function App() {
   return (
@@ -36,7 +35,7 @@ function App() {
           path="/my-jobs/applications/:id"
           element={<ViewApplicationsEmployers />}
         />
-        <Route path="/job-view" element={<JobView />} />
+
         <Route path="/job-description/:id" element={<JobDescription />} />
         <Route path="/my-applications" element={<MyApplications />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
