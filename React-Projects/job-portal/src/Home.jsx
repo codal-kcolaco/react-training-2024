@@ -1,16 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import "./styles/Home.scss";
 import JobBackground from "./assets/create-job-removebg-preview.png";
 import SearchIcon from "./assets/icons/search.svg";
-import "./styles/Home.scss";
+import {
+  bannerContent,
+  jobCardContent,
+  searchContent,
+  filterTechnologies,
+  filterContent,
+} from "./data/HomeContent";
 
 function Home() {
   return (
     <div>
       <section className="banner">
-        <h2>Find Your Dream Job</h2>
-        <p className="subtitle">Start your career journey today!</p>
+        <h2>{bannerContent.title}</h2>
+        <p className="subtitle">{bannerContent.subtitle}</p>
         <a href="jobs" className="btn">
-          Browse Jobs
+          {bannerContent.button}
         </a>
       </section>
 
@@ -18,25 +25,25 @@ function Home() {
         <div className="card-internal">
           <div className="container-description">
             <img loading="lazy" src={JobBackground} width="50%" alt="" />
-            <h4>Create a job easily</h4>
-            <p>Hiring employees is just a few steps away!</p>
+            <h4>{jobCardContent.title}</h4>
+            <p>{jobCardContent.description}</p>
           </div>
           <div className="container-btn">
             <a href="post-job" className="btn">
-              Create a Job
+              {jobCardContent.button}
             </a>
           </div>
         </div>
       </section>
 
       <section className="job-search-home-container">
-        <h1>Search your jobs using our advanced search engine</h1>
-        <p>Your dream job is near</p>
+        <h1>{searchContent.title}</h1>
+        <p>{searchContent.subtitle}</p>
         <div className="job-search-home-bar-container">
           <input
             className="job-search-home-bar"
             type="text"
-            placeholder="Search for your jobs"
+            placeholder={searchContent.placeholder}
           />
           <button className="search-home-button">
             <img
@@ -50,53 +57,14 @@ function Home() {
       </section>
 
       <section className="job-list-home-section">
-        <h1>Filter based on technologies</h1>
+        <h1>{filterContent.filterTitle}</h1>
         <div className="job-list-home-section-grid">
-          <div className="home-chip">
-            <img
-              src="https://learn.microsoft.com/en-us/media/logos/logo_python.svg"
-              alt="python"
-              width="96"
-              height="96"
-            />
-            Python
-          </div>
-          <div className="home-chip">
-            <img
-              src="https://learn.microsoft.com/en-us/media/logos/logo_Go-lightblue.svg"
-              alt="go"
-              width="96"
-              height="96"
-            />
-            Golang
-          </div>
-          <div className="home-chip">
-            <img
-              src="https://learn.microsoft.com/en-us/media/logos/logo_js.svg"
-              alt="JavaScript"
-              width="96"
-              height="96"
-            />
-            JavaScript
-          </div>
-          <div className="home-chip">
-            <img
-              src="https://learn.microsoft.com/en-us/media/logos/logo_java.svg"
-              alt="java"
-              width="96"
-              height="96"
-            />
-            Java
-          </div>
-          <div className="home-chip">
-            <img
-              src="https://learn.microsoft.com/en-us/azure/media/index/net-logo.svg"
-              alt=".net"
-              width="96"
-              height="96"
-            />
-            .NET
-          </div>
+          {filterTechnologies.map((tech) => (
+            <div key={tech.id} className="home-chip">
+              <img src={tech.logoSrc} alt={tech.name} width="96" height="96" />
+              {tech.name}
+            </div>
+          ))}
         </div>
       </section>
     </div>

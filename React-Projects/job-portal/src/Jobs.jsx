@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from "react";
-// import jobData from "./data/job-data.js";
+
 import "./styles/Jobs.scss";
 import { fetchJobs } from "./api";
 import noJobLogo from "./assets/people.png";
 import lodash from "lodash";
+import { Link } from "react-router-dom";
+import {
+  jobsError,
+  jobsContent,
+  TECHNOLOGIES,
+  LOCATIONS,
+} from "./data/JobsContent";
 
 const JobCardPython = ({ job }) => {
   const { pk, user, job_name, job_type, job_description, job_salary } = job;
 
   return (
     <div className="job-card">
-      <a href={`job-description?id=${pk}`}>
+      <Link to={`../job-description/${pk}`}>
         <div className="chip">
           <div className="chip-img">
             <img src="src/assets/job-search.png" alt={user.name} />
@@ -20,7 +27,7 @@ const JobCardPython = ({ job }) => {
             <p>{user.name}</p>
           </div>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };
@@ -37,7 +44,7 @@ function Jobs() {
           setJobData(data);
         })
         .catch((error) => {
-          alert(`${error}. Please try again.`);
+          alert(`${error}. ${jobsError}`);
         });
     };
 
@@ -73,120 +80,39 @@ function Jobs() {
   return (
     <div className="job-list-container">
       <section className="job-filter-section">
-        <h1>Filter</h1>
+        <h1>{jobsContent.jobFilterTitle}</h1>
         <hr />
-        <h4>Technology</h4>
+        <h4>{jobsContent.jobTechnologyTitle}</h4>
         <div className="filter-container">
-          <div className="filter-checkbox">
-            <input
-              type="checkbox"
-              id="python"
-              value="python"
-              name="technology"
-              onChange={() => handleFilterChange("technology", "PYTHON")}
-            />
-            <label htmlFor="python">Python</label>
-          </div>
-
-          <div className="filter-checkbox">
-            <input
-              type="checkbox"
-              id="java"
-              value="java"
-              name="technology"
-              onChange={() => handleFilterChange("technology", "JAVA")}
-            />
-            <label htmlFor="java">Java</label>
-          </div>
-
-          <div className="filter-checkbox">
-            <input
-              type="checkbox"
-              id="c"
-              value="c"
-              name="technology"
-              onChange={() => handleFilterChange("technology", "C")}
-            />
-            <label htmlFor="c">C</label>
-          </div>
-
-          <div className="filter-checkbox">
-            <input
-              type="checkbox"
-              id="javascript"
-              value="javascript"
-              name="technology"
-              onChange={() => handleFilterChange("technology", "JAVASCRIPT")}
-            />
-            <label htmlFor="javascript">JavaScript</label>
-          </div>
-          <div className="filter-checkbox">
-            <input
-              type="checkbox"
-              id="ruby"
-              value="ruby"
-              name="technology"
-              onChange={() => handleFilterChange("technology", "RUBY")}
-            />
-            <label htmlFor="ruby">Ruby</label>
-          </div>
+          {TECHNOLOGIES.map((tech) => (
+            <div key={tech.id} className="filter-checkbox">
+              <input
+                type="checkbox"
+                id={tech.id}
+                value={tech.value}
+                name="technology"
+                onChange={() =>
+                  handleFilterChange("technology", tech.value.toUpperCase())
+                }
+              />
+              <label htmlFor={tech.id}>{tech.label}</label>
+            </div>
+          ))}
         </div>
         <h4>Location</h4>
         <div className="filter-container">
-          <div className="filter-checkbox">
-            <input
-              type="checkbox"
-              id="ahmedabad"
-              value="ahmedabad"
-              name="location"
-              onChange={() => handleFilterChange("location", "ahmedabad")}
-            />
-            <label htmlFor="ahmedabad">Ahmedabad</label>
-          </div>
-
-          <div className="filter-checkbox">
-            <input
-              type="checkbox"
-              id="surat"
-              value="surat"
-              name="location"
-              onChange={() => handleFilterChange("location", "surat")}
-            />
-            <label htmlFor="surat">Surat</label>
-          </div>
-
-          <div className="filter-checkbox">
-            <input
-              type="checkbox"
-              id="Baroda"
-              value="Baroda"
-              name="location"
-              onChange={() => handleFilterChange("location", "baroda")}
-            />
-            <label htmlFor="Baroda">Baroda</label>
-          </div>
-
-          <div className="filter-checkbox">
-            <input
-              type="checkbox"
-              id="Morbi"
-              value="Morbi"
-              name="location"
-              onChange={() => handleFilterChange("location", "morbi")}
-            />
-            <label htmlFor="Morbi">Morbi</label>
-          </div>
-
-          <div className="filter-checkbox">
-            <input
-              type="checkbox"
-              id="Rajkot"
-              value="Rajkot"
-              name="location"
-              onChange={() => handleFilterChange("location", "rajkot")}
-            />
-            <label htmlFor="Rajkot">Rajkot</label>
-          </div>
+          {LOCATIONS.map((location) => (
+            <div key={location.id} className="filter-checkbox">
+              <input
+                type="checkbox"
+                id={location.id}
+                value={location.value}
+                name="location"
+                onChange={() => handleFilterChange("location", location.value)}
+              />
+              <label htmlFor={location.id}>{location.label}</label>
+            </div>
+          ))}
         </div>
       </section>
       <section className="job-list-section">
@@ -194,11 +120,11 @@ function Jobs() {
           <input
             className="job-search-input"
             type="text"
-            placeholder="Search for your jobs"
+            placeholder={jobsContent.jobSearchPlaceholer}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <h1>Jobs</h1>
+          <h1>{jobsContent.jobTitle}</h1>
         </div>
         <div className="job-list-section-grid">
           {!lodash.isEmpty(filteredJobData) ? (
@@ -208,7 +134,9 @@ function Jobs() {
           ) : (
             <div className="empty-list-container">
               <img className="empty-list-img" src={noJobLogo} alt="people" />
-              <p className="empty-list-message">No jobs listed</p>
+              <p className="empty-list-message">
+                {jobsContent.jobEmptyMessage}
+              </p>
             </div>
           )}
         </div>

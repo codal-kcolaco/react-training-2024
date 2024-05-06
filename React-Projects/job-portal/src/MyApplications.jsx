@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./styles/MyApplications.scss";
 import { fetchMyApplications } from "./api.js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import lodash from "lodash";
 import { JWT_COOKIE, convertToDate } from "./Constants.jsx";
 import { toast } from "react-toastify";
@@ -25,9 +25,9 @@ const MyApplicationCard = ({ myApplication }) => {
             </p>
             <p>
               <strong>Job title:</strong> {myApplication.job_title}{" "}
-              <a href={`../job-description?id=${myApplication.job}`}>
-                view job
-              </a>
+              <Link to={`../job-description/${myApplication.job}`}>
+                View job
+              </Link>
             </p>
             <p>
               <strong>Applied at:</strong>{" "}

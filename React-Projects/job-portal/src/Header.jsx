@@ -4,6 +4,7 @@ import CJPLogo from "./assets/cjp-logo.png";
 import AvatarLogo from "./assets/avatar.png";
 import { JWT_COOKIE } from "./Constants";
 import { useNavigate } from "react-router-dom";
+import { navContent, navItems } from "./data/HeaderContent";
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,28 +28,21 @@ function Header() {
         </a>
         <nav className="nav-list">
           <ul className="nav-unordered-list">
-            <li>
-              <a href="/jobs">Jobs</a>
-            </li>
-            <li>
-              <a href="/post-job">Post a Job</a>
-            </li>
-            <li>
-              <a href="/my-jobs/">My Jobs</a>
-            </li>
-            <li>
-              <a href="/my-applications/">My Applications</a>
-            </li>
+            {navItems.map((item, index) => (
+              <li key={index}>
+                <a href={item.link}>{item.text}</a>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>
       {!isLoggedIn && (
         <div className="nav-button-wrapper">
           <a href="signup" className="sign-up-button">
-            Sign-up
+            {navContent.signUp}
           </a>
           <a href="login" className="login-button">
-            Login
+            {navContent.login}
           </a>
         </div>
       )}
@@ -67,7 +61,7 @@ function Header() {
             id="logout-button"
             onClick={handleLogout}
           >
-            Logout
+            {navContent.logout}
           </a>
         </div>
       )}

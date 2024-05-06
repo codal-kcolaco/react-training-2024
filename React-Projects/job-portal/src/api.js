@@ -12,9 +12,17 @@ import {
   CHANGE_PASSWORD_URL,
 } from "./Constants";
 
+const api = axios.create({
+  baseURL: "http://127.0.0.1:8000/api",
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: JWT_COOKIE,
+  },
+});
+
 export const registerUser = async (fullname, email, password) => {
   try {
-    const response = await axios.post(SIGNUP_URL, {
+    const response = await api.post(SIGNUP_URL, {
       name: fullname,
       email: email,
       password: password,
@@ -39,7 +47,7 @@ export const registerUser = async (fullname, email, password) => {
 
 export const loginUser = async (email, password) => {
   try {
-    const response = await axios.post(LOGIN_URL, {
+    const response = await api.post(LOGIN_URL, {
       email: email,
       password: password,
     });
@@ -79,24 +87,15 @@ export const postJob = async (
   jobTechnology
 ) => {
   try {
-    const response = await axios.post(
-      POST_JOB_URL,
-      {
-        job_name: jobTitle,
-        job_type: jobType,
-        job_description: jobDescription,
-        job_salary: jobSalary,
-        job_experience: jobExperience,
-        job_location: jobLocation,
-        job_technology: jobTechnology,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: JWT_COOKIE,
-        },
-      }
-    );
+    const response = await api.post(POST_JOB_URL, {
+      job_name: jobTitle,
+      job_type: jobType,
+      job_description: jobDescription,
+      job_salary: jobSalary,
+      job_experience: jobExperience,
+      job_location: jobLocation,
+      job_technology: jobTechnology,
+    });
 
     return response.data;
   } catch (error) {
@@ -115,24 +114,15 @@ export const editJob = async (
   jobTechnology
 ) => {
   try {
-    const response = await axios.put(
-      POST_JOB_URL + jobId + "/",
-      {
-        job_name: jobTitle,
-        job_type: jobType,
-        job_description: jobDescription,
-        job_salary: jobSalary,
-        job_experience: jobExperience,
-        job_location: jobLocation,
-        job_technology: jobTechnology,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: JWT_COOKIE,
-        },
-      }
-    );
+    const response = await api.put(POST_JOB_URL + jobId + "/", {
+      job_name: jobTitle,
+      job_type: jobType,
+      job_description: jobDescription,
+      job_salary: jobSalary,
+      job_experience: jobExperience,
+      job_location: jobLocation,
+      job_technology: jobTechnology,
+    });
 
     return response.data;
   } catch (error) {
@@ -156,12 +146,7 @@ export const editJob = async (
 
 export const deleteJob = async (jobId) => {
   try {
-    const response = await axios.delete(POST_JOB_URL + jobId + "/", {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: JWT_COOKIE,
-      },
-    });
+    const response = await api.delete(POST_JOB_URL + jobId + "/");
 
     window.location.reload();
 
@@ -173,11 +158,7 @@ export const deleteJob = async (jobId) => {
 
 export const fetchJobs = async () => {
   try {
-    const response = await axios.get(GET_JOB_URL, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await api.get(GET_JOB_URL);
 
     return response.data;
   } catch (error) {
@@ -187,12 +168,7 @@ export const fetchJobs = async () => {
 
 export const fetchSingleJob = async (jobId) => {
   try {
-    const response = await axios.get(GET_SINGLE_JOB_URL + jobId + "/", {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: JWT_COOKIE,
-      },
-    });
+    const response = await api.get(GET_SINGLE_JOB_URL + jobId + "/");
 
     return response.data;
   } catch (error) {
@@ -202,12 +178,7 @@ export const fetchSingleJob = async (jobId) => {
 
 export const fetchJobsEmployer = async () => {
   try {
-    const response = await axios.get(GET_JOB_EMPLOYER_URL, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: JWT_COOKIE,
-      },
-    });
+    const response = await api.get(GET_JOB_EMPLOYER_URL);
 
     return response.data;
   } catch (error) {
@@ -217,15 +188,7 @@ export const fetchJobsEmployer = async () => {
 
 export const fetchSingleJobForEmployer = async (jobId) => {
   try {
-    const response = await axios.get(
-      GET_SINGLE_JOB_EMPLOYER_URL + jobId + "/",
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: JWT_COOKIE,
-        },
-      }
-    );
+    const response = await api.get(GET_SINGLE_JOB_EMPLOYER_URL + jobId + "/");
 
     return response.data;
   } catch (error) {
@@ -239,16 +202,10 @@ export const selectApplicantAPI = async (
   selectionStatus
 ) => {
   try {
-    const response = await axios.patch(
+    const response = await api.patch(
       POST_JOB_URL + jobId + "/" + "application-status/" + applicationId + "/",
       {
         is_selected: selectionStatus,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: JWT_COOKIE,
-        },
       }
     );
 
@@ -260,12 +217,7 @@ export const selectApplicantAPI = async (
 
 export const fetchMyApplications = async () => {
   try {
-    const response = await axios.get(GET_SINGLE_JOB_APPLICATION_URL, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: JWT_COOKIE,
-      },
-    });
+    const response = await api.get(GET_SINGLE_JOB_APPLICATION_URL);
 
     return response.data;
   } catch (error) {
@@ -275,14 +227,8 @@ export const fetchMyApplications = async () => {
 
 export const fetchJobApplicationsEmployer = async (jobId) => {
   try {
-    const response = await axios.get(
-      GET_SINGLE_JOB_EMPLOYER_URL + jobId + "/applications/",
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: JWT_COOKIE,
-        },
-      }
+    const response = await api.get(
+      GET_SINGLE_JOB_EMPLOYER_URL + jobId + "/applications/"
     );
 
     return response.data;
@@ -293,19 +239,10 @@ export const fetchJobApplicationsEmployer = async (jobId) => {
 
 export const applyStatusForJob = async (jobId, coverLetter) => {
   try {
-    const response = await axios.post(
-      GET_SINGLE_JOB_APPLICATION_URL,
-      {
-        job: jobId,
-        cover_letter: coverLetter,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: JWT_COOKIE,
-        },
-      }
-    );
+    const response = await api.post(GET_SINGLE_JOB_APPLICATION_URL, {
+      job: jobId,
+      cover_letter: coverLetter,
+    });
 
     return response.data;
   } catch (error) {
@@ -321,19 +258,10 @@ export const applyStatusForJob = async (jobId, coverLetter) => {
 
 export const changePasswordUser = async (oldPassword, newPassword) => {
   try {
-    const response = await axios.post(
-      CHANGE_PASSWORD_URL,
-      {
-        old_password: oldPassword,
-        new_password: newPassword,
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: JWT_COOKIE,
-        },
-      }
-    );
+    const response = await api.post(CHANGE_PASSWORD_URL, {
+      old_password: oldPassword,
+      new_password: newPassword,
+    });
 
     return response.data;
   } catch (error) {

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./styles/ViewApplicationsEmployers.scss";
 import { fetchJobApplicationsEmployer, selectApplicantAPI } from "./api.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import lodash from "lodash";
 import { JWT_COOKIE } from "./Constants.jsx";
 import { toast } from "react-toastify";
 import noJobLogo from "./assets/people.png";
+import { viewApplicationEmployersInfo } from "./data/ViewApplicationsEmployers.js";
 
 const JobApplicationEmployerCard = ({ jobApplication }) => {
   const [isSelected, setIsSelected] = useState(jobApplication.is_selected);
@@ -22,13 +23,16 @@ const JobApplicationEmployerCard = ({ jobApplication }) => {
           <div className="application-info">
             <h2>{jobApplication.applicant}</h2>
             <p>
-              <strong>Applied at:</strong> {jobApplication.applied_at}
+              <strong>{viewApplicationEmployersInfo.appliedAt}</strong>{" "}
+              {jobApplication.applied_at}
             </p>
             <p>
-              <strong>Cover letter:</strong> {jobApplication.cover_letter}
+              <strong>{viewApplicationEmployersInfo.coverLetter}</strong>{" "}
+              {jobApplication.cover_letter}
             </p>
             <p>
-              <strong>For:</strong> {jobApplication.job_title}
+              <strong>{viewApplicationEmployersInfo.for}</strong>{" "}
+              {jobApplication.job_title}
             </p>
           </div>
           {isSelected === "PENDING" && (
@@ -37,13 +41,13 @@ const JobApplicationEmployerCard = ({ jobApplication }) => {
                 className="accept-button"
                 onClick={() => selectApplicant("ACCEPTED")}
               >
-                Accept
+                {viewApplicationEmployersInfo.acceptMessage}
               </button>
               <button
                 className="reject-button"
                 onClick={() => selectApplicant("REJECTED")}
               >
-                Reject
+                {viewApplicationEmployersInfo.rejectMessage}
               </button>
             </div>
           )}
@@ -65,9 +69,7 @@ const JobApplicationEmployerCard = ({ jobApplication }) => {
 export const ViewApplicationsEmployers = () => {
   const [jobApplication, setJobApplication] = useState({});
   const navigate = useNavigate();
-  const urlParams = new URLSearchParams(window.location.search);
-
-  const jobId = urlParams.get("id");
+  const jobId = useParams().id;
 
   useEffect(() => {
     const fetchData = () => {
@@ -90,7 +92,9 @@ export const ViewApplicationsEmployers = () => {
 
   return (
     <div className="job-application-employer-container">
-      <h1 className="job-application-employer-heading">Job Applications</h1>
+      <h1 className="job-application-employer-heading">
+        {viewApplicationEmployersInfo.jobApplicationHeading}
+      </h1>
       <div className="job-application-employer-list-container">
         {!lodash.isEmpty(jobApplication) ? (
           <ul id="job-application-employer-list">
@@ -104,7 +108,9 @@ export const ViewApplicationsEmployers = () => {
         ) : (
           <div className="empty-list-container">
             <img className="empty-list-img" src={noJobLogo} alt="people" />
-            <p className="empty-list-message">No job applications</p>
+            <p className="empty-list-message">
+              {viewApplicationEmployersInfo.jobApplicationEmptyMessage}
+            </p>
           </div>
         )}
       </div>

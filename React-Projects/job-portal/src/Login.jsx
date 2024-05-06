@@ -2,66 +2,63 @@ import React, { useState } from "react";
 import "./styles/Login.scss";
 import { loginUser } from "./api";
 import { toast } from "react-toastify";
+import { loginConstant } from "./data/LoginContent";
 
 function Login() {
   const [userDetails, setUserDetails] = useState({
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    e.preventDefault();
     setUserDetails({
       ...userDetails,
       [e.currentTarget.name]: e.currentTarget.value,
     });
   };
 
-  const loginForm = (event) => {
+  const loginForm = async (event) => {
     event.preventDefault();
 
-    loginUser(userDetails.email, userDetails.password)
-      .then((jwtToken) => {
-        toast.success("Login successful", {
-          onClose: () => (window.location.href = "/"),
-          autoClose: 1000,
-        });
-      })
-      .catch((error) => {
-        toast.error(`${error}`);
+    setLoading(true);
+
+    try {
+      const jwtToken = await loginUser(userDetails.email, userDetails.password);
+      toast.success("Login successful", {
+        onClose: () => (window.location.href = "/"),
+        autoClose: 1000,
       });
+    } catch (error) {
+      toast.error(`${error}`);
+    }
+
+    setLoading(false);
   };
 
   return (
     <div className="login-class">
       <div className="login-container">
         <h2>Login</h2>
-        <form id="loginForm">
+        <form id="loginForm" onSubmit={loginForm}>
+          {loginConstant.map((input, index) => (
+            <input
+              key={index}
+              type={input.type}
+              id={input.id}
+              value={userDetails[input.name]}
+              onChange={handleChange}
+              className={`login-${input.name}`}
+              name={input.name}
+              placeholder={input.placeholder}
+              required={input.required}
+            />
+          ))}
           <input
-            type="email"
-            id="email"
-            value={userDetails.email}
-            onChange={(e) => handleChange(e)}
-            className="login-email"
-            name="email"
-            placeholder="Email Address"
-            required
-          />
-          <input
-            id="password"
-            value={userDetails.password}
-            onChange={(e) => handleChange(e)}
-            type="password"
-            name="password"
-            className="login-password"
-            placeholder="Password"
-            required
-          />
-          <input
-            onClick={loginForm}
             className="login-submit"
             type="submit"
-            value="Login"
+            value={loading ? "Logging In..." : "Login"}
+            disabled={loading}
           />
         </form>
       </div>

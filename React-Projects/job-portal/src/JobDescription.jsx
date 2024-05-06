@@ -3,10 +3,14 @@ import "./styles/JobDescription.scss";
 import { applyStatusForJob, fetchSingleJob } from "./api";
 import lodash from "lodash";
 import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
+import {
+  jobDescriptionError,
+  jobDescriptionContent,
+} from "./data/JobDescriptionContent";
 
 const JobDescriptionCard = () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const jobId = urlParams.get("id");
+  const jobId = useParams().id;
 
   const [jobData, setJobData] = useState({});
   const [coverLetter, setCoverLetter] = useState("");
@@ -22,7 +26,7 @@ const JobDescriptionCard = () => {
           setJobData(data);
         })
         .catch((error) => {
-          alert(`${error}. Please try again.`);
+          alert(`${error}. ${jobDescriptionError}`);
         });
     };
 
@@ -50,16 +54,22 @@ const JobDescriptionCard = () => {
             {jobData.job_salary} INR | {jobData.job_location} |{" "}
             {jobData.job_type}
           </p>
-          <p>{jobData.job_experience} years of experience required</p>
+          <p>
+            {jobData.job_experience} {jobDescriptionContent.jobExperience}
+          </p>
         </div>
 
         <div className="job-description-info-container">
-          <h3 className="job-description-info-title">Job Description</h3>
+          <h3 className="job-description-info-title">
+            {jobDescriptionContent.jobDescriptionTitle}
+          </h3>
           <p className="job-description-info-para">{jobData.job_description}</p>
         </div>
       </div>
       <div className="job-description-apply">
-        <h1 className="job-description-apply-title">Cover Letter</h1>
+        <h1 className="job-description-apply-title">
+          {jobDescriptionContent.jobDescriptionApplyTitle}
+        </h1>
         <input
           className="job-description-apply-input"
           type="text"

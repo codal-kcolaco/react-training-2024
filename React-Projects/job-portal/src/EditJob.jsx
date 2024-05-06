@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./styles/EditJob.scss";
 import { editJob, fetchSingleJob } from "./api";
 import { JWT_COOKIE } from "./Constants";
 import { toast } from "react-toastify";
+import { editJobContent } from "./data/EditJobsContent";
 
 const EditJob = () => {
   const [jobDetails, setJobDetails] = useState({
@@ -17,9 +18,8 @@ const EditJob = () => {
   });
 
   const navigate = useNavigate();
-  const urlParams = new URLSearchParams(window.location.search);
 
-  const jobId = urlParams.get("id");
+  const jobId = useParams().id;
 
   useEffect(() => {
     const fetchData = () => {
@@ -69,107 +69,51 @@ const EditJob = () => {
         <h1 className="edit-job-h1">Edit a Job</h1>
       </div>
       <form>
-        <div className="edit-job-form-group">
-          <label htmlFor="job-title">Title of the Job</label>
-          <input
-            className="edit-job-input"
-            type="text"
-            id="job-title"
-            value={jobDetails.jobTitle}
-            onChange={(e) => handleChange(e)}
-            name="jobTitle"
-            required
-          />
-        </div>
-        <div className="edit-job-form-group">
-          <label htmlFor="job-type">
-            Type of the Job (Eg: Software Engineer, Human Resources)
-          </label>
-          <input
-            className="edit-job-input"
-            type="text"
-            id="job-type"
-            value={jobDetails.jobType}
-            onChange={(e) => handleChange(e)}
-            name="jobType"
-            required
-          />
-        </div>
-        <div className="edit-job-form-group">
-          <label htmlFor="job-technology">
-            Technology Required for the Job
-          </label>
-          <select
-            className="edit-job-select"
-            type="text"
-            id="job-technology"
-            value={jobDetails.jobTechnology}
-            onChange={(e) => handleChange(e)}
-            name="jobTechnology"
-            required
-          >
-            <option value="PYTHON">Python</option>
-            <option value="GO">Go</option>
-            <option value="JAVASCRIPT">JavaScript</option>
-            <option value="JAVA">Java</option>
-            <option value="PHP">PHP</option>
-            <option value="C">C</option>
-            <option value="SWIFT">Swift</option>
-            <option value="SQL">SQL</option>
-            <option value="RUBY">Ruby</option>
-            <option value="RUST">Rust</option>
-          </select>
-        </div>
-        <div className="edit-job-form-group">
-          <label htmlFor="job-salary">
-            Salary provided by you on per month basis
-          </label>
-          <input
-            className="edit-job-input"
-            type="text"
-            id="job-salary"
-            value={jobDetails.jobSalary}
-            onChange={(e) => handleChange(e)}
-            name="jobSalary"
-          />
-        </div>
-        <div className="edit-job-form-group">
-          <label htmlFor="job-experience">Years of experience required</label>
-          <input
-            className="edit-job-input"
-            type="text"
-            id="job-experience"
-            value={jobDetails.jobExperience}
-            onChange={(e) => handleChange(e)}
-            name="jobExperience"
-          />
-        </div>
-        <div className="edit-job-form-group">
-          <label htmlFor="job-location">Location of the Job</label>
-          <input
-            className="edit-job-input"
-            type="text"
-            id="job-location"
-            value={jobDetails.jobLocation}
-            onChange={(e) => handleChange(e)}
-            name="jobLocation"
-            required
-          />
-        </div>
-        <div className="edit-job-form-group">
-          <label htmlFor="description">Description of the Job</label>
-          <textarea
-            id="description"
-            name="jobDescription"
-            value={jobDetails.jobDescription}
-            onChange={(e) => handleChange(e)}
-            rows="5"
-            className="edit-job-textarea"
-            required
-          ></textarea>
-        </div>
+        {editJobContent.map((input, index) => (
+          <div className="edit-job-form-group" key={index}>
+            <label htmlFor={input.id}>{input.label}</label>
+            {input.type === "select" ? (
+              <select
+                className="edit-job-select"
+                id={input.id}
+                value={jobDetails[input.name]}
+                onChange={handleChange}
+                name={input.name}
+                required={input.required}
+              >
+                {input.options.map((option, idx) => (
+                  <option key={idx} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            ) : input.type === "textarea" ? (
+              <textarea
+                id={input.id}
+                name={input.name}
+                value={jobDetails[input.name]}
+                onChange={handleChange}
+                rows={input.rows}
+                className="edit-job-textarea"
+                required={input.required}
+                placeholder={input.placeholder}
+              ></textarea>
+            ) : (
+              <input
+                className="edit-job-input"
+                type={input.type}
+                id={input.id}
+                value={jobDetails[input.name]}
+                onChange={handleChange}
+                name={input.name}
+                required={input.required}
+                placeholder={input.placeholder}
+              />
+            )}
+          </div>
+        ))}
         <button type="submit" className="edit-job-submit" onClick={editAJob}>
-          Edit Job
+          Edit the Job
         </button>
       </form>
     </div>

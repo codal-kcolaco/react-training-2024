@@ -3,6 +3,7 @@ import "./styles/UserPortal.scss";
 import AvatarLogo from "./assets/avatar.png";
 import { changePasswordUser } from "./api";
 import { toast } from "react-toastify";
+import userPortalContent from "./data/UserPortalContent";
 
 export const UserPortal = () => {
   const [userPassword, setUserPassword] = useState({
@@ -22,41 +23,46 @@ export const UserPortal = () => {
     event.preventDefault();
 
     changePasswordUser(userPassword.oldPassword, userPassword.newPassword)
-      .then((jwtToken) => {
-        toast.success("Password changed successfully");
+      .then(() => {
+        toast.success(userPortalContent.successMessage);
       })
       .catch((error) => {
-        toast.error(`${error}`);
+        toast.error(`${userPortalContent.errorMessage}: ${error}`);
       });
   };
 
   return (
     <div className="user-portal-container">
-      <img className="user-portal-avatar" src={AvatarLogo} />
+      <h1 className="user-portal-title">{userPortalContent.pageTitle}</h1>
+      <img
+        className="user-portal-avatar"
+        src={AvatarLogo}
+        alt={userPortalContent.avatarAltText}
+      />
       <div className="user-portal-section">
         <input
-          type="text"
+          type="password"
           value={userPassword.oldPassword}
           onChange={(e) => handleChange(e)}
           className="user-portal-input"
           name="oldPassword"
-          placeholder="Enter Old Password"
+          placeholder={userPortalContent.oldPasswordPlaceholder}
           required
         />
         <input
-          type="text"
+          type="password"
           value={userPassword.newPassword}
           onChange={(e) => handleChange(e)}
           className="user-portal-input"
           name="newPassword"
-          placeholder="Enter New Password"
+          placeholder={userPortalContent.newPasswordPlaceholder}
           required
         />
         <input
           onClick={(e) => changePassword(e)}
           className="user-portal-submit"
           type="submit"
-          value="Change Password"
+          value={userPortalContent.buttonText}
         />
       </div>
     </div>

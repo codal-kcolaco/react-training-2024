@@ -4,6 +4,7 @@ import "./styles/PostJob.scss";
 import { postJob } from "./api";
 import { toast } from "react-toastify";
 import { JWT_COOKIE } from "./Constants";
+import { postJobContent, postJobTitle } from "./data/PostJobContent";
 
 const PostJob = () => {
   const navigate = useNavigate();
@@ -45,121 +46,67 @@ const PostJob = () => {
       });
   };
 
+  useEffect(() => {
+    if (!JWT_COOKIE) {
+      navigate("../login");
+    }
+  }, [navigate]);
+
   return JWT_COOKIE ? (
     <div className="post-job-container">
       <div className="post-job-title-container">
-        <h1 className="post-job-h1">Post a Job</h1>
-        <a href="my-jobs">Already posted a job?</a>
+        <h1 className="post-job-h1">{postJobTitle.postJobHeading}</h1>
+        <a href="my-jobs">{postJobTitle.myJobMessage}</a>
       </div>
       <form>
-        <div className="post-job-form-group">
-          <label htmlFor="job-title">Title of the Job</label>
-          <input
-            className="post-job-input"
-            type="text"
-            id="job-title"
-            value={jobDetails.jobTitle}
-            onChange={(e) => handleChange(e)}
-            name="jobTitle"
-            required
-          />
-        </div>
-        <div className="post-job-form-group">
-          <label htmlFor="job-type">
-            Type of the Job (Eg: Software Engineer, Human Resources)
-          </label>
-          <input
-            className="post-job-input"
-            type="text"
-            id="job-type"
-            value={jobDetails.jobType}
-            onChange={(e) => handleChange(e)}
-            name="jobType"
-            required
-          />
-        </div>
-        <div className="post-job-form-group">
-          <label htmlFor="job-technology">
-            Technology Required for the Job
-          </label>
-          <select
-            className="post-job-select"
-            type="text"
-            id="job-technology"
-            value={jobDetails.jobTechnology}
-            onChange={(e) => handleChange(e)}
-            name="jobTechnology"
-            required
-          >
-            <option value="PYTHON">Python</option>
-            <option value="GO">Go</option>
-            <option value="JAVASCRIPT">JavaScript</option>
-            <option value="JAVA">Java</option>
-            <option value="PHP">PHP</option>
-            <option value="C">C</option>
-            <option value="SWIFT">Swift</option>
-            <option value="SQL">SQL</option>
-            <option value="RUBY">Ruby</option>
-            <option value="RUST">Rust</option>
-          </select>
-        </div>
-        <div className="post-job-form-group">
-          <label htmlFor="job-salary">
-            Salary provided by you on per month basis
-          </label>
-          <input
-            className="post-job-input"
-            type="text"
-            id="job-salary"
-            value={jobDetails.jobSalary}
-            onChange={(e) => handleChange(e)}
-            name="jobSalary"
-          />
-        </div>
-        <div className="post-job-form-group">
-          <label htmlFor="job-experience">Years of experience required</label>
-          <input
-            className="post-job-input"
-            type="text"
-            id="job-experience"
-            value={jobDetails.jobExperience}
-            onChange={(e) => handleChange(e)}
-            name="jobExperience"
-          />
-        </div>
-        <div className="post-job-form-group">
-          <label htmlFor="job-location">Location of the Job</label>
-          <input
-            className="post-job-input"
-            type="text"
-            id="job-location"
-            value={jobDetails.jobLocation}
-            onChange={(e) => handleChange(e)}
-            name="jobLocation"
-            required
-          />
-        </div>
-        <div className="post-job-form-group">
-          <label htmlFor="description">Description of the Job</label>
-          <textarea
-            id="description"
-            name="jobDescription"
-            value={jobDetails.jobDescription}
-            onChange={(e) => handleChange(e)}
-            rows="5"
-            className="post-job-textarea"
-            required
-          ></textarea>
-        </div>
+        {postJobContent.map((input, index) => (
+          <div className="post-job-form-group" key={index}>
+            <label htmlFor={input.id}>{input.label}</label>
+            {input.type === "select" ? (
+              <select
+                className="post-job-select"
+                id={input.id}
+                value={jobDetails[input.name]}
+                onChange={handleChange}
+                name={input.name}
+                required={input.required}
+              >
+                {input.options.map((option, idx) => (
+                  <option key={idx} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            ) : input.type === "textarea" ? (
+              <textarea
+                id={input.id}
+                name={input.name}
+                value={jobDetails[input.name]}
+                onChange={handleChange}
+                rows={input.rows}
+                className="post-job-textarea"
+                required={input.required}
+                placeholder={input.placeholder}
+              ></textarea>
+            ) : (
+              <input
+                className="post-job-input"
+                type={input.type}
+                id={input.id}
+                value={jobDetails[input.name]}
+                onChange={handleChange}
+                name={input.name}
+                required={input.required}
+                placeholder={input.placeholder}
+              />
+            )}
+          </div>
+        ))}
         <button type="submit" className="post-job-submit" onClick={postAJob}>
           Post the Job
         </button>
       </form>
     </div>
-  ) : (
-    useEffect(() => {
-      navigate("../login");
-    }, [])
-  );
+  ) : null;
 };
 export default PostJob;

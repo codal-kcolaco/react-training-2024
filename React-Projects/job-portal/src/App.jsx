@@ -31,13 +31,13 @@ function App() {
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/post-job" element={<PostJob />} />
         <Route path="/my-jobs" element={<MyJobs />} />
-        <Route path="/my-jobs/edit" element={<EditJob />} />
+        <Route path="/my-jobs/edit/:id" element={<EditJob />} />
         <Route
-          path="/my-jobs/applications"
+          path="/my-jobs/applications/:id"
           element={<ViewApplicationsEmployers />}
         />
         <Route path="/job-view" element={<JobView />} />
-        <Route path="/job-description" element={<JobDescription />} />
+        <Route path="/job-description/:id" element={<JobDescription />} />
         <Route path="/my-applications" element={<MyApplications />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />

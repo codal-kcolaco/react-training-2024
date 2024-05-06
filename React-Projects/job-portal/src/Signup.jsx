@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./styles/Signup.scss";
 import { registerUser } from "./api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import signUpContent, { signUpError } from "./data/SignUpContent";
 
 function Signup() {
   const [userDetails, setUserDetails] = useState({
     fullname: "",
     email: "",
     password: "",
+    confirm_password: "",
   });
   const navigate = useNavigate();
 
@@ -24,65 +26,38 @@ function Signup() {
     event.preventDefault();
 
     if (userDetails.password !== userDetails.confirm_password) {
-      alert("Passwords do not match");
+      alert(signUpError.passwordErrorMessage);
       return;
     }
 
     registerUser(userDetails.fullname, userDetails.email, userDetails.password)
       .then(() => {
-        toast.success("Registration successful");
+        toast.success(signUpError.registrationSuccessfulMessage);
         navigate("/login");
       })
       .catch((error) => {
-        toast.error(`${error}. Please try again.`);
+        toast.error(`${error}. ${signUpError.tryAgainLaterMessage}`);
       });
   };
 
   return (
     <div className="signup-class">
-      <div class="signup-container">
+      <div className="signup-container">
         <h2>Register</h2>
         <form id="registrationForm">
-          <input
-            type="text"
-            name="fullname"
-            id="fullname"
-            value={userDetails.fullname}
-            onChange={(e) => handleChange(e)}
-            className="signup-fullname"
-            placeholder="Your Name / Company Name"
-            required
-          />
-          <input
-            type="email"
-            id="email"
-            value={userDetails.email}
-            onChange={(e) => handleChange(e)}
-            name="email"
-            className="signup-email"
-            placeholder="Email Address"
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            id="password"
-            value={userDetails.password}
-            onChange={(e) => handleChange(e)}
-            className="signup-password"
-            placeholder="Password"
-            required
-          />
-          <input
-            type="password"
-            name="confirm_password"
-            id="confirm_password"
-            value={userDetails.confirm_password}
-            onChange={(e) => handleChange(e)}
-            className="signup-confirm-password"
-            placeholder="Confirm Password"
-            required
-          />
+          {signUpContent.map((field) => (
+            <input
+              key={field.name}
+              type={field.type}
+              name={field.name}
+              id={field.name}
+              value={userDetails[field.name]}
+              onChange={(e) => handleChange(e)}
+              className={`signup-${field.name}`}
+              placeholder={field.placeholder}
+              required={field.required}
+            />
+          ))}
           <input
             type="submit"
             className="signup-submit"

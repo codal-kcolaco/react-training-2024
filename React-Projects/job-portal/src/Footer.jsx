@@ -1,16 +1,18 @@
 import React from "react";
 import "./styles/Footer.scss";
+import { footerLink, footerContent } from "./data/FooterContent";
 
 function Footer() {
   return (
     <footer className="footer-container">
       <div className="footer-content">
-        <p>&copy; 2024 Job Portal. All rights reserved.</p>
+        <p>&copy; {footerContent.footerDesc}</p>
         <div className="footer-links">
-          <a href="about-us">About Us</a>
-          <a href="privacy-policy">Privacy Policy</a>
-          <a href="terms-and-conditions">Terms and Conditions</a>
-          <a href="contact">Contact</a>
+          {footerLink.map((link) => (
+            <a key={link.id} href={link.href}>
+              {link.text}
+            </a>
+          ))}
         </div>
       </div>
     </footer>
