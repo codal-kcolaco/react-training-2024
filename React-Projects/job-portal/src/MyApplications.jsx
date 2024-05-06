@@ -3,11 +3,17 @@ import "./styles/MyApplications.scss";
 import { fetchMyApplications } from "./api.js";
 import { useNavigate } from "react-router-dom";
 import lodash from "lodash";
-import { JWT_COOKIE } from "./Constants.jsx";
+import { JWT_COOKIE, convertToDate } from "./Constants.jsx";
 import { toast } from "react-toastify";
 import noJobLogo from "./assets/people.png";
 
 const MyApplicationCard = ({ myApplication }) => {
+  const applicationStatusColorMap = {
+    ACCEPTED: "green",
+    REJECTED: "red",
+    PENDING: "orange",
+  };
+
   return (
     <li>
       <div className="application">
@@ -18,21 +24,21 @@ const MyApplicationCard = ({ myApplication }) => {
               <strong>Cover letter:</strong> {myApplication.cover_letter}
             </p>
             <p>
-              <strong>Job title:</strong> {myApplication.job_title}
+              <strong>Job title:</strong> {myApplication.job_title}{" "}
+              <a href={`../job-description?id=${myApplication.job}`}>
+                view job
+              </a>
             </p>
             <p>
-              <strong>Applied at:</strong> {`${myApplication.applied_at}`}
+              <strong>Applied at:</strong>{" "}
+              {convertToDate(myApplication.applied_at)}
             </p>
           </div>
           <div
             className="status-container"
             style={{
               backgroundColor:
-                myApplication.is_selected == "ACCEPTED"
-                  ? "green"
-                  : myApplication.is_selected == "REJECTED"
-                  ? "red"
-                  : "orange",
+                applicationStatusColorMap[myApplication.is_selected],
             }}
           >
             {myApplication.is_selected}

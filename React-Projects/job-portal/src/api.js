@@ -9,6 +9,7 @@ import {
   GET_SINGLE_JOB_EMPLOYER_URL,
   JWT_COOKIE,
   GET_SINGLE_JOB_APPLICATION_URL,
+  CHANGE_PASSWORD_URL,
 } from "./Constants";
 
 export const registerUser = async (fullname, email, password) => {
@@ -311,6 +312,34 @@ export const applyStatusForJob = async (jobId, coverLetter) => {
     if (error.response && error.response.data) {
       if (error.response.data.job) {
         throw new Error(error.response.data.job[0]);
+      }
+    } else {
+      throw new Error("Network response is not ok");
+    }
+  }
+};
+
+export const changePasswordUser = async (oldPassword, newPassword) => {
+  try {
+    const response = await axios.post(
+      CHANGE_PASSWORD_URL,
+      {
+        old_password: oldPassword,
+        new_password: newPassword,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: JWT_COOKIE,
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data) {
+      if (error.response.data.detail) {
+        throw new Error(error.response.data.detail);
       }
     } else {
       throw new Error("Network response is not ok");

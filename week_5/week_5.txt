@@ -17,3 +17,12 @@
     Connected it with the backend, now the employers can accept and reject applications 
     Create the filter and search functionality in the frontend
     Learn about Reactlifecycle
+
+3 MAY    
+    Reading Javascript and React documentation to brush up the concepts for tomorrows presentation
+    Learned about the useEffect and how to works with Lifecycle methods
+    Created the user profile page for password change 
+    Created the about us page
+    Created the tnc and privacy policy page
+    Created the contact us page
+    Doing some changes for the presentation ahead in college

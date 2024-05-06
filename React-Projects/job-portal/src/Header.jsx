@@ -3,9 +3,11 @@ import "./styles/Header.scss";
 import CJPLogo from "./assets/cjp-logo.png";
 import AvatarLogo from "./assets/avatar.png";
 import { JWT_COOKIE } from "./Constants";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoggedIn(!!JWT_COOKIE);
@@ -37,9 +39,6 @@ function Header() {
             <li>
               <a href="/my-applications/">My Applications</a>
             </li>
-            <li>
-              <a href="#">Contact</a>
-            </li>
           </ul>
         </nav>
       </div>
@@ -55,7 +54,14 @@ function Header() {
       )}
       {isLoggedIn && (
         <div className="user-avatar-container">
-          <img className="user-avatar" src={AvatarLogo} alt="" />
+          <img
+            onClick={() => {
+              navigate("user-portal");
+            }}
+            className="user-avatar"
+            src={AvatarLogo}
+            alt=""
+          />
           <a
             className="logout-button"
             id="logout-button"

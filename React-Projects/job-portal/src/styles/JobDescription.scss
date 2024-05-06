@@ -15,14 +15,6 @@
     justify-content: flex-start;
     gap: 20px;
 
-    img {
-      max-width: 30%;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      height: 100px;
-      width: 200px;
-    }
-
     h1 {
       font-size: 20px;
     }
@@ -138,12 +130,6 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   text-align: left;
-
-  img.tech-img {
-    margin-bottom: 0px;
-    height: 16px;
-    width: 16px;
-  }
 }
 
 .loading-spinner-container {

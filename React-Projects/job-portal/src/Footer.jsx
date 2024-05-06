@@ -7,9 +7,10 @@ function Footer() {
       <div className="footer-content">
         <p>&copy; 2024 Job Portal. All rights reserved.</p>
         <div className="footer-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Contact Us</a>
+          <a href="about-us">About Us</a>
+          <a href="privacy-policy">Privacy Policy</a>
+          <a href="terms-and-conditions">Terms and Conditions</a>
+          <a href="contact">Contact</a>
         </div>
       </div>
     </footer>

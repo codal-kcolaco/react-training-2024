@@ -42,12 +42,13 @@ const JobDescriptionCard = () => {
       <div className="job-description-card" id="job-description-card">
         <div className="job-description-title-container">
           <h1>{jobData.job_name}</h1>
-          <h1>({jobData.job_type})</h1>
+          <h1>({jobData.job_technology})</h1>
         </div>
         <div className="job-employer-detail">
           <h3>{jobData.user.name}</h3>
           <p>
-            {jobData.job_salary} INR | {jobData.job_location}
+            {jobData.job_salary} INR | {jobData.job_location} |{" "}
+            {jobData.job_type}
           </p>
           <p>{jobData.job_experience} years of experience required</p>
         </div>
