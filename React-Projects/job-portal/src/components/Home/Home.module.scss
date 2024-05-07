@@ -1,5 +1,5 @@
 .banner {
-  background-image: url(".../../assets/background.jpg");
+  background-image: url("../../assets/background.jpg");
   background-size: cover;
   background-position: center;
   color: #fff;
@@ -111,19 +111,19 @@
   }
 }
 
-.job-search-home-container {
+.container {
   margin: 100px;
 
   h1 {
     margin-bottom: 10px;
   }
 
-  .job-search-home-bar-container {
+  .bar-container {
     margin: 50px;
     display: flex;
     align-items: center;
 
-    .job-search-home-bar {
+    .bar {
       flex: 1;
       height: 57px;
       padding-left: 20px;
@@ -138,7 +138,7 @@
       }
     }
 
-    .search-home-button {
+    .search-button {
       min-height: 57px;
       width: 58px;
       border: 1px solid lightgray;
@@ -151,13 +151,13 @@
       position: relative;
     }
 
-    .search-home-icon {
+    .search-icon {
       height: 25px;
     }
   }
 }
 
-.job-list-home-section {
+.job-list-section {
   margin: 200px 150px;
 
   &-grid {
@@ -169,7 +169,7 @@
 }
 
 @media only screen and (max-width: 1300px) {
-  .job-list-home-section {
+  .job-list-section {
     margin: 200px 150px;
 
     &-grid {
@@ -182,7 +182,7 @@
 }
 
 @media only screen and (max-width: 830px) {
-  .job-list-home-section {
+  .job-list-section {
     margin: 200px 150px;
 
     &-grid {
@@ -194,7 +194,7 @@
   }
 }
 
-.home-chip {
+.chip {
   border: 1px solid lightgray;
   display: flex;
   justify-content: space-evenly;

@@ -1,21 +1,22 @@
-$job-application-employer-margin-top: 180px;
+$margin-top: 180px;
 
-.job-application-employer-container {
-  margin: $job-application-employer-margin-top 20px;
+.container {
+  margin: $margin-top 20px;
 
-  .job-application-employer-list-container {
+  .list-container {
     padding: 20px;
+    text-align: left;
 
-    #job-application-employer-list {
+    #job-list {
       list-style-type: none;
     }
 
-    .job-application-employer-heading {
+    .heading {
       text-align: center;
       color: #333;
     }
 
-    .application {
+    .job {
       border-bottom: 1px solid #ccc;
       padding: 15px 0;
       transition: background-color 0.3s;
@@ -34,35 +35,32 @@ $job-application-employer-margin-top: 180px;
         color: #666;
       }
 
-      .application-container {
+      .job-container {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
 
-        .application-info {
-          text-align: left;
-        }
-
-        .accept-button,
-        .reject-button {
+        .edit-button,
+        .delete-button,
+        .view-application-button {
           margin-left: 10px;
           padding: 8px 12px;
           border: none;
           border-radius: 4px;
           cursor: pointer;
+          text-decoration: none;
         }
 
-        .accept-button {
+        .edit-button {
           background-color: #007bff;
           color: #fff;
-          text-decoration: none;
 
           &:hover {
             background-color: #0056b3;
           }
         }
 
-        .reject-button {
+        .delete-button {
           background-color: #dc3545;
           color: #fff;
 
@@ -70,14 +68,29 @@ $job-application-employer-margin-top: 180px;
             background-color: #bd2130;
           }
         }
-      }
-      .job-application-button-confirm-container {
-        padding: 10px;
-        align-items: center;
-        border-radius: 10px;
-        margin: 25px;
-        color: white;
+
+        .view-application-button {
+          background-color: #29cc1b;
+          color: #fff;
+
+          &:hover {
+            background-color: #5ea013;
+          }
+        }
       }
     }
+  }
+}
+
+.empty-list-container {
+  text-align: center;
+  .empty-list-img {
+    margin-top: 20px;
+    height: 100px;
+    width: 100px;
+  }
+
+  .empty-list-message {
+    margin-top: 20px;
   }
 }

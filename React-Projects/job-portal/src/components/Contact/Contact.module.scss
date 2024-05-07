@@ -1,11 +1,11 @@
-.contact-class {
-  background-image: url(".../../assets/background.jpg");
+.class {
+  background-image: url("../../assets/background.jpg");
   background-size: cover;
   display: flex;
   justify-content: center;
 }
 
-.contact-container {
+.container {
   margin: 200px 0px;
   background-color: rgb(129, 183, 253);
   border-radius: 10px;
@@ -20,10 +20,10 @@
     color: white;
   }
 
-  .contact-fullname,
-  .contact-email,
-  .contact-address,
-  .contact-issue {
+  .fullname,
+  .email,
+  .address,
+  .issue {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -33,7 +33,7 @@
     font-size: 16px;
   }
 
-  .contact-submit {
+  .submit {
     width: 100%;
     background-color: #0972e3;
     margin-top: 50px;

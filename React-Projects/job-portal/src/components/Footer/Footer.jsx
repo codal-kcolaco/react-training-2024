@@ -1,13 +1,13 @@
 import React from "react";
-import "./Footer.scss";
+import styles from "./Footer.module.scss";
 import { footerLink, footerContent } from "../../data/FooterContent";
 
 function Footer() {
   return (
-    <footer className="footer-container">
-      <div className="footer-content">
+    <footer className={styles["container"]}>
+      <div className={styles["content"]}>
         <p>&copy; {footerContent.footerDesc}</p>
-        <div className="footer-links">
+        <div className={styles["links"]}>
           {footerLink.map((link) => (
             <a key={link.id} href={link.href}>
               {link.text}

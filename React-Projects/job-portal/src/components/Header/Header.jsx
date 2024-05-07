@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Header.scss";
+import styles from "./Header.module.scss";
 import CJPLogo from "../../assets/cjp-logo.png";
 import AvatarLogo from "../../assets/avatar.png";
 import { JWT_COOKIE } from "../../Constants";
@@ -21,13 +21,13 @@ function Header() {
   };
 
   return (
-    <header className="nav-header">
-      <div className="nav-wrapper">
+    <header className={styles["header"]}>
+      <div className={styles["wrapper"]}>
         <a href="/">
           <img loading="lazy" src={CJPLogo} alt="" />
         </a>
-        <nav className="nav-list">
-          <ul className="nav-unordered-list">
+        <nav className={styles["list"]}>
+          <ul className={styles["unordered-list"]}>
             {navItems.map((item, index) => (
               <li key={index}>
                 <a href={item.link}>{item.text}</a>
@@ -37,27 +37,27 @@ function Header() {
         </nav>
       </div>
       {!isLoggedIn && (
-        <div className="nav-button-wrapper">
-          <a href="signup" className="sign-up-button">
+        <div className={styles["button-wrapper"]}>
+          <a href="signup" className={styles["sign-up-button"]}>
             {navContent.signUp}
           </a>
-          <a href="login" className="login-button">
+          <a href="login" className={styles["login-button"]}>
             {navContent.login}
           </a>
         </div>
       )}
       {isLoggedIn && (
-        <div className="user-avatar-container">
+        <div className={styles["user-avatar-container"]}>
           <img
             onClick={() => {
               navigate("user-portal");
             }}
-            className="user-avatar"
+            className={styles["user-avatar"]}
             src={AvatarLogo}
             alt=""
           />
           <a
-            className="logout-button"
+            className={styles["logout-button"]}
             id="logout-button"
             onClick={handleLogout}
           >

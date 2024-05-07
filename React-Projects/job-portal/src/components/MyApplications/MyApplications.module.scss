@@ -1,17 +1,17 @@
-$my-applications-margin-top: 180px;
+$margin-top: 180px;
 
-.my-applications-container {
-  margin: $my-applications-margin-top 20px;
+.container {
+  margin: $margin-top 20px;
 
-  .my-applications-list-container {
+  .list-container {
     padding: 20px;
     text-align: left;
 
-    #application-list {
+    .list {
       list-style-type: none;
     }
 
-    .my-applications-heading {
+    .heading {
       text-align: center;
       color: #333;
     }
@@ -50,5 +50,18 @@ $my-applications-margin-top: 180px;
         }
       }
     }
+  }
+}
+
+.empty-list-container {
+  text-align: center;
+  .empty-list-img {
+    margin-top: 20px;
+    height: 100px;
+    width: 100px;
+  }
+
+  .empty-list-message {
+    margin-top: 20px;
   }
 }

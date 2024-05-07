@@ -1,11 +1,10 @@
-const privacyPolicyContent = [
-  {
-    heading: "Privacy Policy",
-    content: [
-      "Welcome to CJP's Privacy Policy page!",
-      "This Privacy Policy describes how CJP ('we', 'us', or 'our') collects, uses, and shares information when you use our website or services.",
-    ],
-  },
+export const privacyPolicyTitle = {
+  heading: "Privacy Policy",
+  content:
+    "Welcome to CJP's Privacy Policy page! This Privacy Policy describes how CJP ('we', 'us', or 'our') collects, uses, and shares information when you use our website or services.",
+};
+
+export const privacyPolicyContent = [
   {
     heading: "Information We Collect",
     content: [
@@ -47,5 +46,3 @@ const privacyPolicyContent = [
     ],
   },
 ];
-
-export default privacyPolicyContent;

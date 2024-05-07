@@ -1,26 +1,26 @@
-.user-portal-container {
+.container {
   margin: 200px 0px;
 
-  .user-portal-avatar {
+  .avatar {
     height: 100px;
     background-color: #ccc;
     border-radius: 10px;
     margin-bottom: 20px;
   }
 
-  .user-portal-section {
+  .section {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    .user-portal-input {
+    .input {
       padding: 10px;
       margin-bottom: 20px;
       border: 2px solid gainsboro;
       border-radius: 5px;
     }
 
-    .user-portal-submit {
+    .submit {
       background-color: #0972e3;
       margin-top: 20px;
       color: white;

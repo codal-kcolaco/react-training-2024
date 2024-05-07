@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-
-import "./Jobs.scss";
+import styles from "./Jobs.module.scss";
 import { fetchJobs } from "../../api/api";
 import noJobLogo from "../../assets/people.png";
+import jobSearchLogo from "../../assets/job-search.png";
 import lodash from "lodash";
 import { Link } from "react-router-dom";
 import {
@@ -16,13 +16,13 @@ const JobCardPython = ({ job }) => {
   const { pk, user, job_name, job_type, job_description, job_salary } = job;
 
   return (
-    <div className="job-card">
+    <div className={styles["card"]}>
       <Link to={`../job-description/${pk}`}>
-        <div className="chip">
-          <div className="chip-img">
-            <img src="../../assets/job-search.png" alt={user.name} />
+        <div className={styles["chip"]}>
+          <div className={styles["chip-img"]}>
+            <img src={jobSearchLogo} alt={user.name} />
           </div>
-          <div className="chip-description">
+          <div className={styles["chip-description"]}>
             <h3>{job_name}</h3>
             <p>{user.name}</p>
           </div>
@@ -78,14 +78,14 @@ function Jobs() {
   const filteredJobData = applyFilters();
 
   return (
-    <div className="job-list-container">
-      <section className="job-filter-section">
+    <div className={styles["list-container"]}>
+      <section className={styles["filter-section"]}>
         <h1>{jobsContent.jobFilterTitle}</h1>
         <hr />
         <h4>{jobsContent.jobTechnologyTitle}</h4>
-        <div className="filter-container">
+        <div className={styles["filter-container"]}>
           {TECHNOLOGIES.map((tech) => (
-            <div key={tech.id} className="filter-checkbox">
+            <div key={tech.id} className={styles["filter-checkbox"]}>
               <input
                 type="checkbox"
                 id={tech.id}
@@ -100,9 +100,9 @@ function Jobs() {
           ))}
         </div>
         <h4>Location</h4>
-        <div className="filter-container">
+        <div className={styles["filter-container"]}>
           {LOCATIONS.map((location) => (
-            <div key={location.id} className="filter-checkbox">
+            <div key={location.id} className={styles["filter-checkbox"]}>
               <input
                 type="checkbox"
                 id={location.id}
@@ -115,10 +115,10 @@ function Jobs() {
           ))}
         </div>
       </section>
-      <section className="job-list-section">
-        <div className="job-search-container">
+      <section className={styles["list-section"]}>
+        <div className={styles["search-container"]}>
           <input
-            className="job-search-input"
+            className={styles["search-input"]}
             type="text"
             placeholder={jobsContent.jobSearchPlaceholer}
             value={search}
@@ -126,15 +126,19 @@ function Jobs() {
           />
           <h1>{jobsContent.jobTitle}</h1>
         </div>
-        <div className="job-list-section-grid">
+        <div className={styles["list-section-grid"]}>
           {!lodash.isEmpty(filteredJobData) ? (
             filteredJobData.map((job, index) => (
               <JobCardPython key={index} job={job} />
             ))
           ) : (
-            <div className="empty-list-container">
-              <img className="empty-list-img" src={noJobLogo} alt="people" />
-              <p className="empty-list-message">
+            <div className={styles["empty-list-container"]}>
+              <img
+                className={styles["empty-list-img"]}
+                src={noJobLogo}
+                alt="people"
+              />
+              <p className={styles["empty-list-message"]}>
                 {jobsContent.jobEmptyMessage}
               </p>
             </div>

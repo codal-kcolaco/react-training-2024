@@ -3,7 +3,7 @@ export const editJobContent = [
     type: "text",
     id: "job-title",
     name: "jobTitle",
-
+    value: "job_name",
     label: "Title of the Job",
     required: true,
   },
@@ -11,7 +11,7 @@ export const editJobContent = [
     type: "text",
     id: "job-type",
     name: "jobType",
-
+    value: "job_type",
     label: "Type of the Job (Eg: Software Engineer, Human Resources)",
     required: true,
   },
@@ -19,6 +19,7 @@ export const editJobContent = [
     type: "select",
     id: "job-technology",
     name: "jobTechnology",
+    value: "job_technology",
     label: "Technology Required for the Job",
     options: [
       "Python",
@@ -38,21 +39,21 @@ export const editJobContent = [
     type: "text",
     id: "job-salary",
     name: "jobSalary",
-
+    value: "job_salary",
     label: "Salary provided by you on per month basis",
   },
   {
     type: "text",
     id: "job-experience",
     name: "jobExperience",
-
+    value: "job_experience",
     label: "Years of experience required",
   },
   {
     type: "text",
     id: "job-location",
     name: "jobLocation",
-
+    value: "job_location",
     label: "Location of the Job",
     required: true,
   },
@@ -60,7 +61,7 @@ export const editJobContent = [
     type: "textarea",
     id: "description",
     name: "jobDescription",
-
+    value: "job_description",
     label: "Description of the Job",
     rows: 5,
     required: true,

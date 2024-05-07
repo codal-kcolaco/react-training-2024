@@ -1,16 +1,16 @@
-.job-description-container {
+.container {
   margin-top: 100px;
   padding: 0 10px;
 }
 
-.job-description-card {
+.card {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 60px;
   margin: 20px;
 
-  .job-description-title-container {
+  .title-container {
     display: flex;
     justify-content: flex-start;
     gap: 20px;
@@ -47,14 +47,14 @@
     }
   }
 
-  .job-description-info-container {
+  .info-container {
     text-align: left;
     margin-top: 50px;
-    .job-description-info-title {
+    .info-title {
       font-size: 18px;
     }
 
-    .job-description-info-para {
+    .info-para {
       margin-top: 10px;
       color: gray;
       white-space: pre-wrap;
@@ -62,7 +62,7 @@
   }
 }
 
-.job-description-apply {
+.apply {
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -86,7 +86,7 @@
     margin-bottom: 10px;
   }
 
-  .job-description-apply-button {
+  .apply-button {
     background-color: red;
     color: white;
     padding: 5px 15px;
@@ -107,7 +107,7 @@
     }
   }
 
-  .job-description-applied-button {
+  .applied-button {
     background-color: green;
     color: white;
     padding: 5px 15px;
@@ -124,7 +124,7 @@
   }
 }
 
-.job-description-overview {
+.overview {
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);

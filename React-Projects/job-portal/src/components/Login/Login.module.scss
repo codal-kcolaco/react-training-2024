@@ -1,12 +1,12 @@
-.signup-class {
-  background-image: url(".../../assets/background.jpg");
+.class {
+  background-image: url("../../assets/background.jpg");
   background-size: cover;
   display: flex;
   justify-content: center;
 }
 
-.signup-container {
-  margin: 200px 0px;
+.container {
+  margin: 300px 0px;
   background-color: rgb(129, 183, 253);
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -20,10 +20,8 @@
     color: white;
   }
 
-  .signup-fullname,
-  .signup-email,
-  .signup-password,
-  .signup-confirm-password {
+  .email,
+  .password {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -33,11 +31,11 @@
     font-size: 16px;
   }
 
-  .signup-submit {
+  .submit {
     width: 100%;
     background-color: #0972e3;
     margin-top: 50px;
-    color: #d3d3d3;
+    color: white;
     border: none;
     border-radius: 5px;
     padding: 15px 0;

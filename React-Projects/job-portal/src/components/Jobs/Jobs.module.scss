@@ -1,20 +1,20 @@
-.job-list-container {
+.list-container {
   display: flex;
 }
 
-.job-search-container {
+.search-container {
   display: flex;
   gap: 120px;
   margin: 0px;
 }
 
-.job-search-input {
+.search-input {
   padding-left: 10px;
   border-radius: 10px;
   border: 1px solid black;
 }
 
-.job-filter-section {
+.filter-section {
   border: 1px solid lightgray;
   padding: 40px;
   border-radius: 10px;
@@ -42,11 +42,11 @@
   }
 }
 
-.job-list-section {
+.list-section {
   flex: 2;
   margin: 200px 150px;
 
-  .job-list-section-grid {
+  .list-section-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin: 50px 0px;
@@ -61,7 +61,7 @@
     }
   }
 
-  .job-card a {
+  .card a {
     text-decoration: none;
   }
 }
@@ -107,5 +107,18 @@
     i {
       font-size: 10px;
     }
+  }
+}
+
+.empty-list-container {
+  text-align: center;
+  .empty-list-img {
+    margin-top: 20px;
+    height: 100px;
+    width: 100px;
+  }
+
+  .empty-list-message {
+    margin-top: 20px;
   }
 }

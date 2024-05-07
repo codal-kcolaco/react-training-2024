@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./UserPortal.scss";
+import styles from "./UserPortal.module.scss";
 import AvatarLogo from "../../assets/avatar.png";
 import { changePasswordUser } from "../../api/api";
 import { toast } from "react-toastify";
@@ -32,19 +32,19 @@ export const UserPortal = () => {
   };
 
   return (
-    <div className="user-portal-container">
-      <h1 className="user-portal-title">{userPortalContent.pageTitle}</h1>
+    <div className={styles["container"]}>
+      <h1 className={styles["title"]}>{userPortalContent.pageTitle}</h1>
       <img
-        className="user-portal-avatar"
+        className={styles["avatar"]}
         src={AvatarLogo}
         alt={userPortalContent.avatarAltText}
       />
-      <div className="user-portal-section">
+      <div className={styles["section"]}>
         <input
           type="password"
           value={userPassword.oldPassword}
           onChange={(e) => handleChange(e)}
-          className="user-portal-input"
+          className={styles["input"]}
           name="oldPassword"
           placeholder={userPortalContent.oldPasswordPlaceholder}
           required
@@ -53,14 +53,14 @@ export const UserPortal = () => {
           type="password"
           value={userPassword.newPassword}
           onChange={(e) => handleChange(e)}
-          className="user-portal-input"
+          className={styles["input"]}
           name="newPassword"
           placeholder={userPortalContent.newPasswordPlaceholder}
           required
         />
         <input
           onClick={(e) => changePassword(e)}
-          className="user-portal-submit"
+          className={styles["submit"]}
           type="submit"
           value={userPortalContent.buttonText}
         />

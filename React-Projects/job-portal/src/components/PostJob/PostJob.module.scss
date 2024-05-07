@@ -1,65 +1,65 @@
-$post-job-margin-top: 150px;
-$post-job-color: #333;
-$post-job-border-color: #ccc;
-$post-job-primary-color: #007bff;
+$margin-top: 150px;
+$color: #333;
+$border-color: #ccc;
+$primary-color: #007bff;
 
-.post-job-container {
-  margin-top: $post-job-margin-top;
+.container {
+  margin-top: $margin-top;
   background-color: #fff;
   padding: 30px;
   border-radius: 0;
   box-shadow: none;
   text-align: left;
 
-  .post-job-h1 {
-    color: $post-job-color;
+  .h1 {
+    color: $color;
     margin-bottom: 50px;
   }
 
-  .post-job-title-container {
+  .title-container {
     display: flex;
     justify-content: space-between;
   }
 
-  .post-job-form-group {
+  .form-group {
     margin-bottom: 25px;
 
-    .post-job-label {
+    .label {
       display: block;
       font-weight: bold;
       color: #555;
     }
 
-    .post-job-select,
-    input[type="text"].post-job-input,
-    textarea.post-job-textarea {
+    .select,
+    input[type="text"].input,
+    textarea.textarea {
       width: calc(100% - 24px);
       padding: 12px;
       font-size: 16px;
-      border: 1px solid $post-job-border-color;
+      border: 1px solid $border-color;
       border-radius: 5px;
       transition: border-color 0.3s ease;
 
       &:focus {
         outline: none;
-        border-color: $post-job-primary-color;
+        border-color: $primary-color;
       }
     }
   }
 
-  button[type="submit"].post-job-submit {
+  button[type="submit"].submit {
     display: block;
     padding: 12px;
     font-size: 18px;
     color: #fff;
-    background-color: $post-job-primary-color;
+    background-color: $primary-color;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: darken($post-job-primary-color, 10%);
+      background-color: darken($primary-color, 10%);
     }
   }
 }
