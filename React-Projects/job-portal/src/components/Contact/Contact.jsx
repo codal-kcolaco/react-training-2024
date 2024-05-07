@@ -4,10 +4,10 @@ import contactContent from "../../data/ContactContent";
 
 function Contact() {
   return (
-    <div className={styles["class"]}>
-      <div className={styles["container"]}>
+    <div className={styles.class}>
+      <div className={styles.container}>
         <h2>Contact Us</h2>
-        <form id={styles["form"]}>
+        <form id={styles.form}>
           {contactContent.map((input) => (
             <input
               key={input.id}
@@ -19,7 +19,7 @@ function Contact() {
               required={input.required}
             />
           ))}
-          <input type="submit" className={styles["submit"]} value="Contact" />
+          <input type="submit" className={styles.submit} value="Contact" />
         </form>
       </div>
     </div>

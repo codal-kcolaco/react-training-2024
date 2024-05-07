@@ -41,8 +41,8 @@ function Signup() {
   };
 
   return (
-    <div className={styles["class"]}>
-      <div className={styles["container"]}>
+    <div className={styles.class}>
+      <div className={styles.container}>
         <h2>Register</h2>
         <form id="registrationForm">
           {signUpContent.map((field) => (
@@ -60,7 +60,7 @@ function Signup() {
           ))}
           <input
             type="submit"
-            className={styles["submit"]}
+            className={styles.submit}
             value="Register"
             onClick={registrationForm}
           />

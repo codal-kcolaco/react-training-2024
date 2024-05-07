@@ -21,9 +21,9 @@ const JobApplicationEmployerCard = ({ jobApplication }) => {
 
   return (
     <li>
-      <div className={styles["application"]}>
-        <div className={styles["application-container"]}>
-          <div className={styles["application-info"]}>
+      <div className={styles.application}>
+        <div className={styles.applicationContainer}>
+          <div className={styles.applicationInfo}>
             <h2>{jobApplication.applicant}</h2>
             <p>
               <strong>{viewApplicationEmployersInfo.appliedAt}</strong>{" "}
@@ -39,15 +39,15 @@ const JobApplicationEmployerCard = ({ jobApplication }) => {
             </p>
           </div>
           {isSelected === "PENDING" && (
-            <div className={styles["view-application-employers-buttons"]}>
+            <div className={styles.viewApplicationEmployersButtons}>
               <button
-                className={styles["accept-button"]}
+                className={styles.acceptButton}
                 onClick={() => selectApplicant("ACCEPTED")}
               >
                 {viewApplicationEmployersInfo.acceptMessage}
               </button>
               <button
-                className={styles["reject-button"]}
+                className={styles.rejectButton}
                 onClick={() => selectApplicant("REJECTED")}
               >
                 {viewApplicationEmployersInfo.rejectMessage}
@@ -55,7 +55,7 @@ const JobApplicationEmployerCard = ({ jobApplication }) => {
             </div>
           )}
           <div
-            className={styles["button-confirm-container"]}
+            className={styles.buttonConfirmContainer}
             style={{
               display: isSelected !== "PENDING" ? "flex" : "none",
               backgroundColor: isSelected === "ACCEPTED" ? "green" : "red",
@@ -94,13 +94,13 @@ export const ViewApplicationsEmployers = () => {
   }, []);
 
   return (
-    <div className={styles["container"]}>
-      <h1 className={styles["heading"]}>
+    <div className={styles.container}>
+      <h1 className={styles.heading}>
         {viewApplicationEmployersInfo.jobApplicationHeading}
       </h1>
-      <div className={styles["list-container"]}>
+      <div className={styles.listContainer}>
         {!lodash.isEmpty(jobApplication) ? (
-          <ul id={styles["list"]}>
+          <ul id={styles.list}>
             {jobApplication.map((jobApplication, index) => (
               <JobApplicationEmployerCard
                 key={index}
@@ -109,13 +109,9 @@ export const ViewApplicationsEmployers = () => {
             ))}
           </ul>
         ) : (
-          <div className={styles["empty-list-container"]}>
-            <img
-              className={styles["empty-list-img"]}
-              src={noJobLogo}
-              alt="people"
-            />
-            <p className={styles["empty-list-message"]}>
+          <div className={styles.emptyListContainer}>
+            <img className={styles.emptyListImg} src={noJobLogo} alt="people" />
+            <p className={styles.emptyListMessage}>
               {viewApplicationEmployersInfo.jobApplicationEmptyMessage}
             </p>
           </div>

@@ -10,7 +10,7 @@
   padding: 60px;
   margin: 20px;
 
-  .title-container {
+  .titleContainer {
     display: flex;
     justify-content: flex-start;
     gap: 20px;
@@ -20,7 +20,7 @@
     }
   }
 
-  .job-employer-detail {
+  .jobEmployerDetail {
     h3,
     p {
       text-align: left;
@@ -47,14 +47,14 @@
     }
   }
 
-  .info-container {
+  .infoContainer {
     text-align: left;
     margin-top: 50px;
-    .info-title {
+    .infoTitle {
       font-size: 18px;
     }
 
-    .info-para {
+    .infoPara {
       margin-top: 10px;
       color: gray;
       white-space: pre-wrap;
@@ -71,14 +71,14 @@
   flex-direction: column;
   align-items: center;
 
-  &-title {
+  &Title {
     font-size: 24px;
     margin-bottom: 10px;
     color: #333;
     font-weight: bold;
   }
 
-  &-input {
+  &Input {
     width: 80%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -86,7 +86,7 @@
     margin-bottom: 10px;
   }
 
-  .apply-button {
+  .applyButton {
     background-color: red;
     color: white;
     padding: 5px 15px;
@@ -107,7 +107,7 @@
     }
   }
 
-  .applied-button {
+  .appliedButton {
     background-color: green;
     color: white;
     padding: 5px 15px;
@@ -132,13 +132,13 @@
   text-align: left;
 }
 
-.loading-spinner-container {
+.loadingSpinnerContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
 
-  .loading-spinner {
+  .loadingSpinner {
     border: 6px solid rgba(0, 0, 0, 0.1);
     border-left-color: #333;
     border-radius: 50%;

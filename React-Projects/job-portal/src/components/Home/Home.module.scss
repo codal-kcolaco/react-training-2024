@@ -45,14 +45,14 @@
   }
 
   @media only screen and (max-width: 880px) {
-    .card-internal {
+    .cardInternal {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
 
-      .container-btn {
+      .containerBtn {
         display: inline-block;
         margin-top: 20px;
         padding: 10px;
@@ -75,12 +75,12 @@
     }
   }
 
-  .card-internal {
+  .cardInternal {
     display: flex;
     justify-content: space-between;
   }
 
-  .container-description {
+  .containerDescription {
     padding: 2px 16px;
 
     h4 {
@@ -88,7 +88,7 @@
     }
   }
 
-  .container-btn {
+  .containerBtn {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -118,7 +118,7 @@
     margin-bottom: 10px;
   }
 
-  .bar-container {
+  .barContainer {
     margin: 50px;
     display: flex;
     align-items: center;
@@ -138,7 +138,7 @@
       }
     }
 
-    .search-button {
+    .searchButton {
       min-height: 57px;
       width: 58px;
       border: 1px solid lightgray;
@@ -151,16 +151,16 @@
       position: relative;
     }
 
-    .search-icon {
+    .searchIcon {
       height: 25px;
     }
   }
 }
 
-.job-list-section {
+.jobListSection {
   margin: 200px 150px;
 
-  &-grid {
+  .jobListSectionGrid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     margin: 50px 0px;
@@ -169,10 +169,10 @@
 }
 
 @media only screen and (max-width: 1300px) {
-  .job-list-section {
+  .jobListSection {
     margin: 200px 150px;
 
-    &-grid {
+    .jobListSectionGrid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       margin: 50px 0px;
@@ -182,10 +182,10 @@
 }
 
 @media only screen and (max-width: 830px) {
-  .job-list-section {
+  .jobListSection {
     margin: 200px 150px;
 
-    &-grid {
+    .jobListSectionGrid {
       display: grid;
       grid-template-columns: repeat(1, 1fr);
       margin: 50px 0px;

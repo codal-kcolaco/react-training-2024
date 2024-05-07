@@ -18,7 +18,7 @@ export const signUpContent = [
     required: true,
   },
   {
-    name: "confirm-password",
+    name: "confirmPassword",
     type: "password",
     placeholder: "Confirm Password",
     required: true,

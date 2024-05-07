@@ -7,4 +7,9 @@
 7 MAY 
     Change the edit job code such that the input values are initialized with old values
     Convert SCSS into Modular SCSS
-    
+    Starting redux
+    Learn about reducers, dispatchers
+    useRef
+    useLayoutEffect
+    useReducer
+    useContext

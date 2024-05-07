@@ -1,20 +1,20 @@
-.list-container {
+.listContainer {
   display: flex;
 }
 
-.search-container {
+.searchContainer {
   display: flex;
   gap: 120px;
   margin: 0px;
 }
 
-.search-input {
+.searchInput {
   padding-left: 10px;
   border-radius: 10px;
   border: 1px solid black;
 }
 
-.filter-section {
+.filterSection {
   border: 1px solid lightgray;
   padding: 40px;
   border-radius: 10px;
@@ -29,24 +29,24 @@
     margin: 20px 0px;
   }
 
-  .filter-container {
+  .filterContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
 
-    .filter-checkbox label {
+    .filterCheckbox label {
       font-size: 15px;
       margin-left: 10px;
     }
   }
 }
 
-.list-section {
+.listSection {
   flex: 2;
   margin: 200px 150px;
 
-  .list-section-grid {
+  .listSectionGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin: 50px 0px;
@@ -99,7 +99,7 @@
     width: 30px;
   }
 
-  .chip-description p {
+  .chipDescription p {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -110,15 +110,15 @@
   }
 }
 
-.empty-list-container {
+.emptyListContainer {
   text-align: center;
-  .empty-list-img {
+  .emptyListImg {
     margin-top: 20px;
     height: 100px;
     width: 100px;
   }
 
-  .empty-list-message {
+  .emptyListMessage {
     margin-top: 20px;
   }
 }

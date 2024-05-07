@@ -53,18 +53,18 @@ const PostJob = () => {
   }, [navigate]);
 
   return JWT_COOKIE ? (
-    <div className={styles["container"]}>
-      <div className={styles["title-container"]}>
-        <h1 className={styles["h1"]}>{postJobTitle.postJobHeading}</h1>
+    <div className={styles.container}>
+      <div className={styles.titleContainer}>
+        <h1 className={styles.h1}>{postJobTitle.postJobHeading}</h1>
         <a href="my-jobs">{postJobTitle.myJobMessage}</a>
       </div>
       <form>
         {postJobContent.map((input, index) => (
-          <div className={styles["form-group"]} key={index}>
+          <div className={styles.formGroup} key={index}>
             <label htmlFor={input.id}>{input.label}</label>
             {input.type === "select" ? (
               <select
-                className={styles["select"]}
+                className={styles.select}
                 id={input.id}
                 value={jobDetails[input.name]}
                 onChange={handleChange}
@@ -84,13 +84,13 @@ const PostJob = () => {
                 value={jobDetails[input.name]}
                 onChange={handleChange}
                 rows={input.rows}
-                className={styles["textarea"]}
+                className={styles.textarea}
                 required={input.required}
                 placeholder={input.placeholder}
               ></textarea>
             ) : (
               <input
-                className={styles["input"]}
+                className={styles.input}
                 type={input.type}
                 id={input.id}
                 value={jobDetails[input.name]}
@@ -102,7 +102,7 @@ const PostJob = () => {
             )}
           </div>
         ))}
-        <button type="submit" className={styles["submit"]} onClick={postAJob}>
+        <button type="submit" className={styles.submit} onClick={postAJob}>
           Post the Job
         </button>
       </form>

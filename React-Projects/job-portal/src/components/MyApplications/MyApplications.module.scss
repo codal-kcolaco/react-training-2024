@@ -3,7 +3,7 @@ $margin-top: 180px;
 .container {
   margin: $margin-top 20px;
 
-  .list-container {
+  .listContainer {
     padding: 20px;
     text-align: left;
 
@@ -35,12 +35,12 @@ $margin-top: 180px;
         color: #666;
       }
 
-      .application-container {
+      .applicationContainer {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
 
-        .status-container {
+        .statusContainer {
           padding: 10px;
           display: flex;
           align-items: center;
@@ -53,15 +53,15 @@ $margin-top: 180px;
   }
 }
 
-.empty-list-container {
+.emptyListContainer {
   text-align: center;
-  .empty-list-img {
+  .emptyListImg {
     margin-top: 20px;
     height: 100px;
     width: 100px;
   }
 
-  .empty-list-message {
+  .emptyListMessage {
     margin-top: 20px;
   }
 }

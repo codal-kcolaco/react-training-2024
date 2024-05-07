@@ -16,9 +16,9 @@ const MyApplicationCard = ({ myApplication }) => {
 
   return (
     <li>
-      <div className={styles["application"]}>
-        <div className={styles["application-container"]}>
-          <div className={styles["info"]}>
+      <div className={styles.application}>
+        <div className={styles.applicationContainer}>
+          <div className={styles.info}>
             <h2>{myApplication.applicant}</h2>
             <p>
               <strong>Cover letter:</strong> {myApplication.cover_letter}
@@ -35,7 +35,7 @@ const MyApplicationCard = ({ myApplication }) => {
             </p>
           </div>
           <div
-            className={styles["status-container"]}
+            className={styles.statusContainer}
             style={{
               backgroundColor:
                 applicationStatusColorMap[myApplication.is_selected],
@@ -73,25 +73,19 @@ export const MyApplications = () => {
   }, []);
 
   return (
-    <div className={styles["container"]}>
-      <h1 className={styles["my-heading"]}>Application Listings</h1>
-      <div className={styles["list-container"]}>
+    <div className={styles.container}>
+      <h1 className={styles.myHeading}>Application Listings</h1>
+      <div className={styles.listContainer}>
         {!lodash.isEmpty(myApplicationData) ? (
-          <ul className={styles["list"]}>
+          <ul className={styles.list}>
             {myApplicationData.map((myApplication, index) => (
               <MyApplicationCard key={index} myApplication={myApplication} />
             ))}
           </ul>
         ) : (
-          <div className={styles["empty-list-container"]}>
-            <img
-              className={styles["empty-list-img"]}
-              src={noJobLogo}
-              alt="people"
-            />
-            <p className={styles["empty-list-message"]}>
-              No applications created
-            </p>
+          <div className={styles.emptyListContainer}>
+            <img className={styles.emptyListImg} src={noJobLogo} alt="people" />
+            <p className={styles.emptyListMessage}>No applications created</p>
           </div>
         )}
       </div>

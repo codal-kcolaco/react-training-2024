@@ -21,13 +21,13 @@ function Header() {
   };
 
   return (
-    <header className={styles["header"]}>
-      <div className={styles["wrapper"]}>
+    <header className={styles.header}>
+      <div className={styles.wrapper}>
         <a href="/">
           <img loading="lazy" src={CJPLogo} alt="" />
         </a>
-        <nav className={styles["list"]}>
-          <ul className={styles["unordered-list"]}>
+        <nav className={styles.list}>
+          <ul className={styles.unorderedList}>
             {navItems.map((item, index) => (
               <li key={index}>
                 <a href={item.link}>{item.text}</a>
@@ -37,27 +37,27 @@ function Header() {
         </nav>
       </div>
       {!isLoggedIn && (
-        <div className={styles["button-wrapper"]}>
-          <a href="signup" className={styles["sign-up-button"]}>
+        <div className={styles.buttonWrapper}>
+          <a href="signup" className={styles.signUpButton}>
             {navContent.signUp}
           </a>
-          <a href="login" className={styles["login-button"]}>
+          <a href="login" className={styles.loginButton}>
             {navContent.login}
           </a>
         </div>
       )}
       {isLoggedIn && (
-        <div className={styles["user-avatar-container"]}>
+        <div className={styles.userAvatarContainer}>
           <img
             onClick={() => {
               navigate("user-portal");
             }}
-            className={styles["user-avatar"]}
+            className={styles.userAvatar}
             src={AvatarLogo}
             alt=""
           />
           <a
-            className={styles["logout-button"]}
+            className={styles.logoutButton}
             id="logout-button"
             onClick={handleLogout}
           >

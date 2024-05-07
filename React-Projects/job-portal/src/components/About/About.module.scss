@@ -6,14 +6,14 @@
     font-size: xx-large;
   }
 
-  .first-section {
+  .firstSection {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     margin: 100px;
 
-    .cjp-logo {
+    .cjpLogo {
       padding: 40px;
     }
 
@@ -24,12 +24,12 @@
     }
   }
 
-  .second-section {
-    .ceo-logo {
+  .secondSection {
+    .ceoLogo {
       border-radius: 20%;
     }
 
-    .ceo-title {
+    .ceoTitle {
       color: gray;
       font-weight: bold;
       margin-top: 10px;

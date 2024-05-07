@@ -36,24 +36,24 @@ body {
     }
   }
 
-  .button-wrapper {
-    .sign-up-button {
+  .buttonWrapper {
+    .signUpButton {
       margin-right: 20px;
       background-color: purple;
     }
 
-    .login-button {
+    .loginButton {
       background-color: darkblue;
     }
 
-    .sign-up-button:hover,
-    .login-button:hover {
+    .signUpButton:hover,
+    .loginButton:hover {
       opacity: 0.3;
     }
   }
 }
 
-.list .unordered-list {
+.list .unorderedList {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -81,11 +81,11 @@ body {
   }
 }
 
-.user-avatar-container {
+.userAvatarContainer {
   display: flex;
   gap: 30px;
 
-  .user-avatar {
+  .userAvatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -94,9 +94,9 @@ body {
   }
 }
 
-.logout-button,
-.sign-up-button,
-.login-button {
+.logoutButton,
+.signUpButton,
+.loginButton {
   display: inline-block;
   padding: 10px 20px;
   border-radius: 25px;

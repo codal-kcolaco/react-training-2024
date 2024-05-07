@@ -37,8 +37,8 @@ function Login() {
   };
 
   return (
-    <div className={styles["class"]}>
-      <div className={styles["container"]}>
+    <div className={styles.class}>
+      <div className={styles.container}>
         <h2>Login</h2>
         <form id="loginForm" onSubmit={loginForm}>
           {loginConstant.map((input, index) => (
@@ -55,7 +55,7 @@ function Login() {
             />
           ))}
           <input
-            className={styles["submit"]}
+            className={styles.submit}
             type="submit"
             value={loading ? "Logging In..." : "Login"}
             disabled={loading}

@@ -11,9 +11,9 @@ import { myJobsContent } from "../../data/MyJobsContent.js";
 const MyJobCard = ({ myJob }) => {
   return (
     <li>
-      <div className={styles["job"]}>
-        <div className={styles["job-container"]}>
-          <div className={styles["job-info"]}>
+      <div className={styles.job}>
+        <div className={styles.jobContainer}>
+          <div className={styles.jobInfo}>
             <h2>{myJob.job_name}</h2>
             <p>
               <strong>Type:</strong> {myJob.job_type}
@@ -22,22 +22,22 @@ const MyJobCard = ({ myJob }) => {
               <strong>Salary:</strong> {`${myJob.job_salary} INR`}
             </p>
           </div>
-          <div className={styles["buttons"]}>
+          <div className={styles.buttons}>
             <Link
               to={`/my-jobs/edit/${encodeURIComponent(myJob.pk)}`}
-              className={styles["edit-button"]}
+              className={styles.editButton}
             >
               Edit
             </Link>
             <a
               onClick={() => deleteJob(myJob.pk)}
-              className={styles["delete-button"]}
+              className={styles.deleteButton}
             >
               Delete
             </a>
             <Link
               to={`/my-jobs/applications/${encodeURIComponent(myJob.pk)}`}
-              className={styles["view-application-button"]}
+              className={styles.viewApplicationButton}
             >
               Applications
             </Link>
@@ -72,23 +72,19 @@ export const MyJobs = () => {
   }, []);
 
   return (
-    <div className={styles["container"]}>
-      <h1 className={styles["heading"]}>{myJobsContent.myJobHeading}</h1>
-      <div className={styles["list-container"]}>
+    <div className={styles.container}>
+      <h1 className={styles.heading}>{myJobsContent.myJobHeading}</h1>
+      <div className={styles.listContainer}>
         {!lodash.isEmpty(myJobData) ? (
-          <ul id="job-list">
+          <ul className={styles.jobList}>
             {myJobData.map((myJob, index) => (
               <MyJobCard key={index} myJob={myJob} />
             ))}
           </ul>
         ) : (
-          <div className={styles["empty-list-container"]}>
-            <img
-              className={styles["empty-list-img"]}
-              src={noJobLogo}
-              alt="people"
-            />
-            <p className={styles["empty-list-message"]}>
+          <div className={styles.emptyListContainer}>
+            <img className={styles.emptyListImg} src={noJobLogo} alt="people" />
+            <p className={styles.emptyListMessage}>
               {myJobsContent.myJobEmptyMessage}
             </p>
           </div>
