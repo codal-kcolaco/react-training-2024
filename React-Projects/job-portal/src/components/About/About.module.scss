@@ -1,3 +1,4 @@
+@import url("../../colors.scss");
 .container {
   margin: 200px;
 
@@ -19,7 +20,7 @@
 
     .paragraph {
       text-align: left;
-      color: gray;
+      color: var(--paragraph-color);
       margin-bottom: 40px;
     }
   }
@@ -30,7 +31,7 @@
     }
 
     .ceoTitle {
-      color: gray;
+      color: var(--ceoTitle-color);
       font-weight: bold;
       margin-top: 10px;
     }

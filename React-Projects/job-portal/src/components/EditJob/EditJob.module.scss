@@ -1,18 +1,17 @@
+@import url("../../colors.scss");
+
 $margin-top: 150px;
-$color: #333;
-$border-color: #ccc;
-$primary-color: #007bff;
 
 .container {
   margin-top: $margin-top;
-  background-color: #fff;
+  background-color: var(--edit-job-background-color);
   padding: 30px;
   border-radius: 0;
   box-shadow: none;
   text-align: left;
 
   .h1 {
-    color: $color;
+    color: var(--edit-job-color);
     margin-bottom: 50px;
   }
 
@@ -27,7 +26,7 @@ $primary-color: #007bff;
     .label {
       display: block;
       font-weight: bold;
-      color: #555;
+      color: var(--edit-job-color);
     }
 
     .select,
@@ -36,13 +35,14 @@ $primary-color: #007bff;
       width: calc(100% - 24px);
       padding: 12px;
       font-size: 16px;
-      border: 1px solid $border-color;
+      border: 1px solid;
+      border-color: var(--edit-job-border-color);
       border-radius: 5px;
       transition: border-color 0.3s ease;
 
       &:focus {
         outline: none;
-        border-color: $primary-color;
+        border-color: var(--edit-job-primary-color);
       }
     }
   }
@@ -51,15 +51,15 @@ $primary-color: #007bff;
     display: block;
     padding: 12px;
     font-size: 18px;
-    color: #fff;
-    background-color: $primary-color;
+    color: var(--edit-job-button-text-color);
+    background-color: var(--edit-job-primary-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: darken($primary-color, 10%);
+      background-color: var(--edit-job-primary-color-hover);
     }
   }
 }

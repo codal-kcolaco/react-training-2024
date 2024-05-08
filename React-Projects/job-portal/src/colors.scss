@@ -1,0 +1,41 @@
+:root {
+  // Header
+  --background-color: rgb(248, 248, 248);
+  --header-background-color: white;
+  --header-text-color: black;
+  --button-background-color-purple: purple;
+  --button-background-color-darkblue: darkblue;
+  --button-hover-opacity: 0.3;
+  --link-color: #414040;
+  --link-hover-color: #929292;
+  --avatar-background-color: #ccc;
+  --button-background-color-primary: #007bff;
+  --button-background-color-primary-hover: #0056b3;
+
+  // About
+  --paragraph-color: gray;
+  --ceoTitle-color: gray;
+
+  // Contact
+  --contact-background-color: rgb(129, 183, 253);
+  --box-shadow-color: rgba(0, 0, 0, 0.1);
+  --submit-background-color: #0972e3;
+  --submit-hover-background-color: #0056b3;
+  --submit-text-color: #d3d3d3;
+  --input-border-color: #ccc;
+
+  // Edit Job
+  --edit-job-color: #333;
+  --edit-job-border-color: #ccc;
+  --edit-job-primary-color: #007bff;
+  --edit-job-button-text-color: #fff;
+  --edit-job-background-color: #fff;
+
+  // Footer
+
+  --footer-container-background-color: #ffffff;
+  --footer-container-text-color: #000000;
+  --footer-content-text-color: gray;
+  --footer-link-color: #000000;
+  --footer-link-hover-color: #7b8b8a;
+}

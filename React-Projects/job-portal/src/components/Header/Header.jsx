@@ -4,10 +4,17 @@ import CJPLogo from "../../assets/cjp-logo.png";
 import AvatarLogo from "../../assets/avatar.png";
 import { JWT_COOKIE } from "../../Constants";
 import { useNavigate } from "react-router-dom";
-import { navContent, navItems } from "../../data/HeaderContent";
+import {
+  navContent,
+  navItemsApplicant,
+  navItemsEmployer,
+} from "../../data/HeaderContent";
+import { useDispatch, useSelector } from "react-redux";
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const userType = useSelector((state) => state.userType);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,6 +24,7 @@ function Header() {
   const handleLogout = () => {
     document.cookie =
       "jwt_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    localStorage.removeItem("userType");
     window.location.reload();
   };
 
@@ -28,11 +36,18 @@ function Header() {
         </a>
         <nav className={styles.list}>
           <ul className={styles.unorderedList}>
-            {navItems.map((item, index) => (
-              <li key={index}>
-                <a href={item.link}>{item.text}</a>
-              </li>
-            ))}
+            {userType === "APPLICANT" &&
+              navItemsApplicant.map((item, index) => (
+                <li key={index}>
+                  <a href={item.link}>{item.text}</a>
+                </li>
+              ))}
+            {userType === "EMPLOYER" &&
+              navItemsEmployer.map((item, index) => (
+                <li key={index}>
+                  <a href={item.link}>{item.text}</a>
+                </li>
+              ))}
           </ul>
         </nav>
       </div>

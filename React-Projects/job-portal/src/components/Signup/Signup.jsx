@@ -3,14 +3,18 @@ import styles from "./Signup.module.scss";
 import { registerUser } from "../../api/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import signUpContent, { signUpError } from "../../data/SignUpContent";
+import signUpContent, {
+  signUpError,
+  signUpSelect,
+} from "../../data/SignUpContent";
 
 function Signup() {
   const [userDetails, setUserDetails] = useState({
     fullname: "",
     email: "",
     password: "",
-    confirm_password: "",
+    confirmPassword: "",
+    userType: "APPLICANT",
   });
   const navigate = useNavigate();
 
@@ -25,12 +29,17 @@ function Signup() {
   const registrationForm = (event) => {
     event.preventDefault();
 
-    if (userDetails.password !== userDetails.confirm_password) {
+    if (userDetails.password !== userDetails.confirmPassword) {
       alert(signUpError.passwordErrorMessage);
       return;
     }
 
-    registerUser(userDetails.fullname, userDetails.email, userDetails.password)
+    registerUser(
+      userDetails.fullname,
+      userDetails.email,
+      userDetails.password,
+      userDetails.userType
+    )
       .then(() => {
         toast.success(signUpError.registrationSuccessfulMessage);
         navigate("/login");
@@ -58,6 +67,20 @@ function Signup() {
               required={field.required}
             />
           ))}
+          <select
+            className={styles.userType}
+            id={signUpSelect.id}
+            value={userDetails[signUpSelect.name]}
+            onChange={handleChange}
+            name={signUpSelect.name}
+            required={signUpSelect.required}
+          >
+            {signUpSelect.options.map((optionValue, idx) => (
+              <option key={idx} value={optionValue.name}>
+                {optionValue.value}
+              </option>
+            ))}
+          </select>
           <input
             type="submit"
             className={styles.submit}

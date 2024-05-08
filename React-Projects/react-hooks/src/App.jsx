@@ -10,7 +10,7 @@ import axios from "axios";
 import "./App.css";
 import { Login } from "./Login";
 import { User } from "./User";
-
+import { useLocalStorage } from "./useLocalStorage";
 const reducer = (state, action) => {
   switch (action.type) {
     case "INCREMENT":
@@ -28,6 +28,7 @@ function App() {
   const [data, setData] = useState("");
   const [username, setUsername] = useState("test");
   const inputRef = useRef(null);
+  const [name, setName] = useLocalStorage("name", "");
   const onClick = () => {
     inputRef.current.focus();
   };
@@ -76,6 +77,14 @@ function App() {
           <Login />
           <User />
         </AppContext.Provider>
+      </div>
+      <div>
+        <h1>Custom hook - useLocalStorage</h1>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
       </div>
     </>
   );
