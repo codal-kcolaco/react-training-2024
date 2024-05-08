@@ -1,0 +1,124 @@
+.listContainer {
+  display: flex;
+}
+
+.searchContainer {
+  display: flex;
+  gap: 120px;
+  margin: 0px;
+}
+
+.searchInput {
+  padding-left: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.filterSection {
+  border: 1px solid lightgray;
+  padding: 40px;
+  border-radius: 10px;
+  background-color: #fff;
+  margin: 200px 150px;
+
+  h1 {
+    margin: 20px 0px;
+  }
+
+  h4 {
+    margin: 20px 0px;
+  }
+
+  .filterContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+
+    .filterCheckbox label {
+      font-size: 15px;
+      margin-left: 10px;
+    }
+  }
+}
+
+.listSection {
+  flex: 2;
+  margin: 200px 150px;
+
+  .listSectionGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 50px 0px;
+    gap: 10px;
+
+    @media only screen and (max-width: 1624px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media only screen and (max-width: 1400px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card a {
+    text-decoration: none;
+  }
+}
+
+.chip {
+  border: 1px solid lightgray;
+  padding: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  height: 100px;
+  width: 340px;
+  border-radius: 10px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    margin-bottom: 10px;
+    color: purple;
+  }
+
+  p {
+    color: gray;
+    font-size: 14px;
+  }
+
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  img {
+    float: left;
+    height: 30px;
+    width: 30px;
+  }
+
+  .chipDescription p {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    i {
+      font-size: 10px;
+    }
+  }
+}
+
+.emptyListContainer {
+  text-align: center;
+  .emptyListImg {
+    margin-top: 20px;
+    height: 100px;
+    width: 100px;
+  }
+
+  .emptyListMessage {
+    margin-top: 20px;
+  }
+}

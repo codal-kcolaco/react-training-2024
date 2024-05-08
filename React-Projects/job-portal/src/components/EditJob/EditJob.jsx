@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import "./EditJob.scss";
+import styles from "./EditJob.module.scss";
 import { editJob, fetchSingleJob } from "../../api/api";
 import { JWT_COOKIE } from "../../Constants";
 import { toast } from "react-toastify";
 import { editJobContent } from "../../data/EditJobsContent";
 
 const EditJob = () => {
-  const [jobDetails, setJobDetails] = useState({
-    jobTitle: "",
-    jobType: "",
-    jobSalary: 0,
-    jobDescription: "",
-    jobTechnology: "PYTHON",
-    jobLocation: "",
-    jobExperience: 0,
-  });
+  const [jobDetails, setJobDetails] = useState({});
 
   const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(true);
 
   const jobId = useParams().id;
 
@@ -26,6 +20,7 @@ const EditJob = () => {
       fetchSingleJob(jobId)
         .then((data) => {
           setJobDetails(data);
+          setLoading(false);
         })
         .catch((error) => {
           alert(`${error}. Please try again.`);
@@ -63,26 +58,30 @@ const EditJob = () => {
       });
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return JWT_COOKIE ? (
-    <div className="edit-job-container">
-      <div className="edit-job-title-container">
-        <h1 className="edit-job-h1">Edit a Job</h1>
+    <div className={styles.container}>
+      <div className={styles.titleContainer}>
+        <h1 className={styles.h1}>Edit a Job</h1>
       </div>
       <form>
         {editJobContent.map((input, index) => (
-          <div className="edit-job-form-group" key={index}>
+          <div className={styles.formGroup} key={index}>
             <label htmlFor={input.id}>{input.label}</label>
             {input.type === "select" ? (
               <select
-                className="edit-job-select"
+                className={styles.select}
                 id={input.id}
-                value={jobDetails[input.name]}
                 onChange={handleChange}
+                value={jobDetails[input.value]}
                 name={input.name}
                 required={input.required}
               >
                 {input.options.map((option, idx) => (
-                  <option key={idx} value={option}>
+                  <option key={idx} value={option.toUpperCase()}>
                     {option}
                   </option>
                 ))}
@@ -91,19 +90,19 @@ const EditJob = () => {
               <textarea
                 id={input.id}
                 name={input.name}
-                value={jobDetails[input.name]}
+                value={jobDetails[input.value]}
                 onChange={handleChange}
                 rows={input.rows}
-                className="edit-job-textarea"
+                className={styles.textarea}
                 required={input.required}
                 placeholder={input.placeholder}
               ></textarea>
             ) : (
               <input
-                className="edit-job-input"
+                className={styles.input}
                 type={input.type}
                 id={input.id}
-                value={jobDetails[input.name]}
+                value={jobDetails[input.value]}
                 onChange={handleChange}
                 name={input.name}
                 required={input.required}
@@ -112,7 +111,7 @@ const EditJob = () => {
             )}
           </div>
         ))}
-        <button type="submit" className="edit-job-submit" onClick={editAJob}>
+        <button type="submit" className={styles.submit} onClick={editAJob}>
           Edit the Job
         </button>
       </form>

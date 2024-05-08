@@ -1,0 +1,67 @@
+$margin-top: 180px;
+
+.container {
+  margin: $margin-top 20px;
+
+  .listContainer {
+    padding: 20px;
+    text-align: left;
+
+    .list {
+      list-style-type: none;
+    }
+
+    .heading {
+      text-align: center;
+      color: #333;
+    }
+
+    .application {
+      border-bottom: 1px solid #ccc;
+      padding: 15px 0;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #f0f0f0;
+      }
+
+      h2 {
+        margin: 0;
+        color: #007bff;
+      }
+
+      p {
+        margin: 5px 0;
+        color: #666;
+      }
+
+      .applicationContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .statusContainer {
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          border-radius: 10px;
+          margin: 25px;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.emptyListContainer {
+  text-align: center;
+  .emptyListImg {
+    margin-top: 20px;
+    height: 100px;
+    width: 100px;
+  }
+
+  .emptyListMessage {
+    margin-top: 20px;
+  }
+}

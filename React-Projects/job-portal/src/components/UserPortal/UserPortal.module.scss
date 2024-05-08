@@ -1,0 +1,39 @@
+.container {
+  margin: 200px 0px;
+
+  .avatar {
+    height: 100px;
+    background-color: #ccc;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .input {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 2px solid gainsboro;
+      border-radius: 5px;
+    }
+
+    .submit {
+      background-color: #0972e3;
+      margin-top: 20px;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 15px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+}

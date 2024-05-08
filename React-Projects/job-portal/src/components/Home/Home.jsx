@@ -1,5 +1,5 @@
 import React from "react";
-import "./Home.scss";
+import styles from "./Home.module.scss";
 import JobBackground from "../../assets/create-job-removebg-preview.png";
 import SearchIcon from "../../assets/icons/search.svg";
 import {
@@ -13,42 +13,42 @@ import {
 function Home() {
   return (
     <div>
-      <section className="banner">
+      <section className={styles.banner}>
         <h2>{bannerContent.title}</h2>
-        <p className="subtitle">{bannerContent.subtitle}</p>
-        <a href="jobs" className="btn">
+        <p className={styles.subtitle}>{bannerContent.subtitle}</p>
+        <a href="jobs" className={styles.btn}>
           {bannerContent.button}
         </a>
       </section>
 
-      <section className="card">
-        <div className="card-internal">
-          <div className="container-description">
+      <section className={styles.card}>
+        <div className={styles.cardInternal}>
+          <div className={styles.containerDescription}>
             <img loading="lazy" src={JobBackground} width="50%" alt="" />
             <h4>{jobCardContent.title}</h4>
             <p>{jobCardContent.description}</p>
           </div>
-          <div className="container-btn">
-            <a href="post-job" className="btn">
+          <div className={styles.containerBtn}>
+            <a href="post-job" className={styles.btn}>
               {jobCardContent.button}
             </a>
           </div>
         </div>
       </section>
 
-      <section className="job-search-home-container">
+      <section className={styles.container}>
         <h1>{searchContent.title}</h1>
         <p>{searchContent.subtitle}</p>
-        <div className="job-search-home-bar-container">
+        <div className={styles.barContainer}>
           <input
-            className="job-search-home-bar"
+            className={styles.bar}
             type="text"
             placeholder={searchContent.placeholder}
           />
-          <button className="search-home-button">
+          <button className={styles.searchButton}>
             <img
               loading="lazy"
-              className="search-home-icon"
+              className={styles.searchIcon}
               src={SearchIcon}
               alt="search"
             />
@@ -56,11 +56,11 @@ function Home() {
         </div>
       </section>
 
-      <section className="job-list-home-section">
+      <section className={styles.jobListSection}>
         <h1>{filterContent.filterTitle}</h1>
-        <div className="job-list-home-section-grid">
+        <div className={styles.jobListSectionGrid}>
           {filterTechnologies.map((tech) => (
-            <div key={tech.id} className="home-chip">
+            <div key={tech.id} className={styles.chip}>
               <img src={tech.logoSrc} alt={tech.name} width="96" height="96" />
               {tech.name}
             </div>

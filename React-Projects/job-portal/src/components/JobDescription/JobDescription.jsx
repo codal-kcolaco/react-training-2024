@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./JobDescription.scss";
+import { useDispatch, useSelector } from "react-redux";
+import styles from "./JobDescription.module.scss";
 import { applyStatusForJob, fetchSingleJob } from "../../api/api";
 import lodash from "lodash";
 import { toast } from "react-toastify";
@@ -8,16 +9,18 @@ import {
   jobDescriptionError,
   jobDescriptionContent,
 } from "../../data/JobDescriptionContent";
+import { setButtonStatus, setButtonText } from "../../store/store";
 
 const JobDescriptionCard = () => {
+  const buttonText = useSelector((state) => state.buttonText);
+  const buttonStatus = useSelector((state) => state.buttonStatus);
+  const dispatch = useDispatch();
   const jobId = useParams().id;
 
   const [jobData, setJobData] = useState({});
   const [coverLetter, setCoverLetter] = useState("");
-  const [buttonStatus, setButtonStatus] = useState(
-    "job-description-apply-button"
-  );
-  const [buttonText, setButtonText] = useState("Apply Now");
+  // const [buttonStatus, setButtonStatus] = useState(styles["apply-button"]);
+  // const [buttonText, setButtonText] = useState("Apply Now");
 
   useEffect(() => {
     const fetchData = () => {
@@ -35,20 +38,20 @@ const JobDescriptionCard = () => {
 
   if (lodash.isEmpty(jobData)) {
     return (
-      <div className="loading-spinner-container">
-        <div className="loading-spinner"></div>
+      <div className={styles.loadingSpinnerContainer}>
+        <div className={styles.loadingSpinner}></div>
       </div>
     );
   }
 
   return (
     <>
-      <div className="job-description-card" id="job-description-card">
-        <div className="job-description-title-container">
+      <div className={styles.card} id="card">
+        <div className={styles.titleContainer}>
           <h1>{jobData.job_name}</h1>
           <h1>({jobData.job_technology})</h1>
         </div>
-        <div className="job-employer-detail">
+        <div className={styles.jobEmployerDetail}>
           <h3>{jobData.user.name}</h3>
           <p>
             {jobData.job_salary} INR | {jobData.job_location} |{" "}
@@ -59,19 +62,19 @@ const JobDescriptionCard = () => {
           </p>
         </div>
 
-        <div className="job-description-info-container">
-          <h3 className="job-description-info-title">
+        <div className={styles.infoContainer}>
+          <h3 className={styles.infoTitle}>
             {jobDescriptionContent.jobDescriptionTitle}
           </h3>
-          <p className="job-description-info-para">{jobData.job_description}</p>
+          <p className={styles.infoPara}>{jobData.job_description}</p>
         </div>
       </div>
-      <div className="job-description-apply">
-        <h1 className="job-description-apply-title">
+      <div className={styles.apply}>
+        <h1 className={styles.applyTitle}>
           {jobDescriptionContent.jobDescriptionApplyTitle}
         </h1>
         <input
-          className="job-description-apply-input"
+          className={styles.applyInput}
           type="text"
           name="coverLetter"
           value={coverLetter}
@@ -83,14 +86,14 @@ const JobDescriptionCard = () => {
           onClick={() => {
             applyStatusForJob(jobId, coverLetter)
               .then(() => {
-                setButtonStatus("job-description-applied-button");
-                setButtonText("Applied");
+                dispatch(setButtonStatus("appliedButton"));
+                dispatch(setButtonText("Applied"));
               })
               .catch((error) => {
                 toast.error(`${error}`);
               });
           }}
-          className={buttonStatus}
+          className={styles[buttonStatus]}
         >
           {buttonText}
         </button>
@@ -101,7 +104,7 @@ const JobDescriptionCard = () => {
 
 export const JobDescription = () => {
   return (
-    <div className="job-description-container">
+    <div className={styles.container}>
       <JobDescriptionCard />
     </div>
   );

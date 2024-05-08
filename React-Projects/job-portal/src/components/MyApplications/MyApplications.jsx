@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./MyApplications.scss";
+import styles from "./MyApplications.module.scss";
 import { fetchMyApplications } from "../../api/api";
 import { Link, useNavigate } from "react-router-dom";
 import lodash from "lodash";
@@ -16,9 +16,9 @@ const MyApplicationCard = ({ myApplication }) => {
 
   return (
     <li>
-      <div className="application">
-        <div className="application-container">
-          <div className="application-info">
+      <div className={styles.application}>
+        <div className={styles.applicationContainer}>
+          <div className={styles.info}>
             <h2>{myApplication.applicant}</h2>
             <p>
               <strong>Cover letter:</strong> {myApplication.cover_letter}
@@ -35,7 +35,7 @@ const MyApplicationCard = ({ myApplication }) => {
             </p>
           </div>
           <div
-            className="status-container"
+            className={styles.statusContainer}
             style={{
               backgroundColor:
                 applicationStatusColorMap[myApplication.is_selected],
@@ -73,19 +73,19 @@ export const MyApplications = () => {
   }, []);
 
   return (
-    <div className="my-applications-container">
-      <h1 className="my-application-heading">Application Listings</h1>
-      <div className="my-applications-list-container">
+    <div className={styles.container}>
+      <h1 className={styles.myHeading}>Application Listings</h1>
+      <div className={styles.listContainer}>
         {!lodash.isEmpty(myApplicationData) ? (
-          <ul id="application-list">
+          <ul className={styles.list}>
             {myApplicationData.map((myApplication, index) => (
               <MyApplicationCard key={index} myApplication={myApplication} />
             ))}
           </ul>
         ) : (
-          <div className="empty-list-container">
-            <img className="empty-list-img" src={noJobLogo} alt="people" />
-            <p className="empty-list-message">No applications created</p>
+          <div className={styles.emptyListContainer}>
+            <img className={styles.emptyListImg} src={noJobLogo} alt="people" />
+            <p className={styles.emptyListMessage}>No applications created</p>
           </div>
         )}
       </div>

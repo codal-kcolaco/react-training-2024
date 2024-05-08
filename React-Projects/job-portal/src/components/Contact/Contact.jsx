@@ -1,25 +1,25 @@
 import React from "react";
-import "./Contact.scss";
+import styles from "./Contact.module.scss";
 import contactContent from "../../data/ContactContent";
 
 function Contact() {
   return (
-    <div className="contact-class">
-      <div className="contact-container">
+    <div className={styles.class}>
+      <div className={styles.container}>
         <h2>Contact Us</h2>
-        <form id="contactForm">
+        <form id={styles.form}>
           {contactContent.map((input) => (
             <input
               key={input.id}
               type={input.type}
               id={input.id}
               name={input.name}
-              className={input.className}
+              className={styles[input.className]}
               placeholder={input.placeholder}
               required={input.required}
             />
           ))}
-          <input type="submit" className="contact-submit" value="Contact" />
+          <input type="submit" className={styles.submit} value="Contact" />
         </form>
       </div>
     </div>

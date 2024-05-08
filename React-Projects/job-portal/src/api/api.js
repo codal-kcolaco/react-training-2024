@@ -10,10 +10,11 @@ import {
   JWT_COOKIE,
   GET_SINGLE_JOB_APPLICATION_URL,
   CHANGE_PASSWORD_URL,
+  BE_ENDPOINT,
 } from "../Constants";
 
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api",
+  baseURL: BE_ENDPOINT,
   headers: {
     "Content-Type": "application/json",
     Authorization: JWT_COOKIE,

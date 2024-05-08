@@ -1,3 +1,4 @@
+export const BE_ENDPOINT = "http://127.0.0.1:8000/api";
 export const POST_JOB_URL = "/employer/jobs/";
 export const GET_JOB_URL = "/applicants/jobs/";
 export const GET_JOB_EMPLOYER_URL = "/employer/jobs/";

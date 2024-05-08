@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Login.scss";
+import styles from "./Login.module.scss";
 import { loginUser } from "../../api/api";
 import { toast } from "react-toastify";
 import { loginConstant } from "../../data/LoginContent";
@@ -37,8 +37,8 @@ function Login() {
   };
 
   return (
-    <div className="login-class">
-      <div className="login-container">
+    <div className={styles.class}>
+      <div className={styles.container}>
         <h2>Login</h2>
         <form id="loginForm" onSubmit={loginForm}>
           {loginConstant.map((input, index) => (
@@ -48,14 +48,14 @@ function Login() {
               id={input.id}
               value={userDetails[input.name]}
               onChange={handleChange}
-              className={`login-${input.name}`}
+              className={styles[`${input.name}`]}
               name={input.name}
               placeholder={input.placeholder}
               required={input.required}
             />
           ))}
           <input
-            className="login-submit"
+            className={styles.submit}
             type="submit"
             value={loading ? "Logging In..." : "Login"}
             disabled={loading}

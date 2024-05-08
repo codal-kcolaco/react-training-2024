@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Signup.scss";
+import styles from "./Signup.module.scss";
 import { registerUser } from "../../api/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -41,8 +41,8 @@ function Signup() {
   };
 
   return (
-    <div className="signup-class">
-      <div className="signup-container">
+    <div className={styles.class}>
+      <div className={styles.container}>
         <h2>Register</h2>
         <form id="registrationForm">
           {signUpContent.map((field) => (
@@ -53,14 +53,14 @@ function Signup() {
               id={field.name}
               value={userDetails[field.name]}
               onChange={(e) => handleChange(e)}
-              className={`signup-${field.name}`}
+              className={styles[field.name]}
               placeholder={field.placeholder}
               required={field.required}
             />
           ))}
           <input
             type="submit"
-            className="signup-submit"
+            className={styles.submit}
             value="Register"
             onClick={registrationForm}
           />

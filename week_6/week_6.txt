@@ -1,0 +1,15 @@
+6 MAY
+    Change content to json or object
+    Convert axios to axios instance
+    Perform dynamic routing
+    Change folder structure of React
+
+7 MAY 
+    Change the edit job code such that the input values are initialized with old values
+    Convert SCSS into Modular SCSS
+    Starting redux
+    Learn about reducers, dispatchers
+    useRef
+    useLayoutEffect
+    useReducer
+    useContext

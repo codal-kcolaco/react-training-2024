@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./PostJob.scss";
+import styles from "./PostJob.module.scss";
 import { postJob } from "../../api/api";
 import { toast } from "react-toastify";
 import { JWT_COOKIE } from "../../Constants";
@@ -53,18 +53,18 @@ const PostJob = () => {
   }, [navigate]);
 
   return JWT_COOKIE ? (
-    <div className="post-job-container">
-      <div className="post-job-title-container">
-        <h1 className="post-job-h1">{postJobTitle.postJobHeading}</h1>
+    <div className={styles.container}>
+      <div className={styles.titleContainer}>
+        <h1 className={styles.h1}>{postJobTitle.postJobHeading}</h1>
         <a href="my-jobs">{postJobTitle.myJobMessage}</a>
       </div>
       <form>
         {postJobContent.map((input, index) => (
-          <div className="post-job-form-group" key={index}>
+          <div className={styles.formGroup} key={index}>
             <label htmlFor={input.id}>{input.label}</label>
             {input.type === "select" ? (
               <select
-                className="post-job-select"
+                className={styles.select}
                 id={input.id}
                 value={jobDetails[input.name]}
                 onChange={handleChange}
@@ -72,7 +72,7 @@ const PostJob = () => {
                 required={input.required}
               >
                 {input.options.map((option, idx) => (
-                  <option key={idx} value={option}>
+                  <option key={idx} value={option.toUpperCase()}>
                     {option}
                   </option>
                 ))}
@@ -84,13 +84,13 @@ const PostJob = () => {
                 value={jobDetails[input.name]}
                 onChange={handleChange}
                 rows={input.rows}
-                className="post-job-textarea"
+                className={styles.textarea}
                 required={input.required}
                 placeholder={input.placeholder}
               ></textarea>
             ) : (
               <input
-                className="post-job-input"
+                className={styles.input}
                 type={input.type}
                 id={input.id}
                 value={jobDetails[input.name]}
@@ -102,7 +102,7 @@ const PostJob = () => {
             )}
           </div>
         ))}
-        <button type="submit" className="post-job-submit" onClick={postAJob}>
+        <button type="submit" className={styles.submit} onClick={postAJob}>
           Post the Job
         </button>
       </form>
