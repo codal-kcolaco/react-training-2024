@@ -110,7 +110,7 @@ const PostJob = () => {
       </form>
     </div>
   ) : (
-    <div className={styles.container}>
+    <div className={styles.noPermissionContainer}>
       <div className={styles.titleContainer}>
         <h1 className={styles.h1}>You are not allowed to create jobs</h1>
       </div>

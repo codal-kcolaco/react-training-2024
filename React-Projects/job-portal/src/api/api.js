@@ -254,6 +254,8 @@ export const applyStatusForJob = async (jobId, coverLetter) => {
     if (error.response && error.response.data) {
       if (error.response.data.job) {
         throw new Error(error.response.data.job[0]);
+      } else if (error.response.data.cover_letter) {
+        throw new Error(error.response.data.cover_letter[0]);
       }
     } else {
       throw new Error("Network response is not ok");

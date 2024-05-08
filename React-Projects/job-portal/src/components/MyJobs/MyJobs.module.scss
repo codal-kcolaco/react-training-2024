@@ -13,7 +13,7 @@ $margin-top: 180px;
 
     .heading {
       text-align: center;
-      color: #333;
+      color: var(--heading-color);
     }
 
     .job {
@@ -22,17 +22,17 @@ $margin-top: 180px;
       transition: background-color 0.3s;
 
       &:hover {
-        background-color: #f0f0f0;
+        background-color: var(--job-hover-color);
       }
 
       h2 {
         margin: 0;
-        color: #007bff;
+        color: var(--job-heading-color);
       }
 
       p {
         margin: 5px 0;
-        color: #666;
+        color: var(--job-text-color);
       }
 
       .jobContainer {
@@ -52,29 +52,29 @@ $margin-top: 180px;
         }
 
         .editButton {
-          background-color: #007bff;
+          background-color: var(--edit-button-background-color);
           color: #fff;
 
           &:hover {
-            background-color: #0056b3;
+            background-color: var(--edit-button-hover-color);
           }
         }
 
         .deleteButton {
-          background-color: #dc3545;
+          background-color: var(--delete-button-background-color);
           color: #fff;
 
           &:hover {
-            background-color: #bd2130;
+            background-color: var(--delete-button-hover-color);
           }
         }
 
         .viewApplicationButton {
-          background-color: #29cc1b;
+          background-color: var(--view-application-button-background-color);
           color: #fff;
 
           &:hover {
-            background-color: #5ea013;
+            background-color: var(--view-application-button-hover-color);
           }
         }
       }

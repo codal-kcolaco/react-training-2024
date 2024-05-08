@@ -29,7 +29,7 @@ function Home() {
             <p>{jobCardContent.description}</p>
           </div>
           <div className={styles.containerBtn}>
-            <a href="post-job" className={styles.btn}>
+            <a href="post-job" className={styles.cardBtn}>
               {jobCardContent.button}
             </a>
           </div>

@@ -1,9 +1,11 @@
+@import url("../../colors.scss");
+
 .container {
   margin: 200px 0px;
 
   .avatar {
     height: 100px;
-    background-color: #ccc;
+    background-color: var(--avatar-background-color);
     border-radius: 10px;
     margin-bottom: 20px;
   }
@@ -16,14 +18,14 @@
     .input {
       padding: 10px;
       margin-bottom: 20px;
-      border: 2px solid gainsboro;
+      border: 2px solid var(--input-border-color);
       border-radius: 5px;
     }
 
     .submit {
-      background-color: #0972e3;
+      background-color: var(--button-background-color);
       margin-top: 20px;
-      color: white;
+      color: var(--button-text-color);
       border: none;
       border-radius: 5px;
       padding: 15px;
@@ -32,7 +34,7 @@
       transition: background-color 0.3s;
 
       &:hover {
-        background-color: #0056b3;
+        background-color: var(--button-hover-color);
       }
     }
   }
