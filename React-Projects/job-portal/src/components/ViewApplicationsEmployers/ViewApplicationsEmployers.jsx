@@ -10,13 +10,16 @@ import { JWT_COOKIE, convertToDate } from "../../Constants.jsx";
 import { toast } from "react-toastify";
 import noJobLogo from "../../assets/people.png";
 import { viewApplicationEmployersInfo } from "../../data/ViewApplicationsEmployers.js";
+import { Modal } from "./Modal.jsx";
 
 const JobApplicationEmployerCard = ({ jobApplication }) => {
   const [isSelected, setIsSelected] = useState(jobApplication.is_selected);
+  const [openModal, setOpenModal] = useState(false);
 
   const selectApplicant = (status) => {
     setIsSelected(status);
     selectApplicantAPI(jobApplication.job, jobApplication.pk, status);
+    setOpenModal(true);
   };
 
   return (
@@ -63,6 +66,11 @@ const JobApplicationEmployerCard = ({ jobApplication }) => {
           >
             {isSelected}
           </div>
+        </div>
+        <div className={styles.modalSelectionReply}>
+          {openModal && (
+            <Modal onClose={setOpenModal} jobApplication={jobApplication} />
+          )}
         </div>
       </div>
     </li>

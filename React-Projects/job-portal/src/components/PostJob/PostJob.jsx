@@ -113,6 +113,7 @@ const PostJob = () => {
     <div className={styles.noPermissionContainer}>
       <div className={styles.titleContainer}>
         <h1 className={styles.h1}>You are not allowed to create jobs</h1>
+        <p>If you want to create jobs, create a new account as a company</p>
       </div>
     </div>
   );

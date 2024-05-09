@@ -20,3 +20,9 @@
     Changed the user from a single type to two types: Employers and Applicants
     Learned more about redux
     Learned about Vite
+
+9 MAY 
+    useMemo
+    useCallback
+    Create a selection reply API and connected it with the frontend 
+    Create the Modal code in the frontend for the selection reply

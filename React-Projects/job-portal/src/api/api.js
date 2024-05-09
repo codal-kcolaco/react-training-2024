@@ -220,6 +220,30 @@ export const selectApplicantAPI = async (
   }
 };
 
+export const selectionReplyAPI = async (
+  jobId,
+  applicationId,
+  selectionReply
+) => {
+  try {
+    const response = await api.patch(
+      POST_JOB_URL +
+        jobId +
+        "/" +
+        "application-selection-reply/" +
+        applicationId +
+        "/",
+      {
+        selection_reply: selectionReply,
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    throw new Error(`${error}`);
+  }
+};
+
 export const fetchMyApplications = async () => {
   try {
     const response = await api.get(GET_SINGLE_JOB_APPLICATION_URL);
@@ -255,7 +279,9 @@ export const applyStatusForJob = async (jobId, coverLetter) => {
       if (error.response.data.job) {
         throw new Error(error.response.data.job[0]);
       } else if (error.response.data.cover_letter) {
-        throw new Error(error.response.data.cover_letter[0]);
+        throw new Error(
+          `${error.response.data.cover_letter[0]} - Cover Letter`
+        );
       }
     } else {
       throw new Error("Network response is not ok");
