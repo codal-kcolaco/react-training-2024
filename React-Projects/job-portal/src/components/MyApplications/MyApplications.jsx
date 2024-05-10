@@ -6,8 +6,11 @@ import lodash from "lodash";
 import { JWT_COOKIE, convertToDate } from "../../Constants.jsx";
 import { toast } from "react-toastify";
 import noJobLogo from "../../assets/people.png";
+import { Modal } from "./Modal.jsx";
 
 const MyApplicationCard = ({ myApplication }) => {
+  const [openModal, setOpenModal] = useState(false);
+
   const applicationStatusColorMap = {
     ACCEPTED: "green",
     REJECTED: "red",
@@ -34,14 +37,24 @@ const MyApplicationCard = ({ myApplication }) => {
               {convertToDate(myApplication.applied_at)}
             </p>
           </div>
-          <div
-            className={styles.statusContainer}
-            style={{
-              backgroundColor:
-                applicationStatusColorMap[myApplication.is_selected],
-            }}
-          >
-            {myApplication.is_selected}
+          <div className={styles.modalSelectionReply}>
+            {openModal && (
+              <Modal onClose={setOpenModal} jobApplication={myApplication} />
+            )}
+          </div>
+          <div className={styles.statusSection}>
+            <div
+              className={styles.statusContainer}
+              style={{
+                backgroundColor:
+                  applicationStatusColorMap[myApplication.is_selected],
+              }}
+            >
+              {myApplication.is_selected}
+            </div>
+            {myApplication.is_selected !== "PENDING" && (
+              <button onClick={() => setOpenModal(true)}>Reply</button>
+            )}
           </div>
         </div>
       </div>
