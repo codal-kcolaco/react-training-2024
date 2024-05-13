@@ -1,0 +1,151 @@
+:root {
+  // Header
+  --background-color: rgb(248, 248, 248);
+  --header-background-color: white;
+  --header-text-color: black;
+  --button-background-color-purple: purple;
+  --button-background-color-darkblue: darkblue;
+  --button-hover-opacity: 0.3;
+  --link-color: #414040;
+  --link-hover-color: #929292;
+  --avatar-background-color: #ccc;
+  --button-background-color-primary: #007bff;
+  --button-background-color-primary-hover: #0056b3;
+
+  // About
+  --paragraph-color: gray;
+  --ceoTitle-color: gray;
+
+  // Contact
+  --contact-background-color: rgb(129, 183, 253);
+  --box-shadow-color: rgba(0, 0, 0, 0.1);
+  --submit-background-color: #0972e3;
+  --submit-hover-background-color: #0056b3;
+  --submit-text-color: #d3d3d3;
+  --input-border-color: #ccc;
+
+  // Edit Job
+  --edit-job-color: #333;
+  --edit-job-border-color: #ccc;
+  --edit-job-primary-color: #007bff;
+  --edit-job-primary-color-hover: #0364cb;
+  --edit-job-button-text-color: #fff;
+  --edit-job-background-color: #fff;
+
+  // Footer
+
+  --footer-container-background-color: #ffffff;
+  --footer-container-text-color: #000000;
+  --footer-content-text-color: gray;
+  --footer-link-color: #000000;
+  --footer-link-hover-color: #7b8b8a;
+
+  // Home
+
+  --home-banner-background-color: #ffffff;
+  --home-banner-text-color: #fff;
+  --home-banner-button-text-color: #fff;
+  --home-banner-button-hover-text-color: #000000;
+  --home-banner-button-background-color: #000000;
+  --home-banner-button-hover-background-color: #ffffff;
+  --home-card-background-color: #ffffff;
+  --home-card-box-shadow-color: rgba(0, 0, 0, 0.2);
+  --home-card-hover-box-shadow-color: rgba(0, 0, 0, 0.2);
+  --home-card-text-color: gray;
+  --home-card-button-background-color: darkblue;
+  --home-card-button-text-color: #fff;
+  --home-card-button-hover-background-color: rgb(136, 115, 115);
+  --home-container-background-color: #ffffff;
+  --home-container-text-color: #000000;
+  --home-search-bar-border-color: lightgray;
+  --home-search-button-border-color: lightgray;
+  --home-chip-border-color: lightgray;
+  --home-chip-background-color: #ffffff;
+
+  // Job Description
+  --desc-card-background-color: #ffffff;
+  --desc-card-box-shadow-color: rgba(0, 0, 0, 0.2);
+  --desc-title-font-size: 20px;
+  --desc-text-color: gray;
+  --desc-apply-background-color: #f9f9f9;
+  --desc-apply-box-shadow-color: rgba(0, 0, 0, 0.1);
+  --desc-apply-button-background-color: red;
+  --desc-apply-button-hover-background-color: rgb(234, 127, 138);
+  --desc-applied-button-background-color: green;
+  --desc-overview-background-color: #f9f9f9;
+  --desc-overview-box-shadow-color: rgba(0, 0, 0, 0.1);
+  --desc-spinner-border-color: rgba(0, 0, 0, 0.1);
+  --desc-spinner-color: #333;
+
+  // Jobs
+
+  --jobs-listContainer-background-color: #fff;
+  --jobs-searchInput-border-color: black;
+  --jobs-filterSection-border-color: lightgray;
+  --jobs-filterSection-background-color: #fff;
+  --jobs-chip-border-color: lightgray;
+  --jobs-chip-background-color: #fff;
+  --jobs-chip-text-color: gray;
+  --jobs-chip-hover-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+
+  // Login
+
+  --login-container-background-color: rgb(129, 183, 253);
+  --login-input-border-color: #ccc;
+  --login-input-background-color: #fff;
+  --login-submit-background-color: #0972e3;
+  --login-submit-hover-background-color: #0056b3;
+  --login-container-text-color: white;
+
+  // My Application
+
+  --heading-color: #333;
+  --application-hover-color: #f0f0f0;
+  --application-heading-color: #007bff;
+  --application-text-color: #666;
+  --application-status-padding: 10px;
+  --application-status-color: white;
+
+  // Post Job
+  --heading-color: #333;
+  --job-hover-color: #f0f0f0;
+  --job-heading-color: #007bff;
+  --job-text-color: #666;
+  --edit-button-background-color: #007bff;
+  --edit-button-hover-color: #0056b3;
+  --delete-button-background-color: #dc3545;
+  --delete-button-hover-color: #bd2130;
+  --view-application-button-background-color: #29cc1b;
+  --view-application-button-hover-color: #5ea013;
+
+  // Signup
+
+  --background-color: rgb(129, 183, 253);
+  --box-shadow-color: rgba(0, 0, 0, 0.1);
+  --text-color: white;
+  --input-border-color: #ccc;
+  --button-background-color: #0972e3;
+  --button-hover-color: #0056b3;
+  --button-text-color: #d3d3d3;
+
+  // User Portal
+
+  --avatar-background-color: #ccc;
+  --input-border-color: gainsboro;
+  --button-background-color: #0972e3;
+  --button-hover-color: #0056b3;
+  --button-text-color: white;
+
+  // View Application for Employers
+
+  --heading-color: #333;
+  --application-hover-color: #f0f0f0;
+  --application-title-color: #007bff;
+  --application-text-color: #666;
+  --accept-button-background-color: #007bff;
+  --accept-button-hover-color: #0056b3;
+  --accept-button-text-color: #fff;
+  --reject-button-background-color: #dc3545;
+  --reject-button-hover-color: #bd2130;
+  --reject-button-text-color: #fff;
+}

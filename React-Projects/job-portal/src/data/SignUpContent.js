@@ -25,6 +25,18 @@ export const signUpContent = [
   },
 ];
 
+export const signUpSelect = {
+  type: "select",
+  id: "user-type",
+  name: "userType",
+  label: "User Type",
+  options: [
+    { name: "EMPLOYER", value: "Company" },
+    { name: "APPLICANT", value: "Job Seeker" },
+  ],
+  required: true,
+};
+
 export const signUpError = {
   passwordErrorMessage: "Passwords do not match",
   registrationSuccessfulMessage: "Registration Successful",

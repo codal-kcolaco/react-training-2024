@@ -1,3 +1,5 @@
+@import url("../../colors.scss");
+
 .class {
   background-image: url("../../assets/background.jpg");
   background-size: cover;
@@ -7,9 +9,9 @@
 
 .container {
   margin: 200px 0px;
-  background-color: rgb(129, 183, 253);
+  background-color: var(--background-color);
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px var(--box-shadow-color);
   padding: 40px;
   width: 400px;
   max-width: 90%;
@@ -17,17 +19,18 @@
 
   h2 {
     margin-bottom: 20px;
-    color: white;
+    color: var(--text-color);
   }
 
   .fullname,
   .email,
   .password,
-  .confirmPassword {
+  .confirmPassword,
+  .userType {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    border: 1px solid var(--input-border-color);
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 16px;
@@ -35,9 +38,9 @@
 
   .submit {
     width: 100%;
-    background-color: #0972e3;
+    background-color: var(--button-background-color);
     margin-top: 50px;
-    color: #d3d3d3;
+    color: var(--button-text-color);
     border: none;
     border-radius: 5px;
     padding: 15px 0;
@@ -46,7 +49,7 @@
     transition: background-color 0.3s;
 
     &:hover {
-      background-color: #0056b3;
+      background-color: var(--button-hover-color);
     }
   }
 }

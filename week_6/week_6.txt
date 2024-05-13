@@ -13,3 +13,10 @@
     useLayoutEffect
     useReducer
     useContext
+
+8 MAY
+    Learned how to make custom hooks
+    Created a seperate colors file 
+    Changed the user from a single type to two types: Employers and Applicants
+    Learned more about redux
+    Learned about Vite

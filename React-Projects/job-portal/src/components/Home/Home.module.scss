@@ -1,8 +1,11 @@
+@import url("../../colors.scss");
+
 .banner {
   background-image: url("../../assets/background.jpg");
   background-size: cover;
   background-position: center;
-  color: #fff;
+  background-color: var(--home-banner-background-color);
+  color: var(--home-banner-text-color);
   text-align: center;
   padding: 200px 0;
 
@@ -15,8 +18,8 @@
   }
 
   .btn {
-    color: white;
-    border: 1px solid white;
+    color: var(--home-banner-button-text-color);
+    border: 1px solid var(--home-banner-button-text-color);
     border-radius: 2px;
     padding: 9px 15px;
     cursor: pointer;
@@ -24,8 +27,8 @@
     transition: background-color 0.15s, color 0.15s;
 
     &:hover {
-      background-color: white;
-      color: black;
+      background-color: var(--home-banner-button-hover-background-color);
+      color: var(--home-banner-button-hover-text-color);
     }
   }
 }
@@ -33,15 +36,15 @@
 .card {
   display: inline-block;
   text-align: left;
-  background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--home-card-background-color);
+  box-shadow: 0 4px 8px 0 var(--home-card-box-shadow-color);
   transition: 0.3s;
   margin: 100px;
   border-radius: 20px;
   padding: 30px;
 
   &:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px 0 var(--home-card-hover-box-shadow-color);
   }
 
   @media only screen and (max-width: 880px) {
@@ -58,8 +61,8 @@
         padding: 10px;
 
         .btn {
-          color: white;
-          background-color: darkblue;
+          color: var(--home-card-button-text-color);
+          background-color: var(--home-card-button-background-color);
           border-radius: 10px;
           padding: 20px 45px;
           cursor: pointer;
@@ -67,8 +70,8 @@
           transition: background-color 0.15s, color 0.15s;
 
           &:hover {
-            background-color: rgb(136, 115, 115);
-            color: white;
+            background-color: var(--home-card-button-hover-background-color);
+            color: var(--home-banner-text-color);
           }
         }
       }
@@ -94,9 +97,9 @@
     justify-content: center;
     padding: 10px;
 
-    .btn {
-      color: white;
-      background-color: darkblue;
+    .cardBtn {
+      color: var(--home-card-button-text-color);
+      background-color: var(--home-card-button-background-color);
       border-radius: 10px;
       padding: 20px 45px;
       cursor: pointer;
@@ -104,8 +107,8 @@
       transition: background-color 0.15s, color 0.15s;
 
       &:hover {
-        background-color: rgb(136, 115, 115);
-        color: white;
+        background-color: var(--home-card-button-hover-background-color);
+        color: var(--home-banner-text-color);
       }
     }
   }
@@ -128,7 +131,7 @@
       height: 57px;
       padding-left: 20px;
       font-size: 16px;
-      border: 1px solid lightgray;
+      border: 1px solid var(--home-search-bar-border-color);
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
       width: 0;
@@ -141,7 +144,7 @@
     .searchButton {
       min-height: 57px;
       width: 58px;
-      border: 1px solid lightgray;
+      border: 1px solid var(--home-search-button-border-color);
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
       cursor: pointer;
@@ -195,7 +198,7 @@
 }
 
 .chip {
-  border: 1px solid lightgray;
+  border: 1px solid var(--home-chip-border-color);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -206,7 +209,7 @@
   font-size: 16px;
   font-weight: bold;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: var(--home-chip-background-color);
 
   &:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);

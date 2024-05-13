@@ -1,3 +1,5 @@
+@import url("../../colors.scss");
+
 $margin-top: 180px;
 
 .container {
@@ -12,7 +14,7 @@ $margin-top: 180px;
 
     .heading {
       text-align: center;
-      color: #333;
+      color: var(--heading-color);
     }
 
     .application {
@@ -21,17 +23,17 @@ $margin-top: 180px;
       transition: background-color 0.3s;
 
       &:hover {
-        background-color: #f0f0f0;
+        background-color: var(--application-hover-color);
       }
 
       h2 {
         margin: 0;
-        color: #007bff;
+        color: var(--application-title-color);
       }
 
       p {
         margin: 5px 0;
-        color: #666;
+        color: var(--application-text-color);
       }
 
       .applicationContainer {
@@ -53,21 +55,21 @@ $margin-top: 180px;
         }
 
         .acceptButton {
-          background-color: #007bff;
-          color: #fff;
+          background-color: var(--accept-button-background-color);
+          color: var(--accept-button-text-color);
           text-decoration: none;
 
           &:hover {
-            background-color: #0056b3;
+            background-color: var(--accept-button-hover-color);
           }
         }
 
         .rejectButton {
-          background-color: #dc3545;
-          color: #fff;
+          background-color: var(--reject-button-background-color);
+          color: var(--reject-button-text-color);
 
           &:hover {
-            background-color: #bd2130;
+            background-color: var(--reject-button-hover-color);
           }
         }
       }

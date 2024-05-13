@@ -3,6 +3,7 @@ import styles from "./Login.module.scss";
 import { loginUser } from "../../api/api";
 import { toast } from "react-toastify";
 import { loginConstant } from "../../data/LoginContent";
+import { useDispatch } from "react-redux";
 
 function Login() {
   const [userDetails, setUserDetails] = useState({
@@ -10,6 +11,7 @@ function Login() {
     password: "",
   });
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setUserDetails({
@@ -24,7 +26,11 @@ function Login() {
     setLoading(true);
 
     try {
-      const jwtToken = await loginUser(userDetails.email, userDetails.password);
+      const jwtToken = await loginUser(
+        userDetails.email,
+        userDetails.password,
+        dispatch
+      );
       toast.success("Login successful", {
         onClose: () => (window.location.href = "/"),
         autoClose: 1000,

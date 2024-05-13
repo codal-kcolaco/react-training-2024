@@ -14,7 +14,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Provider store={store}>
         <App />
       </Provider>
-      <ToastContainer autoClose={2000} />
+      <ToastContainer
+        autoClose={2000}
+        pauseOnFocusLoss={false}
+        hideProgressBar={true}
+      />
     </BrowserRouter>
   </React.StrictMode>
 );

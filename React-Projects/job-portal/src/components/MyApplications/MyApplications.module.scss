@@ -13,7 +13,7 @@ $margin-top: 180px;
 
     .heading {
       text-align: center;
-      color: #333;
+      color: var(--heading-color);
     }
 
     .application {
@@ -22,17 +22,17 @@ $margin-top: 180px;
       transition: background-color 0.3s;
 
       &:hover {
-        background-color: #f0f0f0;
+        background-color: var(--application-hover-color);
       }
 
       h2 {
         margin: 0;
-        color: #007bff;
+        color: var(--application-heading-color);
       }
 
       p {
         margin: 5px 0;
-        color: #666;
+        color: var(--application-text-color);
       }
 
       .applicationContainer {
@@ -41,12 +41,12 @@ $margin-top: 180px;
         justify-content: space-between;
 
         .statusContainer {
-          padding: 10px;
+          padding: var(--application-status-padding);
           display: flex;
           align-items: center;
           border-radius: 10px;
           margin: 25px;
-          color: white;
+          color: var(--application-status-color);
         }
       }
     }

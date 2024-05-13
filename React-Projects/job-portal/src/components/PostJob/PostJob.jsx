@@ -5,9 +5,11 @@ import { postJob } from "../../api/api";
 import { toast } from "react-toastify";
 import { JWT_COOKIE } from "../../Constants";
 import { postJobContent, postJobTitle } from "../../data/PostJobContent";
+import { useSelector } from "react-redux";
 
 const PostJob = () => {
   const navigate = useNavigate();
+  const userType = useSelector((state) => state.userType);
 
   const [jobDetails, setJobDetails] = useState({
     jobTitle: "",
@@ -52,7 +54,7 @@ const PostJob = () => {
     }
   }, [navigate]);
 
-  return JWT_COOKIE ? (
+  return userType !== "APPLICANT" ? (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
         <h1 className={styles.h1}>{postJobTitle.postJobHeading}</h1>
@@ -107,6 +109,12 @@ const PostJob = () => {
         </button>
       </form>
     </div>
-  ) : null;
+  ) : (
+    <div className={styles.noPermissionContainer}>
+      <div className={styles.titleContainer}>
+        <h1 className={styles.h1}>You are not allowed to create jobs</h1>
+      </div>
+    </div>
+  );
 };
 export default PostJob;

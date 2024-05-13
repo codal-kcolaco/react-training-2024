@@ -12,6 +12,8 @@ import {
   CHANGE_PASSWORD_URL,
   BE_ENDPOINT,
 } from "../Constants";
+import { useDispatch } from "react-redux";
+import { setUserType } from "../store/store";
 
 const api = axios.create({
   baseURL: BE_ENDPOINT,
@@ -21,12 +23,13 @@ const api = axios.create({
   },
 });
 
-export const registerUser = async (fullname, email, password) => {
+export const registerUser = async (fullname, email, password, userType) => {
   try {
     const response = await api.post(SIGNUP_URL, {
       name: fullname,
       email: email,
       password: password,
+      user_type: userType,
     });
 
     return response.data;
@@ -46,7 +49,7 @@ export const registerUser = async (fullname, email, password) => {
   }
 };
 
-export const loginUser = async (email, password) => {
+export const loginUser = async (email, password, dispatch) => {
   try {
     const response = await api.post(LOGIN_URL, {
       email: email,
@@ -55,6 +58,7 @@ export const loginUser = async (email, password) => {
 
     const jwtToken = response.data.jwt;
 
+    dispatch(setUserType(response.data.user_type));
     document.cookie = `jwt_token=${jwtToken}; expires=${new Date(
       Date.now() + 86400 * 1000
     ).toUTCString()}; path=/`;
@@ -250,6 +254,8 @@ export const applyStatusForJob = async (jobId, coverLetter) => {
     if (error.response && error.response.data) {
       if (error.response.data.job) {
         throw new Error(error.response.data.job[0]);
+      } else if (error.response.data.cover_letter) {
+        throw new Error(error.response.data.cover_letter[0]);
       }
     } else {
       throw new Error("Network response is not ok");

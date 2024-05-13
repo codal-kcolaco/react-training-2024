@@ -4,23 +4,21 @@ import styles from "./JobDescription.module.scss";
 import { applyStatusForJob, fetchSingleJob } from "../../api/api";
 import lodash from "lodash";
 import { toast } from "react-toastify";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   jobDescriptionError,
   jobDescriptionContent,
 } from "../../data/JobDescriptionContent";
-import { setButtonStatus, setButtonText } from "../../store/store";
 
 const JobDescriptionCard = () => {
-  const buttonText = useSelector((state) => state.buttonText);
-  const buttonStatus = useSelector((state) => state.buttonStatus);
-  const dispatch = useDispatch();
   const jobId = useParams().id;
+  const userType = useSelector((state) => state.userType);
+  const navigate = useNavigate();
 
   const [jobData, setJobData] = useState({});
   const [coverLetter, setCoverLetter] = useState("");
-  // const [buttonStatus, setButtonStatus] = useState(styles["apply-button"]);
-  // const [buttonText, setButtonText] = useState("Apply Now");
+  const [buttonStatus, setButtonStatus] = useState(styles["applyButton"]);
+  const [buttonText, setButtonText] = useState("Apply Now");
 
   useEffect(() => {
     const fetchData = () => {
@@ -84,16 +82,19 @@ const JobDescriptionCard = () => {
         />
         <button
           onClick={() => {
+            if (!userType) {
+              navigate("/login");
+            }
             applyStatusForJob(jobId, coverLetter)
               .then(() => {
-                dispatch(setButtonStatus("appliedButton"));
-                dispatch(setButtonText("Applied"));
+                setButtonStatus(styles["appliedButton"]);
+                setButtonText("Applied");
               })
               .catch((error) => {
                 toast.error(`${error}`);
               });
           }}
-          className={styles[buttonStatus]}
+          className={buttonStatus}
         >
           {buttonText}
         </button>

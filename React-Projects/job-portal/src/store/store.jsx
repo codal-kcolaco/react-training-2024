@@ -2,24 +2,21 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import { createSlice } from "@reduxjs/toolkit";
 
-const jobDescriptionSlice = createSlice({
-  name: "jobDescription",
+const userTypeSlice = createSlice({
+  name: "userTypeSlice",
   initialState: {
-    buttonStatus: "apply-button",
-    buttonText: "Apply Now",
+    userType: localStorage.getItem("userType"),
   },
   reducers: {
-    setButtonStatus: (state, action) => {
-      state.buttonStatus = "appliedButton";
-    },
-    setButtonText: (state, action) => {
-      state.buttonText = "Applied";
+    setUserType: (state, action) => {
+      console.log(action.payload);
+      localStorage.setItem("userType", action.payload);
     },
   },
 });
 
-export const { setButtonStatus, setButtonText } = jobDescriptionSlice.actions;
+export const { setUserType } = userTypeSlice.actions;
 
-const store = configureStore({ reducer: jobDescriptionSlice.reducer });
+const store = configureStore({ reducer: userTypeSlice.reducer });
 
 export default store;

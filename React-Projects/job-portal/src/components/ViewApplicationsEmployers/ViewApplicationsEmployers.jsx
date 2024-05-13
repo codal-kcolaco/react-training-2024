@@ -6,7 +6,7 @@ import {
 } from "../../api/api";
 import { useNavigate, useParams } from "react-router-dom";
 import lodash from "lodash";
-import { JWT_COOKIE } from "../../Constants.jsx";
+import { JWT_COOKIE, convertToDate } from "../../Constants.jsx";
 import { toast } from "react-toastify";
 import noJobLogo from "../../assets/people.png";
 import { viewApplicationEmployersInfo } from "../../data/ViewApplicationsEmployers.js";
@@ -27,7 +27,7 @@ const JobApplicationEmployerCard = ({ jobApplication }) => {
             <h2>{jobApplication.applicant}</h2>
             <p>
               <strong>{viewApplicationEmployersInfo.appliedAt}</strong>{" "}
-              {jobApplication.applied_at}
+              {convertToDate(jobApplication.applied_at)}
             </p>
             <p>
               <strong>{viewApplicationEmployersInfo.coverLetter}</strong>{" "}
