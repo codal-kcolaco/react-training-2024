@@ -5,6 +5,8 @@ import {
   useLayoutEffect,
   useRef,
   createContext,
+  useMemo,
+  useCallback,
 } from "react";
 import axios from "axios";
 import "./App.css";
@@ -29,6 +31,23 @@ function App() {
   const [username, setUsername] = useState("test");
   const inputRef = useRef(null);
   const [name, setName] = useLocalStorage("name", "");
+
+  const [number, setNumber] = useState(0);
+  const [dark, setDark] = useState(false);
+  const doubleNumber = useMemo(() => {
+    return slowFunction(number);
+  }, [number]);
+  const doubleNumberCallback = useCallback(() => {
+    return slowFunction(number);
+  }, [number]);
+  const themeStyles = {
+    backgroundColor: dark ? "black" : "white",
+    color: dark ? "white" : "black",
+  };
+
+  console.log(doubleNumber);
+  console.log(doubleNumberCallback);
+
   const onClick = () => {
     inputRef.current.focus();
   };
@@ -86,8 +105,26 @@ function App() {
           onChange={(e) => setName(e.target.value)}
         />
       </div>
+      <div>
+        <h1>useMemo</h1>
+        <input
+          type="number"
+          value={number}
+          onChange={(e) => setNumber(parseInt(e.target.value))}
+        />
+        <button onClick={() => setDark((prevDark) => !prevDark)}>
+          Change theme
+        </button>
+        <div style={themeStyles}>{doubleNumber}</div>
+      </div>
     </>
   );
+}
+
+function slowFunction(num) {
+  console.log("Calling slow function");
+  for (let i = 0; i <= 1000000000; i++) {}
+  return num * 2;
 }
 
 export default App;
