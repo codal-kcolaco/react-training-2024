@@ -42,13 +42,13 @@ const EditJob = () => {
     event.preventDefault();
     editJob(
       jobId,
-      jobDetails.jobTitle,
-      jobDetails.jobType,
-      jobDetails.jobSalary,
-      jobDetails.jobDescription,
-      jobDetails.jobExperience,
-      jobDetails.jobLocation,
-      jobDetails.jobTechnology
+      jobDetails.job_name,
+      jobDetails.job_type,
+      jobDetails.job_salary,
+      jobDetails.job_description,
+      jobDetails.job_experience,
+      jobDetails.job_location,
+      jobDetails.job_technology
     )
       .then(() => {
         toast.success("Edited a job");

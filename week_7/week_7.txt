@@ -1,0 +1,21 @@
+14 MAY 
+    Checked some more built in hooks
+        useActionState     
+        useDebugValue 
+        useDeferredValue 
+        useId 
+        useImperativeHandle 
+        useInsertionEffect    
+        useOptimistic 
+        useSyncExternalStore 
+        useTransition 
+
+16 MAY 
+    Installed and Started Typescript
+    Learned why we use Typescript
+    Learned some data types in Typescript
+        - void
+        - never
+        - any
+
+    

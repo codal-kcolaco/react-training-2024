@@ -7,9 +7,11 @@ import { JWT_COOKIE, convertToDate } from "../../Constants.jsx";
 import { toast } from "react-toastify";
 import noJobLogo from "../../assets/people.png";
 import { Modal } from "./Modal.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { setMyApplication } from "../../store/store.jsx";
 
-const MyApplicationCard = ({ myApplication }) => {
-  const [openModal, setOpenModal] = useState(false);
+const MyApplicationCard = ({ myApplication, setOpenModal }) => {
+  const dispatch = useDispatch();
 
   const applicationStatusColorMap = {
     ACCEPTED: "green",
@@ -37,11 +39,6 @@ const MyApplicationCard = ({ myApplication }) => {
               {convertToDate(myApplication.applied_at)}
             </p>
           </div>
-          <div className={styles.modalSelectionReply}>
-            {openModal && (
-              <Modal onClose={setOpenModal} jobApplication={myApplication} />
-            )}
-          </div>
           <div className={styles.statusSection}>
             <div
               className={styles.statusContainer}
@@ -53,7 +50,15 @@ const MyApplicationCard = ({ myApplication }) => {
               {myApplication.is_selected}
             </div>
             {myApplication.is_selected !== "PENDING" && (
-              <button onClick={() => setOpenModal(true)}>Reply</button>
+              <button
+                className={styles.replyButton}
+                onClick={() => {
+                  dispatch(setMyApplication(myApplication));
+                  setOpenModal(true);
+                }}
+              >
+                Reply
+              </button>
             )}
           </div>
         </div>
@@ -65,6 +70,8 @@ const MyApplicationCard = ({ myApplication }) => {
 export const MyApplications = () => {
   const [myApplicationData, setmyApplicationData] = useState({});
   const navigate = useNavigate();
+  const [openModal, setOpenModal] = useState(false);
+  const myApplication = useSelector((state) => state.myApplication);
 
   useEffect(() => {
     const fetchData = () => {
@@ -90,11 +97,22 @@ export const MyApplications = () => {
       <h1 className={styles.myHeading}>Application Listings</h1>
       <div className={styles.listContainer}>
         {!lodash.isEmpty(myApplicationData) ? (
-          <ul className={styles.list}>
-            {myApplicationData.map((myApplication, index) => (
-              <MyApplicationCard key={index} myApplication={myApplication} />
-            ))}
-          </ul>
+          <>
+            <div className={styles.modalSelectionReply}>
+              {openModal && (
+                <Modal onClose={setOpenModal} jobApplication={myApplication} />
+              )}
+            </div>
+            <ul className={styles.list}>
+              {myApplicationData.map((myApplication, index) => (
+                <MyApplicationCard
+                  key={index}
+                  myApplication={myApplication}
+                  setOpenModal={setOpenModal}
+                />
+              ))}
+            </ul>
+          </>
         ) : (
           <div className={styles.emptyListContainer}>
             <img className={styles.emptyListImg} src={noJobLogo} alt="people" />
