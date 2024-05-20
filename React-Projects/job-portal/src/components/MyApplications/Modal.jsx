@@ -16,7 +16,7 @@ export const Modal = ({ onClose, jobApplication }) => {
           </button>
         </div>
         <div className={styles.modalTitle}>
-          <h1>Please enter the reason</h1>
+          <h1>Reply from company</h1>
         </div>
 
         <div className={styles.footer}>
