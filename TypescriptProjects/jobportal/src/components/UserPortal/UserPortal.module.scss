@@ -1,0 +1,45 @@
+@import url("../../colors.scss");
+
+.container {
+  margin: 200px 0px;
+
+  .avatar {
+    height: 100px;
+    background-color: var(--avatar-background-color);
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    margin: 20px;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .input {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 2px solid var(--input-border-color);
+      border-radius: 5px;
+    }
+
+    .submit {
+      background-color: var(--button-background-color);
+      margin-top: 20px;
+      color: var(--button-text-color);
+      border: none;
+      border-radius: 5px;
+      padding: 15px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: var(--button-hover-color);
+      }
+    }
+  }
+}

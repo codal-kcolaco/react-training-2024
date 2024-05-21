@@ -1,0 +1,39 @@
+@import url("../../colors.scss");
+.container {
+  margin: 200px;
+
+  .title {
+    font-weight: bold;
+    font-size: xx-large;
+  }
+
+  .firstSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 100px;
+
+    .cjpLogo {
+      padding: 40px;
+    }
+
+    .paragraph {
+      text-align: left;
+      color: var(--paragraph-color);
+      margin-bottom: 40px;
+    }
+  }
+
+  .secondSection {
+    .ceoLogo {
+      border-radius: 20%;
+    }
+
+    .ceoTitle {
+      color: var(--ceoTitle-color);
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  }
+}
