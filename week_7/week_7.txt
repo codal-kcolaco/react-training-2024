@@ -18,4 +18,21 @@
         - never
         - any
 
+17 MAY 
+    Objects
+    Types
+    Operations with Types
+    Arrays
+    Enums
+    Interface    
+
+20 MAY     
+    Union
+    Tuples
+    Classes
+    tsconfig
+    Getters and setters
+    Private, protected and readonly
+    Abstract Classes
+    Generics
     
