@@ -1,24 +1,36 @@
-export const postJobContent = [
+type JobOption = {
+  type: string,
+  id: string,
+  name: string,
+  value: string,
+  label: string,
+  required?: boolean,
+  options?: string[],
+  rows?: number,
+};
+
+export const editJobContent: JobOption[] = [
   {
     type: "text",
     id: "job-title",
-    name: "jobTitle",
-
+    name: "job_name",
+    value: "job_name",
     label: "Title of the Job",
     required: true,
   },
   {
     type: "text",
     id: "job-type",
-    name: "jobType",
-
+    name: "job_type",
+    value: "job_type",
     label: "Type of the Job (Eg: Software Engineer, Human Resources)",
     required: true,
   },
   {
     type: "select",
     id: "job-technology",
-    name: "jobTechnology",
+    name: "job_technology",
+    value: "job_technology",
     label: "Technology Required for the Job",
     options: [
       "Python",
@@ -37,37 +49,42 @@ export const postJobContent = [
   {
     type: "text",
     id: "job-salary",
-    name: "jobSalary",
-
+    name: "job_salary",
+    value: "job_salary",
     label: "Salary provided by you on per month basis",
   },
   {
     type: "text",
     id: "job-experience",
-    name: "jobExperience",
-
+    name: "job_experience",
+    value: "job_experience",
     label: "Years of experience required",
   },
   {
     type: "text",
     id: "job-location",
-    name: "jobLocation",
-
+    name: "job_location",
+    value: "job_location",
     label: "Location of the Job",
     required: true,
   },
   {
     type: "textarea",
     id: "description",
-    name: "jobDescription",
-
+    name: "job_description",
+    value: "job_description",
     label: "Description of the Job",
     rows: 5,
     required: true,
   },
 ];
 
-export const postJobTitle = {
+type PostJobTitle = {
+  postJobHeading: string,
+  myJobMessage: string,
+};
+
+export const postJobTitle: PostJobTitle = {
   postJobHeading: "Post a job",
   myJobMessage: "Already posted a job ?",
 };

@@ -1,8 +1,21 @@
-export const jobsError = {
+type JobsError = {
+  error: string,
+};
+
+export const jobsError: JobsError = {
   error: "Please try again",
 };
 
-export const jobsContent = {
+type JobsContent = {
+  jobTitle: string,
+  jobFilterTitle: string,
+  jobTechnologyTitle: string,
+  jobExperience: string,
+  jobEmptyMessage: string,
+  jobSearchPlaceholer: string,
+};
+
+export const jobsContent: JobsContent = {
   jobTitle: "Jobs",
   jobFilterTitle: "Filter",
   jobTechnologyTitle: "Technology",
@@ -11,7 +24,13 @@ export const jobsContent = {
   jobSearchPlaceholer: "Search for your jobs",
 };
 
-export const TECHNOLOGIES = [
+type Technology = {
+  id: string,
+  value: string,
+  label: string,
+};
+
+export const TECHNOLOGIES: Technology[] = [
   { id: "python", value: "python", label: "Python" },
   { id: "java", value: "java", label: "Java" },
   { id: "c", value: "c", label: "C" },
@@ -19,7 +38,13 @@ export const TECHNOLOGIES = [
   { id: "ruby", value: "ruby", label: "Ruby" },
 ];
 
-export const LOCATIONS = [
+type Location = {
+  id: string,
+  value: string,
+  label: string,
+};
+
+export const LOCATIONS: Location[] = [
   { id: "ahmedabad", value: "ahmedabad", label: "Ahmedabad" },
   { id: "surat", value: "surat", label: "Surat" },
   { id: "baroda", value: "baroda", label: "Baroda" },

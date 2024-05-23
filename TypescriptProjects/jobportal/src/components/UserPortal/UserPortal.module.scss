@@ -7,11 +7,15 @@
     height: 100px;
     background-color: var(--avatar-background-color);
     border-radius: 10px;
-    margin-bottom: 20px;
   }
 
   .title {
-    margin: 20px;
+    margin-top: 20px;
+  }
+
+  .userType {
+    color: gray;
+    margin-bottom: 20px;
   }
 
   .section {

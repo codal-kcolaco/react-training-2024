@@ -1,4 +1,9 @@
-export const aboutUsContent = [
+type AboutUsContent = {
+  id: number;
+  text: string;
+};
+
+export const aboutUsContent: AboutUsContent[] = [
   {
     id: 1,
     text: "Welcome to CJP – your premier destination for connecting job seekers with employment opportunities and helping businesses find the perfect candidates to fill their vacancies. At CJP, we understand the importance of finding the right fit for both job seekers and employers, and we're dedicated to making the job search and recruitment process as seamless and efficient as possible.",
@@ -13,7 +18,13 @@ export const aboutUsContent = [
   },
 ];
 
-export const aboutUsTitle = {
+type AboutUsTitle = {
+  aboutUsTitle: string;
+  aboutUsCeoTitle: string;
+  aboutUsCeoDesc: string;
+};
+
+export const aboutUsTitle: AboutUsTitle = {
   aboutUsTitle: "About Us",
   aboutUsCeoTitle: "Kevin Colaco",
   aboutUsCeoDesc: "CEO of CJP",

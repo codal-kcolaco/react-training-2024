@@ -107,6 +107,7 @@ const PostJob: React.FC = () => {
                 className={styles.input}
                 type={input.type}
                 id={input.id}
+                min={input.min}
                 value={jobDetails[input.name as keyof JobDetails]}
                 onChange={handleChange}
                 name={input.name}

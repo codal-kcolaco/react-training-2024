@@ -6,6 +6,7 @@ export const GET_SINGLE_JOB_EMPLOYER_URL: string = "/employer/jobs/";
 export const GET_SINGLE_JOB_URL: string = "/applicants/jobs/";
 export const GET_SINGLE_JOB_APPLICATION_URL: string =
   "/applicants/job/application/";
+export const GET_USER_URL: string = "/user";
 export const LOGIN_URL: string = "/login";
 export const SIGNUP_URL: string = "/register";
 export const CHANGE_PASSWORD_URL: string = "/change-password";

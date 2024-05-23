@@ -1,4 +1,13 @@
-export const loginConstant = [
+type LoginField = {
+  type: string,
+  id: string,
+  name: string,
+  placeholder: string,
+  label: string,
+  required: boolean,
+};
+
+export const loginConstant: LoginField[] = [
   {
     type: "email",
     id: "email",

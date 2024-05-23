@@ -34,15 +34,16 @@ const MyApplicationCard: React.FC<MyApplicationCardProps> = ({
       <div className={styles.application}>
         <div className={styles.applicationContainer}>
           <div className={styles.info}>
-            <h2>{myApplication.applicant}</h2>
+            <h2>
+              <Link to={`../job-description/${myApplication.job}`}>
+                {myApplication.job_title}
+              </Link>
+            </h2>
             <p>
               <strong>Cover letter:</strong> {myApplication.cover_letter}
             </p>
             <p>
-              <strong>Job title:</strong> {myApplication.job_title}{" "}
-              <Link to={`../job-description/${myApplication.job}`}>
-                View job
-              </Link>
+              <strong>Email:</strong> {myApplication.applicant}{" "}
             </p>
             <p>
               <strong>Applied at:</strong>{" "}
