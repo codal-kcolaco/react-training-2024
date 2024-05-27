@@ -1,0 +1,18 @@
+20 MAY     
+    Union
+    Tuples
+    Classes
+    tsconfig
+    Getters and setters
+    Private, protected and readonly
+    Abstract Classes
+    Generics
+    
+21 MAY
+    In Operator Narrowing
+    Instaneof Narrowing
+    Type Predicates
+    Discriminated Union
+    Creating a todo app in Typescript
+    Create a draggable for todo
+    

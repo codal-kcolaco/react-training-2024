@@ -1,0 +1,163 @@
+.container {
+  margin: 200px 20px 400px;
+
+  .listContainer {
+    padding: 20px;
+    text-align: left;
+
+    .modalSelectionReply {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .modalBackground {
+        // width: 100vw;
+        // height: 100vh;
+        // background-color: rgba(200, 200, 200);
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .modalContainer {
+          margin-top: 400px;
+          width: 500px;
+          height: 500px;
+          border-radius: 12px;
+          background-color: white;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          display: flex;
+          flex-direction: column;
+          padding: 25px;
+
+          .modalTitle {
+            display: inline-block;
+            text-align: center;
+            margin: 10px 0px 40px 0px;
+          }
+
+          .modalInput {
+            padding: 0px 0px 100px 0px;
+            margin-bottom: 20px;
+            border: 2px solid var(--input-border-color);
+            border-radius: 5px;
+          }
+
+          .titleCloseBtn {
+            display: flex;
+            justify-content: flex-end;
+          }
+
+          .titleCloseBtn button {
+            background-color: transparent;
+            border: none;
+            font-size: 25px;
+            cursor: pointer;
+          }
+
+          .modalContainer .body {
+            flex: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.7rem;
+            text-align: center;
+          }
+
+          .footer {
+            flex: 20%;
+            display: flex;
+            justify-content: start;
+            align-items: start;
+
+            .confirmBtn {
+              width: 150px;
+              height: 45px;
+              margin: 10px;
+              border: none;
+              background-color: cornflowerblue;
+              color: white;
+              border-radius: 8px;
+              font-size: 20px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+
+    .list {
+      list-style-type: none;
+    }
+
+    .heading {
+      text-align: center;
+      color: var(--heading-color);
+    }
+
+    .application {
+      border-bottom: 1px solid #ccc;
+      padding: 15px 0;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: var(--application-hover-color);
+      }
+
+      h2 {
+        margin: 0;
+        color: var(--application-heading-color);
+      }
+
+      p {
+        margin: 5px 0;
+        color: var(--application-text-color);
+      }
+
+      .applicationContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .statusSection {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .replyButton {
+            background-color: #6804aa;
+            border: none;
+            color: white;
+            padding: 5px 5px;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 3px;
+            cursor: pointer;
+          }
+          .statusContainer {
+            padding: var(--application-status-padding);
+            display: flex;
+            flex: 2;
+            align-items: center;
+            border-radius: 10px;
+            margin: 25px;
+            color: var(--application-status-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+.emptyListContainer {
+  text-align: center;
+  .emptyListImg {
+    margin-top: 20px;
+    height: 100px;
+    width: 100px;
+  }
+
+  .emptyListMessage {
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,53 @@
+.class {
+  background-image: url("../../assets/background.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  margin: 200px 0px;
+  background-color: var(--contact-background-color);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 20px;
+    color: white;
+  }
+
+  .fullname,
+  .email,
+  .address,
+  .issue {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid;
+    border-color: var(--input-border-color);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  .submit {
+    width: 100%;
+    background-color: var(--submit-background-color);
+    color: var(--submit-text-color);
+    margin-top: 50px;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: var(--submit-hover-background-color);
+    }
+  }
+}

@@ -1,0 +1,96 @@
+$margin-top: 180px;
+
+.container {
+  margin: $margin-top 20px;
+
+  .listContainer {
+    padding: 20px;
+    text-align: left;
+
+    .jobList {
+      list-style-type: none;
+    }
+
+    .heading {
+      text-align: center;
+      color: var(--heading-color);
+    }
+
+    .job {
+      border-bottom: 1px solid #ccc;
+      padding: 15px 0;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: var(--job-hover-color);
+      }
+
+      h2 {
+        margin: 0;
+        color: var(--job-heading-color);
+      }
+
+      p {
+        margin: 5px 0;
+        color: var(--job-text-color);
+      }
+
+      .jobContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .editButton,
+        .deleteButton,
+        .viewApplicationButton {
+          margin-left: 10px;
+          padding: 8px 12px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          text-decoration: none;
+        }
+
+        .editButton {
+          background-color: var(--edit-button-background-color);
+          color: #fff;
+
+          &:hover {
+            background-color: var(--edit-button-hover-color);
+          }
+        }
+
+        .deleteButton {
+          background-color: var(--delete-button-background-color);
+          color: #fff;
+
+          &:hover {
+            background-color: var(--delete-button-hover-color);
+          }
+        }
+
+        .viewApplicationButton {
+          background-color: var(--view-application-button-background-color);
+          color: #fff;
+
+          &:hover {
+            background-color: var(--view-application-button-hover-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+.emptyListContainer {
+  text-align: center;
+  .emptyListImg {
+    margin-top: 20px;
+    height: 100px;
+    width: 100px;
+  }
+
+  .emptyListMessage {
+    margin-top: 20px;
+  }
+}
