@@ -1,10 +1,20 @@
-export const privacyPolicyTitle = {
+type PrivacyPolicyTitle = {
+  heading: string,
+  content: string,
+};
+
+export const privacyPolicyTitle: PrivacyPolicyTitle = {
   heading: "Privacy Policy",
   content:
     "Welcome to CJP's Privacy Policy page! This Privacy Policy describes how CJP ('we', 'us', or 'our') collects, uses, and shares information when you use our website or services.",
 };
 
-export const privacyPolicyContent = [
+type PrivacyPolicyContentItem = {
+  heading: string,
+  content: string[],
+};
+
+export const privacyPolicyContent: PrivacyPolicyContentItem[] = [
   {
     heading: "Information We Collect",
     content: [

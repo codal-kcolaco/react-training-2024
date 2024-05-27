@@ -31,7 +31,7 @@ $primary-color: #007bff;
     }
 
     .select,
-    input[type="text"].input,
+    input.input,
     textarea.textarea {
       width: calc(100% - 24px);
       padding: 12px;

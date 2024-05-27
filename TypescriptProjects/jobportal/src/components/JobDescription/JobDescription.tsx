@@ -10,6 +10,9 @@ import {
   jobDescriptionContent,
 } from "../../data/JobDescriptionContent";
 import { RootState } from "../../store/store";
+import { FaRupeeSign, FaCity } from "react-icons/fa";
+import { CiLocationOn } from "react-icons/ci";
+import { IconContext } from "react-icons";
 
 interface JobData {
   job_name?: string;
@@ -64,8 +67,16 @@ const JobDescriptionCard: React.FC = () => {
         </div>
         <div className={styles.jobEmployerDetail}>
           <h3>{jobData.user?.name}</h3>
+          <IconContext.Provider
+            value={{ size: "15", className: "global-class-name" }}
+          >
+            <p>
+              <FaRupeeSign /> {jobData.job_salary} | <CiLocationOn />{" "}
+              {jobData.job_location}
+            </p>
+          </IconContext.Provider>
           <p>
-            {jobData.job_salary} INR | {jobData.job_location} |{" "}
+            Job type:
             {jobData.job_type}
           </p>
           <p>

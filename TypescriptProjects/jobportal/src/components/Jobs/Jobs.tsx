@@ -11,6 +11,9 @@ import {
   TECHNOLOGIES,
   LOCATIONS,
 } from "../../data/JobsContent";
+import { HiBuildingOffice2 } from "react-icons/hi2";
+import { IconContext } from "react-icons";
+import { CiLocationOn } from "react-icons/ci";
 
 interface Job {
   pk: string;
@@ -47,19 +50,30 @@ interface JobCardProps {
 }
 
 const JobCardPython: React.FC<JobCardProps> = ({ job }) => {
-  const { pk, user, job_name } = job;
+  const { pk, user, job_name, job_location } = job;
 
   return (
     <div className={styles.card}>
       <Link to={`../job-description/${pk}`}>
         <div className={styles.chip}>
-          <div className={styles.chipImg}>
-            <img src={jobSearchLogo} alt={user.name} />
-          </div>
+          <IconContext.Provider
+            value={{ size: "40", className: "global-class-name" }}
+          >
+            <div className={styles.chipImg}>
+              <HiBuildingOffice2 />
+            </div>
+          </IconContext.Provider>
           <div className={styles.chipDescription}>
             <h3>{job_name}</h3>
             <p>{user.name}</p>
           </div>
+          <IconContext.Provider
+            value={{ size: "15", className: "global-class-name" }}
+          >
+            <div className={styles.chipFooter}>
+              <CiLocationOn /> {job_location}
+            </div>
+          </IconContext.Provider>
         </div>
       </Link>
     </div>

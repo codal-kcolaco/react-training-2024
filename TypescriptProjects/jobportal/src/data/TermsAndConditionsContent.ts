@@ -1,4 +1,9 @@
-const termsAndConditionsContent = [
+type TermAndConditionItem = {
+  heading: string,
+  content: string[],
+};
+
+export const termsAndConditionsContent: TermAndConditionItem[] = [
   {
     heading: "Terms and Conditions",
     content: [
@@ -59,5 +64,3 @@ const termsAndConditionsContent = [
     ],
   },
 ];
-
-export default termsAndConditionsContent;

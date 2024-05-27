@@ -1,26 +1,54 @@
-export const bannerContent = {
+type BannerContent = {
+  title: string,
+  subtitle: string,
+  button: string,
+};
+
+export const bannerContent: BannerContent = {
   title: "Find Your Dream Job",
   subtitle: "Start your career journey today!",
   button: "Browse Jobs",
 };
 
-export const jobCardContent = {
+type JobCardContent = {
+  title: string,
+  description: string,
+  button: string,
+};
+
+export const jobCardContent: JobCardContent = {
   title: "Create a job easily",
   description: "Hiring employees is just a few steps away!",
   button: "Create a Job",
 };
 
-export const searchContent = {
+type SearchContent = {
+  title: string,
+  subtitle: string,
+  placeholder: string,
+};
+
+export const searchContent: SearchContent = {
   title: "Search your jobs using our advanced search engine",
   subtitle: "Your dream job is near",
   placeholder: "Search for your jobs",
 };
 
-export const filterContent = {
+type FilterContent = {
+  filterTitle: string,
+};
+
+export const filterContent: FilterContent = {
   filterTitle: "Filter based on technologies",
 };
 
-export const filterTechnologies = [
+type FilterTechnology = {
+  id: number,
+  name: string,
+  logoSrc: string,
+};
+
+export const filterTechnologies: FilterTechnology[] = [
   {
     id: 1,
     name: "Python",

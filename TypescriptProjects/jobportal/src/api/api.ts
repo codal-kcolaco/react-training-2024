@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import {
   SIGNUP_URL,
   LOGIN_URL,
@@ -11,9 +11,27 @@ import {
   GET_SINGLE_JOB_APPLICATION_URL,
   CHANGE_PASSWORD_URL,
   BE_ENDPOINT,
+  GET_USER_URL,
 } from "../Constants";
 import { useDispatch } from "react-redux";
 import { setUserType } from "../store/store";
+
+interface UserResponse {
+  jwt: string;
+  user_type: string;
+}
+
+interface JobResponse {
+  [key: string]: any;
+}
+
+interface ApplicationResponse {
+  [key: string]: any;
+}
+
+interface ChangePasswordResponse {
+  detail: string;
+}
 
 const api = axios.create({
   baseURL: BE_ENDPOINT,
@@ -23,9 +41,14 @@ const api = axios.create({
   },
 });
 
-export const registerUser = async (fullname, email, password, userType) => {
+export const registerUser = async (
+  fullname: string,
+  email: string,
+  password: string,
+  userType: string
+): Promise<any> => {
   try {
-    const response = await api.post(SIGNUP_URL, {
+    const response: AxiosResponse<any> = await api.post(SIGNUP_URL, {
       name: fullname,
       email: email,
       password: password,
@@ -33,7 +56,7 @@ export const registerUser = async (fullname, email, password, userType) => {
     });
 
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
     if (error.response && error.response.data && error.response.data.email) {
       throw new Error(error.response.data.email[0]);
@@ -49,9 +72,13 @@ export const registerUser = async (fullname, email, password, userType) => {
   }
 };
 
-export const loginUser = async (email, password, dispatch) => {
+export const loginUser = async (
+  email: string,
+  password: string,
+  dispatch: ReturnType<typeof useDispatch>
+): Promise<string> => {
   try {
-    const response = await api.post(LOGIN_URL, {
+    const response: AxiosResponse<UserResponse> = await api.post(LOGIN_URL, {
       email: email,
       password: password,
     });
@@ -64,7 +91,7 @@ export const loginUser = async (email, password, dispatch) => {
     ).toUTCString()}; path=/`;
 
     return jwtToken;
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
     if (error.response && error.response.data) {
       if (error.response.data.email) {
@@ -82,17 +109,27 @@ export const loginUser = async (email, password, dispatch) => {
   }
 };
 
-export const postJob = async (
-  jobTitle,
-  jobType,
-  jobSalary,
-  jobDescription,
-  jobExperience,
-  jobLocation,
-  jobTechnology
-) => {
+export const getUser = async (): Promise<any> => {
   try {
-    const response = await api.post(POST_JOB_URL, {
+    const response: AxiosResponse<any> = await api.get(GET_USER_URL);
+    return response.data;
+  } catch (error: any) {
+    console.log(error);
+    throw new Error("Network response is not ok");
+  }
+};
+
+export const postJob = async (
+  jobTitle: string,
+  jobType: string,
+  jobSalary: number,
+  jobDescription: string,
+  jobExperience: number,
+  jobLocation: string,
+  jobTechnology: string
+): Promise<any> => {
+  try {
+    const response: AxiosResponse<JobResponse> = await api.post(POST_JOB_URL, {
       job_name: jobTitle,
       job_type: jobType,
       job_description: jobDescription,
@@ -103,34 +140,37 @@ export const postJob = async (
     });
 
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(`${error}`);
   }
 };
 
 export const editJob = async (
-  jobId,
-  jobTitle,
-  jobType,
-  jobSalary,
-  jobDescription,
-  jobExperience,
-  jobLocation,
-  jobTechnology
-) => {
+  jobId: string | undefined,
+  jobTitle: string,
+  jobType: string,
+  jobSalary: number,
+  jobDescription: string,
+  jobExperience: number,
+  jobLocation: string,
+  jobTechnology: string
+): Promise<any> => {
   try {
-    const response = await api.put(POST_JOB_URL + jobId + "/", {
-      job_name: jobTitle,
-      job_type: jobType,
-      job_description: jobDescription,
-      job_salary: jobSalary,
-      job_experience: jobExperience,
-      job_location: jobLocation,
-      job_technology: jobTechnology,
-    });
+    const response: AxiosResponse<JobResponse> = await api.put(
+      POST_JOB_URL + jobId + "/",
+      {
+        job_name: jobTitle,
+        job_type: jobType,
+        job_description: jobDescription,
+        job_salary: jobSalary,
+        job_experience: jobExperience,
+        job_location: jobLocation,
+        job_technology: jobTechnology,
+      }
+    );
 
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     if (error.response && error.response.data) {
       if (error.response.data.job_name) {
         throw new Error(error.response.data.job_name[0]);
@@ -149,65 +189,75 @@ export const editJob = async (
   }
 };
 
-export const deleteJob = async (jobId) => {
+export const deleteJob = async (jobId: number): Promise<any> => {
   try {
-    const response = await api.delete(POST_JOB_URL + jobId + "/");
+    const response: AxiosResponse<any> = await api.delete(
+      POST_JOB_URL + jobId + "/"
+    );
 
     window.location.reload();
 
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error("Network response is not ok");
   }
 };
 
-export const fetchJobs = async () => {
+export const fetchJobs = async (): Promise<any> => {
   try {
-    const response = await api.get(GET_JOB_URL);
+    const response: AxiosResponse<any> = await api.get(GET_JOB_URL);
 
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error("Network response is not ok");
   }
 };
 
-export const fetchSingleJob = async (jobId) => {
+export const fetchSingleJob = async (
+  jobId: string | undefined
+): Promise<any> => {
   try {
-    const response = await api.get(GET_SINGLE_JOB_URL + jobId + "/");
+    const response: AxiosResponse<any> = await api.get(
+      GET_SINGLE_JOB_URL + jobId + "/"
+    );
 
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error("Network response is not ok");
   }
 };
 
-export const fetchJobsEmployer = async () => {
+export const fetchJobsEmployer = async (): Promise<any> => {
   try {
-    const response = await api.get(GET_JOB_EMPLOYER_URL);
+    const response: AxiosResponse<any> = await api.get(GET_JOB_EMPLOYER_URL);
 
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error("Network response is not ok");
   }
 };
 
-export const fetchSingleJobForEmployer = async (jobId) => {
+export const fetchSingleJobForEmployer = async (
+  jobId: string
+): Promise<any> => {
   try {
-    const response = await api.get(GET_SINGLE_JOB_EMPLOYER_URL + jobId + "/");
+    const response: AxiosResponse<any> = await api.get(
+      GET_SINGLE_JOB_EMPLOYER_URL + jobId + "/"
+    );
 
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error("Network response is not ok");
   }
 };
 
 export const selectApplicantAPI = async (
-  jobId,
-  applicationId,
-  selectionStatus
-) => {
+  jobId: string,
+  applicationId: string,
+  selectionStatus: string
+): Promise<any> => {
   try {
-    const response = await api.patch(
+    const response: AxiosResponse<any> = await api.patch(
       POST_JOB_URL + jobId + "/" + "application-status/" + applicationId + "/",
       {
         is_selected: selectionStatus,
@@ -215,18 +265,18 @@ export const selectApplicantAPI = async (
     );
 
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(`${error}`);
   }
 };
 
 export const selectionReplyAPI = async (
-  jobId,
-  applicationId,
-  selectionReply
-) => {
+  jobId: string | undefined,
+  applicationId: string | undefined,
+  selectionReply: string
+): Promise<any> => {
   try {
-    const response = await api.patch(
+    const response: AxiosResponse<any> = await api.patch(
       POST_JOB_URL +
         jobId +
         "/" +
@@ -239,42 +289,52 @@ export const selectionReplyAPI = async (
     );
 
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error(`${error}`);
   }
 };
 
-export const fetchMyApplications = async () => {
+export const fetchMyApplications = async (): Promise<any> => {
   try {
-    const response = await api.get(GET_SINGLE_JOB_APPLICATION_URL);
+    const response: AxiosResponse<any> = await api.get(
+      GET_SINGLE_JOB_APPLICATION_URL
+    );
 
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error("Network response is not ok");
   }
 };
 
-export const fetchJobApplicationsEmployer = async (jobId) => {
+export const fetchJobApplicationsEmployer = async (
+  jobId: string | undefined
+): Promise<any> => {
   try {
-    const response = await api.get(
+    const response: AxiosResponse<any> = await api.get(
       GET_SINGLE_JOB_EMPLOYER_URL + jobId + "/applications/"
     );
 
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     throw new Error("Network response is not ok");
   }
 };
 
-export const applyStatusForJob = async (jobId, coverLetter) => {
+export const applyStatusForJob = async (
+  jobId: string | undefined,
+  coverLetter: string
+): Promise<any> => {
   try {
-    const response = await api.post(GET_SINGLE_JOB_APPLICATION_URL, {
-      job: jobId,
-      cover_letter: coverLetter,
-    });
+    const response: AxiosResponse<any> = await api.post(
+      GET_SINGLE_JOB_APPLICATION_URL,
+      {
+        job: jobId,
+        cover_letter: coverLetter,
+      }
+    );
 
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     if (error.response && error.response.data) {
       if (error.response.data.job) {
         throw new Error(error.response.data.job[0]);
@@ -289,15 +349,21 @@ export const applyStatusForJob = async (jobId, coverLetter) => {
   }
 };
 
-export const changePasswordUser = async (oldPassword, newPassword) => {
+export const changePasswordUser = async (
+  oldPassword: string,
+  newPassword: string
+): Promise<any> => {
   try {
-    const response = await api.post(CHANGE_PASSWORD_URL, {
-      old_password: oldPassword,
-      new_password: newPassword,
-    });
+    const response: AxiosResponse<ChangePasswordResponse> = await api.post(
+      CHANGE_PASSWORD_URL,
+      {
+        old_password: oldPassword,
+        new_password: newPassword,
+      }
+    );
 
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     if (error.response && error.response.data) {
       if (error.response.data.detail) {
         throw new Error(error.response.data.detail);

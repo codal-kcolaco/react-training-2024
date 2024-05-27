@@ -1,25 +1,33 @@
-export const editJobContent = [
+type PostJobField = {
+  type: string;
+  id: string;
+  name: string;
+  label: string;
+  options?: string[];
+  min?: string;
+  rows?: number;
+  required?: boolean;
+};
+
+export const postJobContent: PostJobField[] = [
   {
     type: "text",
     id: "job-title",
-    name: "job_name",
-    value: "job_name",
+    name: "jobTitle",
     label: "Title of the Job",
     required: true,
   },
   {
     type: "text",
     id: "job-type",
-    name: "job_type",
-    value: "job_type",
+    name: "jobType",
     label: "Type of the Job (Eg: Software Engineer, Human Resources)",
     required: true,
   },
   {
     type: "select",
     id: "job-technology",
-    name: "job_technology",
-    value: "job_technology",
+    name: "jobTechnology",
     label: "Technology Required for the Job",
     options: [
       "Python",
@@ -36,32 +44,30 @@ export const editJobContent = [
     required: true,
   },
   {
-    type: "text",
+    type: "number",
     id: "job-salary",
-    name: "job_salary",
-    value: "job_salary",
+    name: "jobSalary",
+    min: "0",
     label: "Salary provided by you on per month basis",
   },
   {
-    type: "text",
+    type: "number",
     id: "job-experience",
-    name: "job_experience",
-    value: "job_experience",
+    name: "jobExperience",
+    min: "0",
     label: "Years of experience required",
   },
   {
     type: "text",
     id: "job-location",
-    name: "job_location",
-    value: "job_location",
+    name: "jobLocation",
     label: "Location of the Job",
     required: true,
   },
   {
     type: "textarea",
     id: "description",
-    name: "job_description",
-    value: "job_description",
+    name: "jobDescription",
     label: "Description of the Job",
     rows: 5,
     required: true,

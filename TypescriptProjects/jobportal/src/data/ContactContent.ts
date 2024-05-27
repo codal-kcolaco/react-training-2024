@@ -1,4 +1,13 @@
-const contactContent = [
+type ContactContent = {
+  id: string,
+  type: string,
+  name: string,
+  className: string,
+  placeholder: string,
+  required: boolean,
+};
+
+const contactContent: ContactContent[] = [
   {
     id: "fullname",
     type: "text",

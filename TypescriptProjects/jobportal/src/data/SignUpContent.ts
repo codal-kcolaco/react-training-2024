@@ -1,4 +1,11 @@
-export const signUpContent = [
+type SignUpField = {
+  name: string,
+  type: string,
+  placeholder: string,
+  required: boolean,
+};
+
+export const signUpContent: SignUpField[] = [
   {
     name: "fullname",
     type: "text",
@@ -42,5 +49,3 @@ export const signUpError = {
   registrationSuccessfulMessage: "Registration Successful",
   tryAgainLaterMessage: "Please try again",
 };
-
-export default signUpContent;
