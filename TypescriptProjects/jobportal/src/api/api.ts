@@ -173,7 +173,8 @@ export const editJob = async (
   jobDescription: string,
   jobExperience: number,
   jobLocation: string,
-  jobTechnology: string
+  jobTechnology: Array<string>,
+  jobMode: string
 ): Promise<any> => {
   try {
     const response: AxiosResponse<JobResponse> = await api.put(
@@ -186,6 +187,7 @@ export const editJob = async (
         job_experience: jobExperience,
         job_location: jobLocation,
         job_technology: jobTechnology,
+        job_mode: jobMode,
       }
     );
 

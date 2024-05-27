@@ -16,7 +16,8 @@ import { IconContext } from "react-icons";
 
 interface JobData {
   job_name?: string;
-  job_technology?: string;
+  job_technology?: Array<string>;
+  job_mode?: string;
   job_salary?: number;
   job_location?: string;
   job_type?: string;
@@ -63,7 +64,7 @@ const JobDescriptionCard: React.FC = () => {
       <div className={styles.card} id="card">
         <div className={styles.titleContainer}>
           <h1>{jobData.job_name}</h1>
-          <h1>({jobData.job_technology})</h1>
+          <h1>({jobData.job_mode})</h1>
         </div>
         <div className={styles.jobEmployerDetail}>
           <h3>{jobData.user?.name}</h3>
@@ -76,7 +77,7 @@ const JobDescriptionCard: React.FC = () => {
             </p>
           </IconContext.Provider>
           <p>
-            Job type:
+            <strong>Job type: </strong>
             {jobData.job_type}
           </p>
           <p>
