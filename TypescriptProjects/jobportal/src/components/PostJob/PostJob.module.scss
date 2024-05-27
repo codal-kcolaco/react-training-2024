@@ -1,6 +1,6 @@
+@import url("../../colors.scss");
+
 $margin-top: 150px;
-$color: #333;
-$border-color: #ccc;
 $primary-color: #007bff;
 
 .container {
@@ -12,7 +12,7 @@ $primary-color: #007bff;
   text-align: left;
 
   .h1 {
-    color: $color;
+    color: var(--post-job-color);
     margin-bottom: 50px;
   }
 
@@ -30,19 +30,38 @@ $primary-color: #007bff;
       color: #555;
     }
 
+    .jobTechnologyContainer {
+      .cardContainer {
+        margin-top: 20px;
+        .card {
+          display: inline;
+          cursor: pointer;
+          background-color: var(--post-job-tech-card-bg-color);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          transition: 0.3s;
+          padding: 5px;
+          margin: 10px;
+        }
+
+        .card:hover {
+          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+
     .select,
     input.input,
     textarea.textarea {
       width: calc(100% - 24px);
       padding: 12px;
       font-size: 16px;
-      border: 1px solid $border-color;
+      border: 1px solid var(--post-job-border-color);
       border-radius: 5px;
       transition: border-color 0.3s ease;
 
       &:focus {
         outline: none;
-        border-color: $primary-color;
+        border-color: var(--post-job-primary-color);
       }
     }
   }
@@ -52,7 +71,7 @@ $primary-color: #007bff;
     padding: 12px;
     font-size: 18px;
     color: #fff;
-    background-color: $primary-color;
+    background-color: var(--post-job-primary-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;

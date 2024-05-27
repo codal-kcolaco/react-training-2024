@@ -16,3 +16,13 @@
     Creating a todo app in Typescript
     Create a draggable for todo
     
+22 MAY 
+    Change UI design of some modules
+    Fixing User portal bug and changing UI of it
+    Converting .js to .ts
+
+23 MAY  
+    Add two new fields for job model 
+    Created the frontend for the same 
+    Now user can choose multiple job technologies 
+    

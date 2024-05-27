@@ -50,22 +50,26 @@ export const registerUser = async (
   try {
     const response: AxiosResponse<any> = await api.post(SIGNUP_URL, {
       name: fullname,
-      email: email,
-      password: password,
+      email,
+      password,
       user_type: userType,
     });
 
     return response.data;
   } catch (error: any) {
     console.log(error);
-    if (error.response && error.response.data && error.response.data.email) {
-      throw new Error(error.response.data.email[0]);
-    } else if (
-      error.response &&
-      error.response.data &&
-      error.response.data.password
+    if (
+      error?.response &&
+      error?.response?.data &&
+      error?.response?.data?.email
     ) {
-      throw new Error(error.response.data.password[0]);
+      throw new Error(error?.response?.data?.email[0]);
+    } else if (
+      error?.response &&
+      error?.response?.data &&
+      error?.response?.data?.password
+    ) {
+      throw new Error(error?.response?.data?.password[0]);
     } else {
       throw new Error("Network response is not ok");
     }
@@ -79,8 +83,8 @@ export const loginUser = async (
 ): Promise<string> => {
   try {
     const response: AxiosResponse<UserResponse> = await api.post(LOGIN_URL, {
-      email: email,
-      password: password,
+      email,
+      password,
     });
 
     const jwtToken = response.data.jwt;
@@ -93,13 +97,13 @@ export const loginUser = async (
     return jwtToken;
   } catch (error: any) {
     console.log(error);
-    if (error.response && error.response.data) {
-      if (error.response.data.email) {
-        throw new Error(error.response.data.email[0]);
-      } else if (error.response.data.password) {
-        throw new Error(error.response.data.password[0]);
-      } else if (error.response.data.detail) {
-        throw new Error(error.response.data.detail);
+    if (error?.response && error?.response?.data) {
+      if (error?.response?.data?.email) {
+        throw new Error(error?.response?.data?.email[0]);
+      } else if (error?.response?.data?.password) {
+        throw new Error(error?.response?.data?.password[0]);
+      } else if (error?.response?.data?.detail) {
+        throw new Error(error?.response?.data?.detail);
       } else {
         throw new Error("Network response is not ok");
       }
@@ -126,7 +130,8 @@ export const postJob = async (
   jobDescription: string,
   jobExperience: number,
   jobLocation: string,
-  jobTechnology: string
+  jobTechnology: Array<string>,
+  jobMode: string
 ): Promise<any> => {
   try {
     const response: AxiosResponse<JobResponse> = await api.post(POST_JOB_URL, {
@@ -137,11 +142,26 @@ export const postJob = async (
       job_experience: jobExperience,
       job_location: jobLocation,
       job_technology: jobTechnology,
+      job_mode: jobMode,
     });
 
     return response.data;
   } catch (error: any) {
-    throw new Error(`${error}`);
+    if (error?.response && error?.response?.data) {
+      if (error?.response?.data?.job_name) {
+        throw new Error(error?.response?.data?.job_name[0]);
+      } else if (error?.response?.data?.job_type) {
+        throw new Error(error?.response?.data?.job_type[0]);
+      } else if (error?.response?.data?.job_description) {
+        throw new Error(error?.response?.data?.job_description[0]);
+      } else if (error?.response?.data?.job_salary) {
+        throw new Error(error?.response?.data?.job_salary[0]);
+      } else {
+        throw new Error("Network response is not ok");
+      }
+    } else {
+      throw new Error("Network response is not ok");
+    }
   }
 };
 
@@ -171,15 +191,15 @@ export const editJob = async (
 
     return response.data;
   } catch (error: any) {
-    if (error.response && error.response.data) {
-      if (error.response.data.job_name) {
-        throw new Error(error.response.data.job_name[0]);
-      } else if (error.response.data.job_type) {
-        throw new Error(error.response.data.job_type[0]);
-      } else if (error.response.data.job_description) {
-        throw new Error(error.response.data.job_description[0]);
-      } else if (error.response.data.job_salary) {
-        throw new Error(error.response.data.job_salary[0]);
+    if (error?.response && error?.response?.data) {
+      if (error?.response?.data?.job_name) {
+        throw new Error(error?.response?.data?.job_name[0]);
+      } else if (error?.response?.data?.job_type) {
+        throw new Error(error?.response?.data?.job_type[0]);
+      } else if (error?.response?.data?.job_description) {
+        throw new Error(error?.response?.data?.job_description[0]);
+      } else if (error?.response?.data?.job_salary) {
+        throw new Error(error?.response?.data?.job_salary[0]);
       } else {
         throw new Error("Network response is not ok");
       }
@@ -335,12 +355,12 @@ export const applyStatusForJob = async (
 
     return response.data;
   } catch (error: any) {
-    if (error.response && error.response.data) {
-      if (error.response.data.job) {
-        throw new Error(error.response.data.job[0]);
-      } else if (error.response.data.cover_letter) {
+    if (error?.response && error?.response?.data) {
+      if (error?.response?.data?.job) {
+        throw new Error(error?.response?.data?.job[0]);
+      } else if (error?.response?.data?.cover_letter) {
         throw new Error(
-          `${error.response.data.cover_letter[0]} - Cover Letter`
+          `${error?.response?.data?.cover_letter[0]} - Cover Letter`
         );
       }
     } else {
@@ -364,9 +384,9 @@ export const changePasswordUser = async (
 
     return response.data;
   } catch (error: any) {
-    if (error.response && error.response.data) {
-      if (error.response.data.detail) {
-        throw new Error(error.response.data.detail);
+    if (error?.response && error?.response?.data) {
+      if (error?.response?.data?.detail) {
+        throw new Error(error?.response?.data?.detail);
       }
     } else {
       throw new Error("Network response is not ok");

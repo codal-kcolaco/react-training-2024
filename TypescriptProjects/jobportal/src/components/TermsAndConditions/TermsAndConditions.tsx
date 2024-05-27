@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./TermsAndConditions.module.scss";
-import termsAndConditionsContent from "../../data/TermsAndConditionsContent";
+import { termsAndConditionsContent } from "../../data/TermsAndConditionsContent";
 
 const TermsAndConditions = () => {
   return (
