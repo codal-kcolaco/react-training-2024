@@ -3,7 +3,8 @@ import styles from "./Signup.module.scss";
 import { registerUser } from "../../api/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import signUpContent, {
+import {
+  signUpContent,
   signUpError,
   signUpSelect,
 } from "../../data/SignUpContent";

@@ -9,7 +9,7 @@ import styles from "./UserPortal.module.scss";
 import AvatarLogo from "../../assets/avatar.png";
 import { changePasswordUser, getUser } from "../../api/api";
 import { toast } from "react-toastify";
-import userPortalContent from "../../data/UserPortalContent";
+import { userPortalContent } from "../../data/UserPortalContent";
 
 interface User {
   name?: string;

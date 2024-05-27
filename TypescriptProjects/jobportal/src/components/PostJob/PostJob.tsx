@@ -1,4 +1,11 @@
-import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import React, {
+  useState,
+  useEffect,
+  ChangeEvent,
+  FormEvent,
+  MouseEvent,
+  KeyboardEvent,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./PostJob.module.scss";
 import { postJob } from "../../api/api";
@@ -7,27 +14,32 @@ import { JWT_COOKIE } from "../../Constants";
 import { postJobContent, postJobTitle } from "../../data/PostJobContent";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { RxCross2 } from "react-icons/rx";
 
 interface JobDetails {
   jobTitle: string;
   jobType: string;
+  jobMode: string;
   jobSalary: number;
   jobDescription: string;
-  jobTechnology: string;
+  jobTechnology: Array<string>;
   jobLocation: string;
   jobExperience: number;
 }
 
 const PostJob: React.FC = () => {
+  const [technology, setTechnology] = useState<string>("");
+  const [technologyList, setTechnologyList] = useState<string[]>([]);
   const navigate = useNavigate();
   const userType = useSelector((state: RootState) => state.userType);
 
   const [jobDetails, setJobDetails] = useState<JobDetails>({
     jobTitle: "",
     jobType: "",
+    jobMode: "OFFICE",
     jobSalary: 0,
     jobDescription: "",
-    jobTechnology: "PYTHON",
+    jobTechnology: [],
     jobLocation: "",
     jobExperience: 0,
   });
@@ -42,8 +54,40 @@ const PostJob: React.FC = () => {
     });
   };
 
+  const onKeyDownHandler = (event: KeyboardEvent<HTMLElement>) => {
+    if (event.key == "Enter") {
+      event.preventDefault();
+      handleClick(event);
+    }
+  };
+
+  const handleChangeJobTechnology = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    e.preventDefault();
+    setTechnology(e?.currentTarget?.value);
+  };
+
+  const handleClick = (event: KeyboardEvent<HTMLElement>) => {
+    if (technology !== "" && !technologyList.find((t) => t === technology)) {
+      let techList = [...technologyList];
+      techList.push(technology);
+      setTechnologyList([...techList]);
+      setJobDetails({ ...jobDetails, jobTechnology: [...techList] });
+      setTechnology("");
+    }
+  };
+
+  const removeTechnology = (value: string) => {
+    let techList = technologyList.filter((t) => t !== value);
+    setTechnologyList([...techList]);
+    setJobDetails({ ...jobDetails, jobTechnology: [...techList] });
+  };
+
   const postAJob = async (event: FormEvent) => {
     event.preventDefault();
+    console.log(jobDetails);
+
     try {
       await postJob(
         jobDetails.jobTitle,
@@ -52,7 +96,8 @@ const PostJob: React.FC = () => {
         jobDetails.jobDescription,
         jobDetails.jobExperience,
         jobDetails.jobLocation,
-        jobDetails.jobTechnology
+        jobDetails.jobTechnology,
+        jobDetails.jobMode
       );
       toast.success("Posted a job");
     } catch (error) {
@@ -100,8 +145,31 @@ const PostJob: React.FC = () => {
                 rows={input.rows}
                 className={styles.textarea}
                 required={input.required}
-                // placeholder={input.placeholder}
               ></textarea>
+            ) : input.id === "job-technology" ? (
+              <div className={styles.jobTechnologyContainer}>
+                <input
+                  className={styles.input}
+                  type={input.type}
+                  id={input.id}
+                  value={technology}
+                  onChange={handleChangeJobTechnology}
+                  onKeyDown={onKeyDownHandler}
+                  name={input.name}
+                />
+
+                <div className={styles.cardContainer}>
+                  {technologyList.map((technology_value, index) => (
+                    <div
+                      key={index}
+                      className={styles.card}
+                      onClick={() => removeTechnology(technology_value)}
+                    >
+                      {technology_value} <RxCross2 />
+                    </div>
+                  ))}
+                </div>
+              </div>
             ) : (
               <input
                 className={styles.input}
@@ -112,7 +180,6 @@ const PostJob: React.FC = () => {
                 onChange={handleChange}
                 name={input.name}
                 required={input.required}
-                // placeholder={input.placeholder}
               />
             )}
           </div>
