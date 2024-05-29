@@ -11,3 +11,8 @@
     App Router
     Created two projects in NextJS to understand its structure 
     Currently learning from a Udemy course
+
+29 MAY
+    Learned how to perform loading in NextJS
+    Learned usage of Suspense 
+    Error handling in NextJS
