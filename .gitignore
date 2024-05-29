@@ -4,3 +4,6 @@
 **/images
 **/assets
 **/node_modules
+**/build
+**/.env
+**/dev.db*

@@ -55,7 +55,7 @@ const PostJob: React.FC = () => {
   };
 
   const onKeyDownHandler = (event: KeyboardEvent<HTMLElement>) => {
-    if (event.key == "Enter") {
+    if (event.key === "Enter") {
       event.preventDefault();
       handleClick(event);
     }

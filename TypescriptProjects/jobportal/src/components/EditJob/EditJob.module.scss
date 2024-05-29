@@ -29,6 +29,25 @@ $margin-top: 150px;
       color: var(--edit-job-color);
     }
 
+    .jobTechnologyContainer {
+      .cardContainer {
+        margin-top: 20px;
+        .card {
+          display: inline;
+          cursor: pointer;
+          background-color: var(--post-job-tech-card-bg-color);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          transition: 0.3s;
+          padding: 5px;
+          margin: 10px;
+        }
+
+        .card:hover {
+          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+
     .select,
     input[type="text"].input,
     textarea.textarea {

@@ -1,12 +1,12 @@
 type JobOption = {
-  type: string,
-  id: string,
-  name: string,
-  value: string,
-  label: string,
-  required?: boolean,
-  options?: string[],
-  rows?: number,
+  type: string;
+  id: string;
+  name: string;
+  value: string;
+  label: string;
+  required?: boolean;
+  options?: string[];
+  rows?: number;
 };
 
 export const editJobContent: JobOption[] = [
@@ -28,22 +28,19 @@ export const editJobContent: JobOption[] = [
   },
   {
     type: "select",
+    id: "job-mode",
+    name: "job_mode",
+    value: "job_mode",
+    label: "Mode Required for the Job",
+    options: ["Office", "Hybrid", "Home"],
+    required: true,
+  },
+  {
+    type: "text",
     id: "job-technology",
-    name: "job_technology",
     value: "job_technology",
-    label: "Technology Required for the Job",
-    options: [
-      "Python",
-      "Go",
-      "JavaScript",
-      "Java",
-      "PHP",
-      "C",
-      "Swift",
-      "SQL",
-      "Ruby",
-      "Rust",
-    ],
+    name: "jobTechnology",
+    label: "Skills Required for Job",
     required: true,
   },
   {
@@ -80,8 +77,8 @@ export const editJobContent: JobOption[] = [
 ];
 
 type PostJobTitle = {
-  postJobHeading: string,
-  myJobMessage: string,
+  postJobHeading: string;
+  myJobMessage: string;
 };
 
 export const postJobTitle: PostJobTitle = {
