@@ -1,0 +1,13 @@
+27 MAY
+    Completed typescript and jobportal
+    Installed next js
+    What is next js 
+    What is tailwind
+
+28 MAY
+    Client side rendering vs server side rendering 
+    Improvements of NextJS over ReactJS
+    How to use TailwindCSS in NextJS 
+    App Router
+    Created two projects in NextJS to understand its structure 
+    Currently learning from a Udemy course
