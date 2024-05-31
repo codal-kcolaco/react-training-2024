@@ -16,3 +16,6 @@
     Learned how to perform loading in NextJS
     Learned usage of Suspense 
     Error handling in NextJS
+
+30 MAY
+    Make Job Portal responsive

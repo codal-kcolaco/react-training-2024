@@ -12,6 +12,17 @@
   p {
     margin: 0;
   }
+
+  @media only screen and (max-width: 768px) {
+    padding: 20px 0;
+  }
+
+  @media only screen and (max-width: 480px) {
+    padding: 10px 0;
+    text-align: left;
+    padding-left: 20px;
+    box-shadow: none;
+  }
 }
 
 .content {
@@ -31,6 +42,26 @@
 
     &:hover {
       color: var(--footer-link-hover-color);
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    margin-top: 15px;
+
+    a {
+      margin: 0 8px;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    a {
+      margin: 5px 5px;
     }
   }
 }

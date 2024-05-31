@@ -14,6 +14,7 @@ import { RootState } from "../../store/store";
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const userType = useSelector((state: RootState) => state.userType);
 
   const navigate = useNavigate();
@@ -29,13 +30,19 @@ function Header() {
     window.location.reload();
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>
         <a href="/">
-          <img loading="lazy" src={CJPLogo} alt="" />
+          <img loading="lazy" src={CJPLogo} alt="CJP Logo" />
         </a>
-        <nav className={styles.list}>
+        <nav
+          className={`${styles.list} ${isMobileMenuOpen ? styles.open : ""}`}
+        >
           <ul className={styles.unorderedList}>
             {userType === "APPLICANT" &&
               navItemsApplicant.map((item, index) => (
@@ -51,6 +58,11 @@ function Header() {
               ))}
           </ul>
         </nav>
+        <div className={styles.hamburger} onClick={toggleMobileMenu}>
+          <div className={styles.bar}></div>
+          <div className={styles.bar}></div>
+          <div className={styles.bar}></div>
+        </div>
       </div>
       {!isLoggedIn && (
         <div className={styles.buttonWrapper}>
@@ -70,7 +82,7 @@ function Header() {
             }}
             className={styles.userAvatar}
             src={AvatarLogo}
-            alt=""
+            alt="User Avatar"
           />
           <a
             className={styles.logoutButton}

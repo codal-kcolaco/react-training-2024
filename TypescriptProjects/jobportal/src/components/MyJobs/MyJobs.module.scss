@@ -3,10 +3,28 @@ $margin-top: 180px;
 .container {
   margin: $margin-top 20px;
 
+  @media only screen and (max-width: 768px) {
+    margin: 100px 10px;
+  }
+
+  @media only screen and (max-width: 480px) {
+    margin: 50px 5px;
+  }
+
   .listContainer {
     padding: 20px;
     text-align: left;
     margin-bottom: 600px;
+
+    @media only screen and (max-width: 768px) {
+      padding: 15px;
+      margin-bottom: 400px;
+    }
+
+    @media only screen and (max-width: 480px) {
+      padding: 10px;
+      margin-bottom: 200px;
+    }
 
     .jobList {
       list-style-type: none;
@@ -26,6 +44,10 @@ $margin-top: 180px;
         background-color: var(--job-hover-color);
       }
 
+      @media only screen and (max-width: 480px) {
+        padding: 10px 0;
+      }
+
       h2 {
         margin: 0;
         color: var(--job-heading-color);
@@ -34,12 +56,22 @@ $margin-top: 180px;
       p {
         margin: 5px 0;
         color: var(--job-text-color);
+
+        @media only screen and (max-width: 480px) {
+          margin: 3px 0;
+        }
       }
 
       .jobContainer {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+
+        @media only screen and (max-width: 480px) {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 50px;
+        }
 
         .editButton,
         .deleteButton,
@@ -50,6 +82,12 @@ $margin-top: 180px;
           border-radius: 4px;
           cursor: pointer;
           text-decoration: none;
+
+          @media only screen and (max-width: 480px) {
+            margin-left: 5px;
+            margin-bottom: 5px;
+            padding: 6px 10px;
+          }
         }
 
         .editButton {
@@ -85,6 +123,7 @@ $margin-top: 180px;
 
 .emptyListContainer {
   text-align: center;
+
   .emptyListImg {
     margin-top: 20px;
     height: 100px;

@@ -3,18 +3,37 @@
 .listContainer {
   display: flex;
   background-color: var(--jobs-listContainer-background-color);
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .searchContainer {
   display: flex;
   gap: 120px;
-  margin: 0px;
+  margin: 0;
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  @media only screen and (max-width: 480px) {
+    gap: 10px;
+  }
 }
 
 .searchInput {
   padding-left: 10px;
   border-radius: 10px;
   border: 1px solid var(--jobs-searchInput-border-color);
+
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 .filterSection {
@@ -25,11 +44,11 @@
   margin: 200px 150px;
 
   h1 {
-    margin: 20px 0px;
+    margin: 20px 0;
   }
 
   h4 {
-    margin: 20px 0px;
+    margin: 20px 0;
   }
 
   .filterContainer {
@@ -43,6 +62,21 @@
       margin-left: 10px;
     }
   }
+
+  @media only screen and (max-width: 1024px) {
+    margin: 150px 100px;
+    padding: 30px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    margin: 100px 50px;
+    padding: 20px;
+  }
+
+  @media only screen and (max-width: 480px) {
+    margin: 50px 20px;
+    padding: 15px;
+  }
 }
 
 .listSection {
@@ -52,7 +86,7 @@
   .listSectionGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    margin: 50px 0px;
+    margin: 50px 0;
     gap: 10px;
 
     @media only screen and (max-width: 1624px) {
@@ -62,6 +96,18 @@
     @media only screen and (max-width: 1400px) {
       grid-template-columns: 1fr;
     }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    margin: 150px 100px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    margin: 100px 50px;
+  }
+
+  @media only screen and (max-width: 480px) {
+    margin: 50px 20px;
   }
 
   .card a {
@@ -103,10 +149,17 @@
     margin-top: 20px;
     font-size: 15px;
   }
+
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+  }
 }
 
 .emptyListContainer {
   text-align: center;
+
   .emptyListImg {
     margin-top: 20px;
     height: 100px;
@@ -115,5 +168,16 @@
 
   .emptyListMessage {
     margin-top: 20px;
+  }
+
+  @media only screen and (max-width: 480px) {
+    .emptyListImg {
+      height: 80px;
+      width: 80px;
+    }
+
+    .emptyListMessage {
+      font-size: 14px;
+    }
   }
 }
