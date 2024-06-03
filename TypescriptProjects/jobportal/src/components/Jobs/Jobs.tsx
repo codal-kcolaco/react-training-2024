@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import {
   jobsError,
   jobsContent,
-  TECHNOLOGIES,
+  MODES,
   LOCATIONS,
 } from "../../data/JobsContent";
 import { HiBuildingOffice2 } from "react-icons/hi2";
@@ -24,16 +24,16 @@ interface Job {
   job_type: string;
   job_description: string;
   job_salary: string;
-  job_technology: string;
+  job_mode: string;
   job_location: string;
 }
 
 interface Filter {
-  technology: string[];
+  mode: string[];
   location: string[];
 }
 
-interface Technology {
+interface Mode {
   id: string;
   value: string;
   label: string;
@@ -83,7 +83,7 @@ const JobCardPython: React.FC<JobCardProps> = ({ job }) => {
 const Jobs: React.FC = () => {
   const [jobData, setJobData] = useState<Job[]>([]);
   const [filters, setFilters] = useState<Filter>({
-    technology: [],
+    mode: [],
     location: [],
   });
   const [search, setSearch] = useState("");
@@ -104,8 +104,7 @@ const Jobs: React.FC = () => {
   const applyFilters = (): Job[] => {
     return jobData.filter((job) => {
       return (
-        (filters.technology.length === 0 ||
-          filters.technology.includes(job.job_technology)) &&
+        (filters.mode.length === 0 || filters.mode.includes(job.job_mode)) &&
         (filters.location.length === 0 ||
           filters.location.includes(job.job_location.toLowerCase())) &&
         (search === "" ||
@@ -130,17 +129,17 @@ const Jobs: React.FC = () => {
       <section className={styles.filterSection}>
         <h1>{jobsContent.jobFilterTitle}</h1>
         <hr />
-        <h4>{jobsContent.jobTechnologyTitle}</h4>
+        <h4>{jobsContent.jobModeTitle}</h4>
         <div className={styles.filterContainer}>
-          {TECHNOLOGIES.map((tech: Technology) => (
+          {MODES.map((tech: Mode) => (
             <div key={tech.id} className={styles.filterCheckbox}>
               <input
                 type="checkbox"
                 id={tech.id}
                 value={tech.value}
-                name="technology"
+                name="mode"
                 onChange={() =>
-                  handleFilterChange("technology", tech.value.toUpperCase())
+                  handleFilterChange("mode", tech.value.toUpperCase())
                 }
               />
               <label htmlFor={tech.id}>{tech.label}</label>

@@ -134,9 +134,13 @@ body {
     }
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 480px) {
     .buttonWrapper {
-      display: none;
+      .signUpButton,
+      .loginButton {
+        padding: 5px 10px;
+        font-size: 14px;
+      }
     }
 
     .hamburger {

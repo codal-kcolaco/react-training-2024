@@ -1,0 +1,6 @@
+3 June
+    Creating a E commerce product in NextJS
+    Learned to use Prisma as a database
+    Learned about creating validation using Zod
+    Learned to use shadcn for creating components
+    Learned to create a admin page using NextJS
