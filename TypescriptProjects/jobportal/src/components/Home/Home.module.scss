@@ -31,6 +31,44 @@
       color: var(--home-banner-button-hover-text-color);
     }
   }
+
+  @media only screen and (max-width: 768px) {
+    padding: 200px 0;
+
+    h2 {
+      margin-bottom: 30px;
+      font-size: 1.5em;
+    }
+
+    p.subtitle {
+      margin-bottom: 50px;
+      font-size: 1.2em;
+    }
+
+    .btn {
+      padding: 7px 10px;
+      font-size: 0.9em;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    padding: 150px 0;
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 1.2em;
+    }
+
+    p.subtitle {
+      margin-bottom: 30px;
+      font-size: 1em;
+    }
+
+    .btn {
+      padding: 5px 8px;
+      font-size: 0.8em;
+    }
+  }
 }
 
 .card {
@@ -45,37 +83,6 @@
 
   &:hover {
     box-shadow: 0 8px 16px 0 var(--home-card-hover-box-shadow-color);
-  }
-
-  @media only screen and (max-width: 880px) {
-    .cardInternal {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-
-      .containerBtn {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 10px;
-
-        .btn {
-          color: var(--home-card-button-text-color);
-          background-color: var(--home-card-button-background-color);
-          border-radius: 10px;
-          padding: 20px 45px;
-          cursor: pointer;
-          text-decoration: none;
-          transition: background-color 0.15s, color 0.15s;
-
-          &:hover {
-            background-color: var(--home-card-button-hover-background-color);
-            color: var(--home-banner-text-color);
-          }
-        }
-      }
-    }
   }
 
   .cardInternal {
@@ -110,6 +117,45 @@
         background-color: var(--home-card-button-hover-background-color);
         color: var(--home-banner-text-color);
       }
+    }
+  }
+
+  @media only screen and (max-width: 880px) {
+    margin: 50px;
+    padding: 20px;
+
+    .cardInternal {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .containerBtn {
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    .cardBtn {
+      padding: 15px 30px;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    margin: 20px;
+    padding: 10px;
+
+    .containerDescription {
+      padding: 1px 8px;
+
+      h4 {
+        margin: 10px 0px;
+        font-size: 1.1em;
+      }
+    }
+
+    .cardBtn {
+      padding: 10px 20px;
+      font-size: 0.9em;
     }
   }
 }
@@ -158,6 +204,61 @@
       height: 25px;
     }
   }
+
+  @media only screen and (max-width: 768px) {
+    margin: 50px;
+
+    .barContainer {
+      display: flex;
+      flex-direction: column;
+
+      margin: 20px;
+
+      .bar {
+        height: 57px;
+        padding-left: 20px;
+        font-size: 16px;
+        border: 1px solid var(--home-search-bar-border-color);
+        width: 200px;
+
+        &::placeholder {
+          font-size: 16px;
+        }
+      }
+
+      .searchButton {
+        width: 100%;
+        border-radius: 10px;
+      }
+
+      .searchButton {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    margin: 20px;
+
+    .barContainer {
+      margin: 10px;
+
+      .bar {
+        height: 40px;
+        padding-left: 10px;
+        font-size: 14px;
+      }
+
+      .searchButton {
+        min-height: 40px;
+        width: 100%;
+      }
+
+      .searchIcon {
+        height: 20px;
+      }
+    }
+  }
 }
 
 .jobListSection {
@@ -169,30 +270,31 @@
     margin: 50px 0px;
     gap: 10px;
   }
-}
 
-@media only screen and (max-width: 1300px) {
-  .jobListSection {
-    margin: 200px 150px;
+  @media only screen and (max-width: 1300px) {
+    margin: 150px 100px;
 
     .jobListSectionGrid {
-      display: grid;
       grid-template-columns: repeat(3, 1fr);
-      margin: 50px 0px;
-      gap: 10px;
     }
   }
-}
 
-@media only screen and (max-width: 830px) {
-  .jobListSection {
-    margin: 200px 150px;
+  @media only screen and (max-width: 830px) {
+    margin: 100px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     .jobListSectionGrid {
-      display: grid;
       grid-template-columns: repeat(1, 1fr);
-      margin: 50px 0px;
-      gap: 10px;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    margin: 50px 20px;
+
+    .jobListSectionGrid {
+      margin: 20px 0;
     }
   }
 }
@@ -219,5 +321,16 @@
     float: left;
     height: auto;
     width: 30px;
+  }
+
+  @media only screen and (max-width: 480px) {
+    padding: 15px;
+    height: 60px;
+    width: 150px;
+    font-size: 14px;
+
+    img {
+      width: 20px;
+    }
   }
 }
