@@ -3,11 +3,20 @@
 .container {
   margin-top: 100px;
   padding: 0 10px;
+
+  @media only screen and (max-width: 768px) {
+    padding: 0;
+  }
 }
 
 .card {
   padding: 60px;
   margin: 20px;
+
+  @media only screen and (max-width: 768px) {
+    padding: 20px;
+    margin: 20px;
+  }
 
   .titleContainer {
     display: flex;
@@ -17,6 +26,13 @@
     h1 {
       font-size: var(--desc-title-font-size);
     }
+
+    @media only screen and (max-width: 768px) {
+      gap: 10px;
+      h1 {
+        font-size: 18px;
+      }
+    }
   }
 
   .jobEmployerDetail {
@@ -25,6 +41,10 @@
       text-align: left;
       font-size: 17px;
       color: var(--desc-text-color);
+
+      @media only screen and (max-width: 768px) {
+        font-size: 14px;
+      }
     }
 
     h3 {
@@ -40,6 +60,10 @@
     font-size: 16px;
     line-height: 1.5;
     margin-bottom: 10px;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 14px;
+    }
 
     strong {
       font-weight: bold;
