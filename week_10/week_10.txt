@@ -13,3 +13,17 @@
      - revalidate 
 
     Understanding how to use next-auth for authentication
+
+5 June
+    Revising the HTML CSS and JS concepts for upcoming presentation
+
+6 June  
+    unstable_cache
+    unstable_noStore
+    hands on in caching
+    react cache
+    nextjs middleware hands on
+    Rendering
+     - Server Side Rendering vs Client Side Rendering
+     - Suspense and fallback
+    Server side authentication    
