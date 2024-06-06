@@ -31,10 +31,7 @@ const Login: React.FC = () => {
 
     try {
       await loginUser(userDetails.email, userDetails.password, dispatch);
-      toast.success("Login successful", {
-        onClose: () => (window.location.href = "/"),
-        autoClose: 1000,
-      });
+      window.location.href = "/";
     } catch (error) {
       toast.error(`${error}`);
     }
